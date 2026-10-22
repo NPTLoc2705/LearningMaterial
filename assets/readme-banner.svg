@@ -1,0 +1,179 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 260" width="100%" height="260" fill="none">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="840" y2="260" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#141413" />
+      <stop offset="50%" stop-color="#1a1918" />
+      <stop offset="100%" stop-color="#111110" />
+    </linearGradient>
+
+    <!-- Animated Border Gradient -->
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3a3935">
+        <animate attributeName="stop-color" values="#3a3935;#8E8D88;#3a3935" dur="6s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="50%" stop-color="#8E8D88">
+        <animate attributeName="stop-color" values="#8E8D88;#3a3935;#8E8D88" dur="6s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#2a2926">
+        <animate attributeName="stop-color" values="#2a2926;#6E6D68;#2a2926" dur="6s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+
+    <!-- Card Gradient -->
+    <linearGradient id="cardGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#242321" />
+      <stop offset="100%" stop-color="#1c1b19" />
+    </linearGradient>
+
+    <!-- Glow Filter -->
+    <filter id="subtleGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <style>
+    .serif-title {
+      font-family: 'Newsreader', 'Georgia', serif;
+      font-size: 38px;
+      font-weight: 500;
+      fill: #FBFBFA;
+      letter-spacing: -0.5px;
+    }
+    .mono-tag {
+      font-family: 'Geist Mono', 'SF Mono', 'Courier New', monospace;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      fill: #9E9D97;
+    }
+    .sub-text {
+      font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 13.5px;
+      fill: #B5B4AE;
+    }
+    .card-text {
+      font-family: 'Newsreader', 'Georgia', serif;
+      font-size: 14px;
+      fill: #FBFBFA;
+    }
+    .card-sub {
+      font-family: 'Geist Mono', monospace;
+      font-size: 10px;
+      fill: #9E9D97;
+    }
+
+    /* Keyframe Animations */
+    @keyframes floatCard1 {
+      0%, 100% { transform: translateY(0px) rotate(-3deg); }
+      50% { transform: translateY(-7px) rotate(-1.5deg); }
+    }
+    @keyframes floatCard2 {
+      0%, 100% { transform: translateY(0px) rotate(4deg); }
+      50% { transform: translateY(-9px) rotate(2.5deg); }
+    }
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+    @keyframes typingText {
+      0%, 20% { opacity: 0; transform: translateX(-4px); }
+      40%, 100% { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes shimmerBar {
+      0% { x: -200; }
+      100% { x: 900; }
+    }
+
+    .animated-card1 {
+      animation: floatCard1 6s ease-in-out infinite;
+      transform-origin: center;
+    }
+    .animated-card2 {
+      animation: floatCard2 7s ease-in-out infinite 1s;
+      transform-origin: center;
+    }
+    .pulse-dot {
+      animation: pulseDot 2s ease-in-out infinite;
+      transform-origin: center;
+    }
+    .type-line {
+      animation: typingText 4s ease-out forwards;
+    }
+  </style>
+
+  <!-- Outer Double-Bezel Container -->
+  <rect x="8" y="8" width="824" height="244" rx="22" fill="url(#bgGrad)" stroke="url(#borderGrad)" stroke-width="1.5" />
+  <rect x="14" y="14" width="812" height="232" rx="16" fill="none" stroke="#262523" stroke-width="1" stroke-dasharray="4 4" />
+
+  <!-- Ambient Light Orbs -->
+  <circle cx="200" cy="80" r="120" fill="#383632" opacity="0.15" filter="url(#subtleGlow)" />
+  <circle cx="700" cy="180" r="140" fill="#2d332d" opacity="0.2" filter="url(#subtleGlow)" />
+
+  <!-- Left Content Area -->
+  <g transform="translate(48, 50)">
+    <!-- Top Meta Tag with Status Dot -->
+    <g transform="translate(0, 0)">
+      <circle cx="5" cy="5" r="4" fill="#34D399" class="pulse-dot" />
+      <circle cx="5" cy="5" r="8" fill="#34D399" opacity="0.2" />
+      <text x="20" y="9" class="mono-tag">KHO TÀI LIỆU HỌC TẬP · UNIT 7 &amp; 8</text>
+    </g>
+
+    <!-- Main Title -->
+    <text x="0" y="58" class="serif-title">Góc Học Tập Tiếng Anh</text>
+    <text x="0" y="95" class="serif-title" font-style="italic" fill="#E8E7E4">&amp; Luyện Phản Xạ Chủ Động</text>
+
+    <!-- Animated Subtitle -->
+    <g transform="translate(0, 130)" class="type-line">
+      <text x="0" y="0" class="sub-text">
+        58 Từ Vựng · 11 Chủ Điểm Ngữ Pháp · Thẻ 3D · Trắc Nghiệm &amp; Gõ Chính Tả
+      </text>
+    </g>
+
+    <!-- Feature Pill Badges -->
+    <g transform="translate(0, 146)">
+      <!-- Pill 1 -->
+      <rect x="0" y="0" width="100" height="24" rx="6" fill="#1F1E1C" stroke="#363532" stroke-width="1" />
+      <text x="50" y="15.5" font-family="'Geist Mono', monospace" font-size="10" fill="#A3E635" text-anchor="middle">OFFLINE-FIRST</text>
+
+      <!-- Pill 2 -->
+      <rect x="110" y="0" width="105" height="24" rx="6" fill="#1F1E1C" stroke="#363532" stroke-width="1" />
+      <text x="162.5" y="15.5" font-family="'Geist Mono', monospace" font-size="10" fill="#60A5FA" text-anchor="middle">ZERO-BACKEND</text>
+
+      <!-- Pill 3 -->
+      <rect x="225" y="0" width="100" height="24" rx="6" fill="#1F1E1C" stroke="#363532" stroke-width="1" />
+      <text x="275" y="15.5" font-family="'Geist Mono', monospace" font-size="10" fill="#FBBF24" text-anchor="middle">VIETNAMESE UI</text>
+    </g>
+  </g>
+
+  <!-- Right Decorative Floating Cards -->
+  <g transform="translate(560, 35)">
+    <!-- Card 1: Flashcard 3D Preview (Back card) -->
+    <g class="animated-card2" transform="translate(45, 75)">
+      <rect x="0" y="0" width="190" height="115" rx="14" fill="url(#cardGrad)" stroke="#383633" stroke-width="1.2" />
+      <rect x="5" y="5" width="180" height="105" rx="10" fill="#1E1D1B" />
+      <text x="16" y="28" class="card-sub">UNIT 7 · GRAMMAR</text>
+      <text x="16" y="56" class="card-text" font-size="15" font-weight="600">The most + Adj</text>
+      <text x="16" y="78" font-family="'Geist', sans-serif" font-size="11" fill="#9E9D97">So sánh nhất tính từ dài</text>
+      <rect x="16" y="92" width="65" height="14" rx="3" fill="#2A352A" />
+      <text x="48.5" y="102" font-family="'Geist Mono', monospace" font-size="8.5" fill="#4ADE80" text-anchor="middle">100% SOURCE</text>
+    </g>
+
+    <!-- Card 2: Vocabulary Preview (Front card) -->
+    <g class="animated-card1" transform="translate(0, 15)">
+      <rect x="0" y="0" width="185" height="115" rx="14" fill="url(#cardGrad)" stroke="#4A4844" stroke-width="1.5" />
+      <rect x="5" y="5" width="175" height="105" rx="10" fill="#21201E" />
+      <text x="16" y="28" class="card-sub">UNIT 8 · VOCABULARY</text>
+      <text x="16" y="58" class="card-text" font-size="20" font-weight="700">gadget</text>
+      <text x="16" y="78" font-family="'Geist', sans-serif" font-size="12" fill="#EAE8E3">thiết bị công nghệ nhỏ</text>
+      <g transform="translate(138, 16)">
+        <circle cx="12" cy="12" r="11" fill="#2E2D2A" />
+        <!-- Soundwave Icon -->
+        <path d="M9 10 L11 8 L11 16 L9 14 Z M13 9 C14 10 14 14 13 15 M15 7 C17 9 17 15 15 17" stroke="#A8A7A1" stroke-width="1.2" stroke-linecap="round" fill="none" />
+      </g>
+      <rect x="16" y="92" width="60" height="14" rx="3" fill="#1C2B36" />
+      <text x="46" y="102" font-family="'Geist Mono', monospace" font-size="8.5" fill="#38BDF8" text-anchor="middle">NOUN (N)</text>
+    </g>
+  </g>
+</svg>
