@@ -1,0 +1,797 @@
+import type { ModularRuleCard, DynamicDrillQuestion } from '../types/grammar';
+
+export interface TopicExtendedContent {
+  modularRules: ModularRuleCard[];
+  drillBank: DynamicDrillQuestion[];
+}
+
+export const GRAMMAR_EXTENDED_DATA: Record<string, TopicExtendedContent> = {
+  // =========================================================================
+  // 1. Superlative Adjectives (Unit 7, Lesson 2)
+  // =========================================================================
+  'u7-superlative-adjectives': {
+    modularRules: [
+      {
+        id: 'sup-1',
+        title: 'Tính từ ngắn 1 âm tiết thông thường',
+        formula: 'the + adj + -est',
+        exampleEn: 'I am the tallest in my family.',
+        exampleVi: 'Tôi là người cao nhất trong gia đình tôi.',
+        explanation: 'Dùng khi so sánh 1 người hoặc vật có đặc điểm vượt trội nhất trong một nhóm từ 3 đối tượng trở lên. Với tính từ 1 âm tiết, ta chỉ cần thêm đuôi -est ngay sau tính từ.',
+        commonPitfall: {
+          confusedWith: 'So sánh hơn (-er) và dùng nhầm "the most"',
+          mistakeExample: '❌ I am the taller in my family. / I am the most tall.',
+          ruleTip: '👉 Tính từ ngắn 1 âm tiết TUYỆT ĐỐI không đi kèm "most". Luôn phải có mạo từ "the" đứng trước.',
+        },
+      },
+      {
+        id: 'sup-2',
+        title: 'Tính từ 1 âm tiết kết thúc dạng Phụ âm - Nguyên âm - Phụ âm',
+        formula: 'the + adj (gấp đôi phụ âm cuối) + -est',
+        exampleEn: 'This box is the biggest one in the room.',
+        exampleVi: 'Chiếc hộp này là chiếc to nhất trong căn phòng.',
+        explanation: 'Khi tính từ ngắn kết thúc bằng 1 nguyên âm đơn kẹp giữa 2 phụ âm (như b-i-g, h-o-t, f-a-t), ta bắt buộc phải nhân đôi phụ âm cuối trước khi thêm đuôi -est.',
+        commonPitfall: {
+          confusedWith: 'Quên gấp đôi phụ âm cuối',
+          mistakeExample: '❌ This box is the bigest one.',
+          ruleTip: '👉 Nhớ quy tắc "1 nguyên âm + 1 phụ âm cuối" thì phải nhân đôi: big -> biggest, hot -> hottest.',
+        },
+      },
+      {
+        id: 'sup-3',
+        title: 'Tính từ 2 âm tiết kết thúc bằng đuôi "-y"',
+        formula: 'the + adj (đổi -y thành -i) + -est',
+        exampleEn: 'This exam is the easiest one I have taken.',
+        exampleVi: 'Kỳ thi này là kỳ thi dễ nhất tôi từng làm.',
+        explanation: 'Tính từ có 2 âm tiết nhưng tận cùng bằng chữ "y" (easy, heavy, happy, noisy) được đối xử như tính từ ngắn: đổi "y" thành "i" rồi thêm -est.',
+        commonPitfall: {
+          confusedWith: 'Dùng "the most easy" hoặc giữ nguyên đuôi -y',
+          mistakeExample: '❌ This exam is the most easy. / the easyest.',
+          ruleTip: '👉 Đuôi "-y" luôn biến thành "-iest": easy -> easiest, happy -> happiest.',
+        },
+      },
+      {
+        id: 'sup-4',
+        title: 'Tính từ dài (3 âm tiết trở lên hoặc 2 âm tiết không tận cùng -y)',
+        formula: 'the + most / least + adj',
+        exampleEn: 'It is the most interesting movie in my life.',
+        exampleVi: 'Đó là bộ phim thú vị nhất trong cuộc đời tôi.',
+        explanation: 'Với tính từ dài, giữ nguyên tính từ gốc và đặt cụm "the most" (nhiều nhất) hoặc "the least" (ít nhất) ở phía trước để không làm từ bị quá dài.',
+        commonPitfall: {
+          confusedWith: 'Thêm đuôi -est vào sau tính từ dài hoặc quên "the"',
+          mistakeExample: '❌ It is most interestingest movie.',
+          ruleTip: '👉 Tính từ từ 3 âm tiết trở lên: KHÔNG thêm đuôi -est, chỉ thêm "the most" phía trước.',
+        },
+      },
+      {
+        id: 'sup-5',
+        title: 'Tính từ bất quy tắc đặc biệt (Irregular)',
+        formula: 'good -> the best · bad -> the worst · far -> the furthest',
+        exampleEn: 'The camera is the best feature of this smartphone.',
+        exampleVi: 'Máy ảnh là tính năng tốt nhất của chiếc điện thoại thông minh này.',
+        explanation: 'Một số tính từ phổ biến không tuân theo quy tắc thêm đuôi thông thường mà biến đổi hoàn toàn thành từ mới.',
+        commonPitfall: {
+          confusedWith: 'Tự ý thêm -est thành "goodest" hoặc "baddest"',
+          mistakeExample: '❌ This is the goodest phone.',
+          ruleTip: '👉 Học thuộc lòng bộ 3: good -> the best | bad -> the worst | far -> the farthest/furthest.',
+        },
+      },
+    ],
+    drillBank: [
+      {
+        id: 'sup-q1',
+        type: 'reading-cloze',
+        typeLabel: 'Bài đọc KET điền từ',
+        prompt: 'Đọc đoạn văn ngắn về công nghệ và chia dạng so sánh nhất của tính từ trong ngoặc:',
+        passage: 'My family has three laptops. My father\'s laptop is [1:heavy] (heavy) of all because it is old. My brother has [2:popular] (popular) gaming laptop on the market. However, my small notebook is [3:convenient] (convenient) gadget for traveling.',
+        correctAnswer: 'the heaviest',
+        bracketVerb: 'heavy',
+        explanation: {
+          ruleReason: 'Tính từ 2 âm tiết kết thúc bằng "y" (heavy) đổi thành "the heaviest".',
+          whyWrong: 'Không được dùng "the most heavy" vì tính từ tận cùng bằng "y" luôn đổi thành "-iest".',
+          grammarTip: 'Đổi y -> i rồi thêm -est: heavy -> the heaviest.',
+        },
+      },
+      {
+        id: 'sup-q2',
+        type: 'error-correction',
+        typeLabel: 'Tìm lỗi sai & Sửa từ',
+        prompt: 'Tìm từ sai ngữ pháp trong câu sau và gõ từ sửa lại đúng:',
+        passage: 'This smartphone has the more powerful processor among all new models.',
+        errorWord: 'more',
+        correctAnswer: 'most',
+        explanation: {
+          ruleReason: 'So sánh trong nhóm toàn bộ các dòng máy mới ("among all new models" > 2 đối tượng) bắt buộc phải dùng so sánh nhất "the most powerful".',
+          whyWrong: '"more" chỉ dùng khi so sánh giữa 2 đối tượng (so sánh hơn). Ở đây đang so sánh một nhóm.',
+          grammarTip: 'Nhóm từ 3 người/vật trở lên -> luôn dùng "the most", không dùng "the more".',
+        },
+      },
+      {
+        id: 'sup-q3',
+        type: 'sentence-rewrite',
+        typeLabel: 'Viết lại câu giữ nguyên nghĩa',
+        prompt: 'Hoàn thành câu thứ hai sao cho nghĩa không đổi so với câu gốc, sử dụng từ khóa cho sẵn:',
+        passage: 'No other app on my phone is as useful as this translation dictionary.',
+        targetKeyword: 'MOST',
+        correctAnswer: 'This translation dictionary is the most useful app on my phone.',
+        explanation: {
+          ruleReason: '"Không có ứng dụng nào hữu ích bằng từ điển này" đồng nghĩa với "Từ điển này là ứng dụng hữu ích nhất" (the most useful app).',
+          whyWrong: 'Useful là tính từ dài 2 âm tiết không tận cùng y, phải đi với "the most useful".',
+          grammarTip: 'No other ... as [adj] as ... = S + is the most [adj].',
+        },
+      },
+      {
+        id: 'sup-q4',
+        type: 'multiple-choice',
+        typeLabel: 'Trắc nghiệm ngữ cảnh',
+        prompt: 'Chọn phương án đúng nhất để hoàn thành câu sau:',
+        passage: 'Among the three cameras we tested yesterday, the Japanese model was __________.',
+        options: ['the best', 'the goodest', 'better', 'the most good'],
+        correctAnswer: 'the best',
+        explanation: {
+          ruleReason: 'Good là tính từ bất quy tắc, dạng so sánh nhất là "the best".',
+          whyWrong: 'Không tồn tại từ "goodest" hay "the most good" trong tiếng Anh chuẩn.',
+          grammarTip: 'good -> better -> the best.',
+        },
+      },
+      {
+        id: 'sup-q5',
+        type: 'word-scramble',
+        typeLabel: 'Xếp từ thành câu hoàn chỉnh',
+        prompt: 'Sắp xếp các từ sau thành một câu so sánh nhất chuẩn ngữ pháp:',
+        scrambledWords: ['is', 'city', 'in', 'Tokyo', 'the', 'most', 'expensive', 'Asia', '.'],
+        correctAnswer: 'Tokyo is the most expensive city in Asia .',
+        explanation: {
+          ruleReason: 'Trật tự câu chuẩn: Chủ ngữ (Tokyo) + to be (is) + the most expensive + Danh từ (city) + Giới từ nơi chốn (in Asia).',
+          whyWrong: 'Không được đặt danh từ đứng trước mạo từ "the".',
+          grammarTip: 'S + be + the most + Adj + Noun + in/of...',
+        },
+      },
+      {
+        id: 'sup-q6',
+        type: 'error-correction',
+        typeLabel: 'Tìm lỗi sai & Sửa từ',
+        prompt: 'Tìm từ sai ngữ pháp trong câu sau và gõ từ sửa lại đúng:',
+        passage: 'Mount Everest is the highest mountain of the world.',
+        errorWord: 'of',
+        correctAnswer: 'in',
+        explanation: {
+          ruleReason: 'Khi nói về địa điểm, vị trí địa lý hay phạm vi không gian (world, city, class), ta dùng giới từ "in", không dùng "of".',
+          whyWrong: '"of" chỉ dùng cho khoảng thời gian (of the year) hoặc số lượng (of the three).',
+          grammarTip: 'So sánh nhất + IN + nơi chốn (in the world, in Vietnam).',
+        },
+      },
+    ],
+  },
+
+  // =========================================================================
+  // 2. Future: will vs. be going to (Unit 7, Lesson 4)
+  // =========================================================================
+  'u7-future-will-going-to': {
+    modularRules: [
+      {
+        id: 'fut-1',
+        title: 'Quyết định bộc phát ngay lúc nói (Instant Decision) - Dùng WILL',
+        formula: 'S + will (\'ll) + V nguyên thể',
+        exampleEn: 'I\'m hungry. I think I\'ll have something to eat.',
+        exampleVi: 'Tôi đói bụng rồi. Tôi nghĩ tôi sẽ kiếm cái gì đó để ăn.',
+        explanation: 'Dùng "will" khi quyết định được đưa ra ngay tại thời điểm đang nói, chưa có bất kỳ dự định hay sắp đặt nào trước đó.',
+        commonPitfall: {
+          confusedWith: 'Dùng "be going to" cho quyết định vừa mới nghĩ ra',
+          mistakeExample: '❌ The phone is ringing. I am going to answer it.',
+          ruleTip: '👉 Vừa mới nghĩ ra hoặc phản ứng tức thì: LUÔN dùng "will" (I\'ll answer it).',
+        },
+      },
+      {
+        id: 'fut-2',
+        title: 'Kế hoạch đã định trước (Prior Plan / Intention) - Dùng BE GOING TO',
+        formula: 'S + am/is/are + going to + V nguyên thể',
+        exampleEn: 'I am going to buy a new tablet next weekend. I saved enough money.',
+        exampleVi: 'Tôi dự định sẽ mua một chiếc máy tính bảng vào cuối tuần tới. Tôi đã tiết kiệm đủ tiền rồi.',
+        explanation: 'Dùng "be going to" khi hành động đã được người nói lên kế hoạch, dự định hoặc chuẩn bị từ trước thời điểm nói.',
+        commonPitfall: {
+          confusedWith: 'Dùng "will" cho kế hoạch đã mua vé / hẹn giờ',
+          mistakeExample: '❌ I will visit my grandmother this Saturday. I bought the train ticket.',
+          ruleTip: '👉 Đã có chuẩn bị/kế hoạch từ trước: BẮT BUỘC dùng "be going to".',
+        },
+      },
+      {
+        id: 'fut-3',
+        title: 'Dự đoán có bằng chứng hiện tại (Evidence) vs. Ý kiến cá nhân (Opinion)',
+        formula: 'Có bằng chứng mắt thấy: be going to · Ý kiến cá nhân (I think...): will',
+        exampleEn: 'Look at those dark clouds! It is going to rain.',
+        exampleVi: 'Nhìn những đám mây đen kìa! Trời sắp mưa rồi.',
+        explanation: 'Nếu bạn nhìn thấy bằng chứng rõ ràng trước mắt báo hiệu sự việc sắp xảy ra, dùng "be going to". Nếu chỉ là cảm nhận chủ quan ("I think..."), dùng "will".',
+        commonPitfall: {
+          confusedWith: 'Dùng "will" khi đã có bằng chứng rõ mười mươi',
+          mistakeExample: '❌ Look at the clouds. It will rain.',
+          ruleTip: '👉 Mắt thấy bằng chứng ngay trước mặt -> "be going to". Suy nghĩ chủ quan (I think/I hope) -> "will".',
+        },
+      },
+    ],
+    drillBank: [
+      {
+        id: 'fut-q1',
+        type: 'multiple-choice',
+        typeLabel: 'Trắc nghiệm ngữ cảnh',
+        prompt: 'Chọn dạng thì tương lai phù hợp nhất cho tình huống sau:',
+        passage: 'A: "The bag looks very heavy!" — B: "Don\'t worry, I __________ you carry it."',
+        options: ['will help', 'am going to help', 'help', 'helped'],
+        correctAnswer: 'will help',
+        explanation: {
+          ruleReason: 'Đây là lời đề nghị giúp đỡ được quyết định ngay tại thời điểm nói khi thấy túi nặng, dùng "will help".',
+          whyWrong: 'Không dùng "am going to help" vì người nói không lên kế hoạch giúp đỡ từ trước khi nhìn thấy túi.',
+          grammarTip: 'Đề nghị giúp đỡ / Quyết định tức thì -> dùng WILL.',
+        },
+      },
+      {
+        id: 'fut-q2',
+        type: 'reading-cloze',
+        typeLabel: 'Bài đọc KET điền từ',
+        prompt: 'Đọc đoạn hội thoại và chia dạng đúng của động từ trong ngoặc (will hoặc be going to):',
+        passage: 'Tom: "Why are you holding that paint brush?" — Lan: "I [1:paint] my bedroom blue. My dad bought the paint yesterday."',
+        correctAnswer: 'am going to paint',
+        bracketVerb: 'paint',
+        explanation: {
+          ruleReason: 'Lan đã lên kế hoạch và bố đã mua sơn từ hôm qua, nên hành động sơn phòng là dự định định trước ("am going to paint").',
+          whyWrong: 'Không dùng "will paint" vì việc sơn phòng không phải là quyết định bộc phát.',
+          grammarTip: 'Đã chuẩn bị đồ dùng / mua sắm trước -> be going to.',
+        },
+      },
+      {
+        id: 'fut-q3',
+        type: 'error-correction',
+        typeLabel: 'Tìm lỗi sai & Sửa từ',
+        prompt: 'Tìm từ sai ngữ pháp trong câu sau và gõ từ sửa lại đúng:',
+        passage: 'Watch out! That ladder is shaking, you will fall down!',
+        errorWord: 'will',
+        correctAnswer: 'are going to',
+        explanation: {
+          ruleReason: 'Thang đang rung lắc dữ dội là bằng chứng hiển nhiên trước mắt cho thấy tai nạn sắp xảy ra, phải dùng "are going to fall down".',
+          whyWrong: '"will" chỉ thể hiện dự đoán không có căn cứ xác thực tại hiện trường.',
+          grammarTip: 'Dự đoán có bằng chứng trước mắt (Watch out! Look!) -> be going to.',
+        },
+      },
+      {
+        id: 'fut-q4',
+        type: 'sentence-rewrite',
+        typeLabel: 'Viết lại câu giữ nguyên nghĩa',
+        prompt: 'Viết lại câu thể hiện dự định tương lai với từ khóa cho sẵn:',
+        passage: 'I decided to learn how to code Python last week.',
+        targetKeyword: 'GOING',
+        correctAnswer: 'I am going to learn how to code Python.',
+        explanation: {
+          ruleReason: 'Đã quyết định từ tuần trước ("decided last week") biểu thị dự định từ trước, tương đương cấu trúc "am going to learn".',
+          whyWrong: 'Không dùng "will" vì đã có quyết định từ trước.',
+          grammarTip: 'decide to V = be going to V.',
+        },
+      },
+      {
+        id: 'fut-q5',
+        type: 'multiple-choice',
+        typeLabel: 'Trắc nghiệm ngữ cảnh',
+        prompt: 'Chọn phương án đúng nhất theo mẫu câu quan điểm (I think I\'ll...):',
+        passage: 'It is getting chilly outside. I think I __________ a jacket.',
+        options: ['will put on', 'am going to put on', 'put on', 'have put on'],
+        correctAnswer: 'will put on',
+        explanation: {
+          ruleReason: 'Mẫu câu "I think I\'ll..." diễn tả một quyết định nảy sinh ngay lúc nói do cảm nhận thời tiết lạnh.',
+          whyWrong: '"I think" thường kết hợp với "will" để đưa ra quyết định hoặc phán đoán tức thời.',
+          grammarTip: 'I think I\'ll + V nguyên thể.',
+        },
+      },
+      {
+        id: 'fut-q6',
+        type: 'word-scramble',
+        typeLabel: 'Xếp từ thành câu hoàn chỉnh',
+        prompt: 'Sắp xếp các từ sau thành câu phủ định thì tương lai dự đoán:',
+        scrambledWords: ['next', 'They', 'won\'t', 'their', 'match', 'win', '.'],
+        correctAnswer: 'They won\'t win their next match .',
+        explanation: {
+          ruleReason: 'Cấu trúc phủ định với will: S + won\'t + V nguyên thể + Tân ngữ + Trạng từ thời gian.',
+          whyWrong: 'Won\'t luôn đứng trước động từ nguyên thể "win".',
+          grammarTip: 'will not = won\'t + V-inf.',
+        },
+      },
+    ],
+  },
+
+  // =========================================================================
+  // 3. Making and Responding to Requests (Unit 7, Lesson 1)
+  // =========================================================================
+  'u7-requests': {
+    modularRules: [
+      {
+        id: 'req-1',
+        title: 'Lời yêu cầu lịch sự với Could / Can you...?',
+        formula: 'Could / Can you + V nguyên thể + ... (please)?',
+        exampleEn: 'Could you lend me your smartphone for a minute?',
+        exampleVi: 'Bạn có thể cho tôi mượn điện thoại một phút được không?',
+        explanation: 'Dùng để nhờ vả hoặc yêu cầu ai đó làm gì cho mình. "Could" mang sắc thái trang trọng, lịch sự hơn "Can". Động từ chính luôn ở dạng nguyên mẫu không "to".',
+        commonPitfall: {
+          confusedWith: 'Chia thì quá khứ cho động từ đứng sau Could',
+          mistakeExample: '❌ Could you lent me your pen?',
+          ruleTip: '👉 Sau Can / Could / May / Will / Would: Động từ LUÔN LUÔN ở dạng nguyên mẫu không chia.',
+        },
+      },
+      {
+        id: 'req-2',
+        title: 'Xin phép lịch sự với Could I / May I...?',
+        formula: 'Could / May I + V nguyên thể + ...?',
+        exampleEn: 'Could I borrow your charger?',
+        exampleVi: 'Tôi có thể mượn củ sạc của bạn được không?',
+        explanation: 'Dùng khi chính bản thân người nói muốn xin phép làm một hành động nào đó.',
+        commonPitfall: {
+          confusedWith: 'Nhầm lẫn giữa mượn (borrow) và cho mượn (lend)',
+          mistakeExample: '❌ Could you borrow me your pen? (Sai nghĩa)',
+          ruleTip: '👉 "Could I borrow..." (Tôi mượn) vs "Could you lend me..." (Bạn cho tôi mượn).',
+        },
+      },
+      {
+        id: 'req-3',
+        title: 'Cách đáp lại lời yêu cầu (Đồng ý vs Từ chối)',
+        formula: 'Đồng ý: Of course. Here you are! · Từ chối: I\'m sorry, I can\'t...',
+        exampleEn: 'Sure, here you go! / Sorry, I\'m using it right now.',
+        exampleVi: 'Chắc chắn rồi, của bạn đây! / Xin lỗi, mình đang dùng nó mất rồi.',
+        explanation: 'Khi đồng ý, dùng các mẫu câu thân thiện. Khi từ chối, luôn bắt đầu bằng lời xin lỗi lịch sự kèm lý do.',
+        commonPitfall: {
+          confusedWith: 'Chỉ trả lời "No" cộc lốc gây mất lịch sự',
+          mistakeExample: '❌ No, I don\'t want.',
+          ruleTip: '👉 Trong giao tiếp tiếng Anh: Luôn dùng "I\'m sorry / Sorry, I\'m afraid..." khi từ chối.',
+        },
+      },
+    ],
+    drillBank: [
+      {
+        id: 'req-q1',
+        type: 'multiple-choice',
+        typeLabel: 'Trắc nghiệm hội thoại',
+        prompt: 'Chọn câu đáp lại phù hợp nhất cho lời yêu cầu mượn đồ:',
+        passage: 'A: "Could I borrow your scissors, please?" — B: "__________"',
+        options: ['Sure, here you are!', 'Yes, you borrow.', 'No, you don\'t.', 'Of course, I borrow.'],
+        correctAnswer: 'Sure, here you are!',
+        explanation: {
+          ruleReason: '"Sure, here you are!" là câu đồng ý và đưa đồ vật cho người khác chuẩn ngữ dụng giao tiếp tiếng Anh.',
+          whyWrong: 'Các phương án khác sai ngữ pháp và ngữ nghĩa khi trao đồ vật.',
+          grammarTip: 'Đưa đồ cho bạn: "Here you are!" hoặc "Here you go!".',
+        },
+      },
+      {
+        id: 'req-q2',
+        type: 'error-correction',
+        typeLabel: 'Tìm lỗi sai & Sửa từ',
+        prompt: 'Tìm từ sai ngữ pháp trong câu sau và gõ từ sửa lại đúng:',
+        passage: 'Could you please to turn down the volume of the speaker?',
+        errorWord: 'to turn',
+        correctAnswer: 'turn',
+        explanation: {
+          ruleReason: 'Sau trợ động từ khiếm khuyết "Could you please", động từ chính phải là nguyên mẫu không "to" (bare infinitive).',
+          whyWrong: 'Không được thêm "to" trước động từ sau Can/Could.',
+          grammarTip: 'Could you (please) + V-bare (không có to).',
+        },
+      },
+      {
+        id: 'req-q3',
+        type: 'sentence-rewrite',
+        typeLabel: 'Viết lại câu giữ nguyên nghĩa',
+        prompt: 'Chuyển mệnh lệnh sau thành câu yêu cầu lịch sự dùng từ khóa:',
+        passage: 'Send me the project files right now.',
+        targetKeyword: 'COULD',
+        correctAnswer: 'Could you send me the project files, please?',
+        explanation: {
+          ruleReason: 'Biến câu mệnh lệnh suồng sã thành câu hỏi nhờ cậy lịch sự: "Could you + V... please?".',
+          whyWrong: 'Phải dùng trợ động từ "Could you", không nói cộc lốc.',
+          grammarTip: 'Mệnh lệnh -> Could you please + V...?',
+        },
+      },
+      {
+        id: 'req-q4',
+        type: 'multiple-choice',
+        typeLabel: 'Trắc nghiệm ngữ cảnh',
+        prompt: 'Chọn từ đúng để xin phép người khác cho mình mượn đồ:',
+        passage: 'Excuse me, __________ I use your Wi-Fi password for a minute?',
+        options: ['May', 'Will you', 'Do', 'Would you'],
+        correctAnswer: 'May',
+        explanation: {
+          ruleReason: '"May I + V" dùng để xin phép cho bản thân mình một cách lịch sự, trang trọng.',
+          whyWrong: '"Will you" hoặc "Would you" là yêu cầu người khác làm gì, không phải xin phép cho bản thân.',
+          grammarTip: 'Xin phép cho tôi: "May I...?" hoặc "Could I...?".',
+        },
+      },
+      {
+        id: 'req-q5',
+        type: 'word-scramble',
+        typeLabel: 'Xếp từ thành câu hoàn chỉnh',
+        prompt: 'Sắp xếp các từ sau thành câu xin phép ra ngoài:',
+        scrambledWords: ['go', 'me', 'out', 'Please', 'let', ',', 'teacher', '.'],
+        correctAnswer: 'Please let me go out , teacher .',
+        explanation: {
+          ruleReason: 'Cấu trúc xin phép: Please let me + V nguyên thể (Please let me go out).',
+          whyWrong: 'Sau "let me" động từ ở dạng nguyên thể, không chia.',
+          grammarTip: 'Let me + V (nguyên thể).',
+        },
+      },
+      {
+        id: 'req-q6',
+        type: 'reading-cloze',
+        typeLabel: 'Bài đọc KET điền từ',
+        prompt: 'Điền từ khuyết vào chỗ trống để hoàn thành lời từ chối lịch sự:',
+        passage: 'A: "Can you lend me your tablet today?" — B: "I\'m [1:sorry], but I have an online test this afternoon."',
+        correctAnswer: 'sorry',
+        explanation: {
+          ruleReason: 'Cụm từ lịch sự thông dụng nhất khi từ chối một lời yêu cầu là "I\'m sorry, but...".',
+          whyWrong: 'Không trả lời "No" đơn độc vì mang sắc thái thô lỗ.',
+          grammarTip: 'Từ chối lịch sự: I\'m sorry, but...',
+        },
+      },
+    ],
+  },
+
+  // =========================================================================
+  // 5. Present Perfect (Unit 8, Lesson 2)
+  // =========================================================================
+  'u8-present-perfect': {
+    modularRules: [
+      {
+        id: 'pe-1',
+        title: 'Hành động bắt đầu trong quá khứ và kéo dài đến hiện tại',
+        formula: 'S + have / has + V3/V-ed',
+        exampleEn: 'People have played card games for twelve hundred years.',
+        exampleVi: 'Con người đã chơi các trò chơi bài trong khoảng 1.200 năm nay.',
+        explanation: 'Dùng khi một hành động đã diễn ra từ một thời điểm trong quá khứ nhưng vẫn đang tiếp tục tiếp diễn ở hiện tại, không có mốc kết thúc.',
+        commonPitfall: {
+          confusedWith: 'Thì Quá khứ đơn (Past Simple)',
+          mistakeExample: '❌ People played card games for 1200 years (nếu bây giờ vẫn chơi).',
+          ruleTip: '👉 Kéo dài từ quá khứ đến tận bây giờ: BẮT BUỘC dùng Hiện tại hoàn thành (have/has + V3).',
+        },
+      },
+      {
+        id: 'pe-2',
+        title: 'Trải nghiệm cuộc sống với EVER và NEVER',
+        formula: 'Have you ever + V3/V-ed...? · S + have/has + never + V3/V-ed',
+        exampleEn: 'Have you ever eaten sushi? — I have never tried it.',
+        exampleVi: 'Bạn đã từng ăn sushi bao giờ chưa? — Tôi chưa từng thử món đó.',
+        explanation: 'Dùng để hỏi hoặc kể về trải nghiệm tính đến thời điểm hiện tại của một người (đã từng / chưa bao giờ làm gì).',
+        commonPitfall: {
+          confusedWith: 'Dùng câu hỏi "Did you ever...?" hoặc nhầm vị trí của ever/never',
+          mistakeExample: '❌ Have you eaten ever sushi? / Did you ever eat...',
+          ruleTip: '👉 "ever" và "never" luôn đứng giữa trợ động từ (have/has) và động từ chính (V3).',
+        },
+      },
+      {
+        id: 'pe-3',
+        title: 'Quy tắc chọn HAVE vs. HAS',
+        formula: 'I / You / We / They / Danh từ số nhiều -> HAVE · He / She / It / Danh từ số ít -> HAS',
+        exampleEn: 'Many players haven\'t played solitaire since computers became popular.',
+        exampleVi: 'Nhiều người chơi đã không chơi bài solitaire kể từ khi máy tính trở nên phổ biến.',
+        explanation: 'Trợ động từ phải hòa hợp với chủ ngữ: ngôi thứ 3 số ít dùng HAS, các ngôi còn lại dùng HAVE.',
+        commonPitfall: {
+          confusedWith: 'Dùng nhầm "has" cho danh từ số nhiều (Players, People)',
+          mistakeExample: '❌ People has played this game.',
+          ruleTip: '👉 "People", "Players", "Children" là danh từ số nhiều -> dùng HAVE.',
+        },
+      },
+    ],
+    drillBank: [
+      {
+        id: 'pe-q1',
+        type: 'reading-cloze',
+        typeLabel: 'Bài đọc KET điền từ',
+        prompt: 'Đọc đoạn văn ngắn về lịch sử trò chơi và chia thì Hiện tại hoàn thành của động từ trong ngoặc:',
+        passage: 'Solitaire is a famous card game. Game creators [1:design] (design) hundreds of variations over the centuries, and millions of people [2:enjoy] (enjoy) playing it on their PCs.',
+        correctAnswer: 'have designed',
+        bracketVerb: 'design',
+        explanation: {
+          ruleReason: 'Chủ ngữ "Game creators" là số nhiều, hành động kéo dài qua nhiều thế kỷ -> "have designed".',
+          whyWrong: 'Không dùng "has designed" vì chủ ngữ creators có đuôi -s (số nhiều).',
+          grammarTip: 'Danh từ số nhiều + have + V3/V-ed.',
+        },
+      },
+      {
+        id: 'pe-q2',
+        type: 'error-correction',
+        typeLabel: 'Tìm lỗi sai & Sửa từ',
+        prompt: 'Tìm từ sai ngữ pháp trong câu sau và gõ từ sửa lại đúng:',
+        passage: 'She has saw that historical movie three times already.',
+        errorWord: 'saw',
+        correctAnswer: 'seen',
+        explanation: {
+          ruleReason: 'Sau "has" trong thì Hiện tại hoàn thành bắt buộc dùng dạng quá khứ phân từ V3 ("seen"), không dùng quá khứ đơn V2 ("saw").',
+          whyWrong: '"saw" là dạng quá khứ đơn V2 của see. Dạng phân từ V3 là "seen".',
+          grammarTip: 'see -> saw (V2) -> seen (V3). Cấu trúc: have/has + V3.',
+        },
+      },
+      {
+        id: 'pe-q3',
+        type: 'sentence-rewrite',
+        typeLabel: 'Viết lại câu giữ nguyên nghĩa',
+        prompt: 'Viết lại câu sử dụng từ khóa gợi ý về trải nghiệm cuộc sống:',
+        passage: 'This is the first time I have tasted this traditional cake.',
+        targetKeyword: 'NEVER',
+        correctAnswer: 'I have never tasted this traditional cake before.',
+        explanation: {
+          ruleReason: '"Đây là lần đầu tiên tôi ăn bánh này" đồng nghĩa với "Tôi chưa từng ăn bánh này trước đây" (have never tasted ... before).',
+          whyWrong: 'Cần đặt "never" sau "have" và trước động từ phân từ.',
+          grammarTip: 'This is the first time S + have V3 = S + have never V3 before.',
+        },
+      },
+      {
+        id: 'pe-q4',
+        type: 'multiple-choice',
+        typeLabel: 'Trắc nghiệm ngữ cảnh',
+        prompt: 'Chọn phương án đúng để hoàn thành câu hỏi trải nghiệm:',
+        passage: '__________ you ever visited an ancient temple in Vietnam?',
+        options: ['Have', 'Did', 'Do', 'Has'],
+        correctAnswer: 'Have',
+        explanation: {
+          ruleReason: 'Câu hỏi trải nghiệm với chủ ngữ "you" dùng: "Have you ever + V3?".',
+          whyWrong: '"Did" đi với động từ nguyên mẫu ("Did you ever visit"), còn ở đây động từ là "visited" (V3).',
+          grammarTip: 'Have you ever + V3?',
+        },
+      },
+      {
+        id: 'pe-q5',
+        type: 'word-scramble',
+        typeLabel: 'Xếp từ thành câu hoàn chỉnh',
+        prompt: 'Sắp xếp các từ thành câu phủ định thì Hiện tại hoàn thành:',
+        scrambledWords: ['not', 'They', 'completed', 'have', 'exam', 'the', 'yet', '.'],
+        correctAnswer: 'They have not completed the exam yet .',
+        explanation: {
+          ruleReason: 'Cấu trúc phủ định: S + have not + V3 + Tân ngữ + yet (họ vẫn chưa hoàn thành kỳ thi).',
+          whyWrong: '"not" đứng ngay sau trợ động từ have.',
+          grammarTip: 'have not + V3 ... yet.',
+        },
+      },
+      {
+        id: 'pe-q6',
+        type: 'error-correction',
+        typeLabel: 'Tìm lỗi sai & Sửa từ',
+        prompt: 'Tìm từ sai ngữ pháp trong câu sau và gõ từ sửa lại đúng:',
+        passage: 'My brother has lost his keys yesterday afternoon.',
+        errorWord: 'has lost',
+        correctAnswer: 'lost',
+        explanation: {
+          ruleReason: 'Khi câu có mốc thời gian xác định đã chấm dứt hoàn toàn trong quá khứ ("yesterday afternoon"), bắt buộc phải dùng Quá khứ đơn (lost), TUYỆT ĐỐI không dùng Hiện tại hoàn thành.',
+          whyWrong: 'Hiện tại hoàn thành không đi với các mốc thời gian quá khứ cụ thể như yesterday, last night, in 2010.',
+          grammarTip: 'Có yesterday, ago, in + năm cũ -> Dùng Quá khứ đơn (V2), không dùng have/has V3.',
+        },
+      },
+    ],
+  },
+
+  // =========================================================================
+  // 6. For and Since (Unit 8, Lesson 2)
+  // =========================================================================
+  'u8-for-since': {
+    modularRules: [
+      {
+        id: 'fs-1',
+        title: 'FOR + Khoảng thời gian (Period of time)',
+        formula: 'FOR + a period of time (đo lường độ dài thời gian)',
+        exampleEn: 'We have talked for 30 minutes. / It has rained for a week.',
+        exampleVi: 'Chúng tôi đã nói chuyện được 30 phút rồi. / Trời đã mưa suốt một tuần nay.',
+        explanation: '"For" trả lời cho câu hỏi "Bao lâu?" (How long?). Nó đi kèm với một khoảng thời gian được đếm bằng số lượng (số phút, số giờ, số ngày, số năm, a long time).',
+        commonPitfall: {
+          confusedWith: 'Dùng nhầm "since" khi thấy có con số năm (ví dụ: for 5 years)',
+          mistakeExample: '❌ I have studied English since 5 years.',
+          ruleTip: '👉 Thấy có số đếm khoảng thời gian (5 years, 3 days, 2 hours) -> BẮT BUỘC dùng FOR.',
+        },
+      },
+      {
+        id: 'fs-2',
+        title: 'SINCE + Mốc thời gian bắt đầu (Starting point)',
+        formula: 'SINCE + a starting point in the past (điểm mốc sự kiện)',
+        exampleEn: 'I have waited here since 9 a.m. / They have lived here since 1980.',
+        exampleVi: 'Tôi đã đợi ở đây từ lúc 9 giờ sáng. / Bố mẹ tôi đã sống ở đây từ năm 1980.',
+        explanation: '"Since" trả lời cho câu hỏi "Từ khi nào?" (Since when?). Nó đi kèm với một mốc thời gian cụ thể (giờ, ngày tháng, năm cụ thể) hoặc một mệnh đề quá khứ đơn (since I was young).',
+        commonPitfall: {
+          confusedWith: 'Dùng nhầm "for" trước năm cụ thể hoặc thời điểm',
+          mistakeExample: '❌ They have lived here for 1980.',
+          ruleTip: '👉 Tên năm cụ thể (1980, 2022), mốc giờ (9 a.m), ngày cụ thể (Monday, yesterday) -> BẮT BUỘC dùng SINCE.',
+        },
+      },
+    ],
+    drillBank: [
+      {
+        id: 'fs-q1',
+        type: 'multiple-choice',
+        typeLabel: 'Trắc nghiệm ngữ cảnh',
+        prompt: 'Chọn giới từ thời gian đúng để điền vào chỗ trống:',
+        passage: 'Mr. David has worked as a history teacher in this high school __________ ten years.',
+        options: ['for', 'since', 'in', 'during'],
+        correctAnswer: 'for',
+        explanation: {
+          ruleReason: '"Ten years" là một khoảng thời gian có độ dài 10 năm -> dùng giới từ "for".',
+          whyWrong: '"since" chỉ đi với mốc thời gian (như since 2014), không đi với độ dài thời gian.',
+          grammarTip: 'for + khoảng thời gian (for 10 years).',
+        },
+      },
+      {
+        id: 'fs-q2',
+        type: 'multiple-choice',
+        typeLabel: 'Trắc nghiệm ngữ cảnh',
+        prompt: 'Chọn giới từ thời gian đúng để điền vào chỗ trống:',
+        passage: 'Nobody has heard any news from the explorer __________ last Friday.',
+        options: ['since', 'for', 'from', 'at'],
+        correctAnswer: 'since',
+        explanation: {
+          ruleReason: '"Last Friday" là mốc thời gian cụ thể (thứ Sáu tuần trước) đánh dấu thời điểm bắt đầu mất liên lạc -> dùng "since".',
+          whyWrong: '"for" không đi với mốc thời gian cụ thể như last Friday, yesterday.',
+          grammarTip: 'since + mốc thời gian (since last Friday).',
+        },
+      },
+      {
+        id: 'fs-q3',
+        type: 'error-correction',
+        typeLabel: 'Tìm lỗi sai & Sửa từ',
+        prompt: 'Tìm từ sai ngữ pháp trong câu sau và gõ từ sửa lại đúng:',
+        passage: 'They have developed this mobile application since six months.',
+        errorWord: 'since',
+        correctAnswer: 'for',
+        explanation: {
+          ruleReason: '"Six months" là khoảng thời gian (6 tháng), phải dùng giới từ "for".',
+          whyWrong: 'Học sinh hay nhầm cứ thấy có số là dùng since, nhưng six months là khoảng độ dài.',
+          grammarTip: 'Khoảng thời gian: for six months.',
+        },
+      },
+      {
+        id: 'fs-q4',
+        type: 'sentence-rewrite',
+        typeLabel: 'Viết lại câu giữ nguyên nghĩa',
+        prompt: 'Viết lại câu từ thì Quá khứ đơn sang Hiện tại hoàn thành với từ khóa:',
+        passage: 'My family started living in Hanoi in 2015.',
+        targetKeyword: 'SINCE',
+        correctAnswer: 'My family has lived in Hanoi since 2015.',
+        explanation: {
+          ruleReason: 'Bắt đầu sống từ 2015 và nay vẫn sống -> Hiện tại hoàn thành + since 2015.',
+          whyWrong: 'Không dùng "started" trong câu thì Hiện tại hoàn thành vì hành động sống vẫn đang diễn ra.',
+          grammarTip: 'started living in [year] = has lived since [year].',
+        },
+      },
+      {
+        id: 'fs-q5',
+        type: 'reading-cloze',
+        typeLabel: 'Bài đọc KET điền từ',
+        prompt: 'Điền "for" hoặc "since" vào chỗ trống của bài đọc sau:',
+        passage: 'Ancient artifacts have stayed under the sand [1:for] thousands of years until archaeologists found them.',
+        correctAnswer: 'for',
+        explanation: {
+          ruleReason: '"Thousands of years" (hàng ngàn năm) là một khoảng thời gian cực kỳ dài -> dùng "for".',
+          whyWrong: 'Thousands of years không phải là một mốc cố định.',
+          grammarTip: 'for thousands of years = trong hàng ngàn năm.',
+        },
+      },
+      {
+        id: 'fs-q6',
+        type: 'word-scramble',
+        typeLabel: 'Xếp từ thành câu hoàn chỉnh',
+        prompt: 'Sắp xếp các từ sau thành câu hoàn chỉnh với since:',
+        scrambledWords: ['known', 'We', 'have', 'childhood', 'each', 'since', 'other', '.'],
+        correctAnswer: 'We have known each other since childhood .',
+        explanation: {
+          ruleReason: '"Childhood" (thời thơ ấu) là mốc thời gian bắt đầu quen biết -> since childhood.',
+          whyWrong: 'Trật tự câu: S + have known + each other + since childhood.',
+          grammarTip: 'since childhood = từ thời thơ ấu.',
+        },
+      },
+    ],
+  },
+
+  // =========================================================================
+  // 8. There + to be in different tenses (Unit 8, Lesson 4)
+  // =========================================================================
+  'u8-there-to-be': {
+    modularRules: [
+      {
+        id: 'tb-1',
+        title: 'Có cái gì trong quá khứ (Past Simple): THERE WAS / THERE WERE',
+        formula: 'There was + Danh từ số ít / không đếm được · There were + Danh từ số nhiều',
+        exampleEn: 'There was a small wooden house here 50 years ago. There were many trees.',
+        exampleVi: 'Đã từng có một ngôi nhà gỗ nhỏ ở đây 50 năm trước. Đã từng có rất nhiều cây cối.',
+        explanation: 'Dùng khi miêu tả sự tồn tại của người hoặc vật tại một thời điểm đã chấm dứt hoàn toàn trong quá khứ.',
+        commonPitfall: {
+          confusedWith: 'Nhầm lẫn giữa There was (số ít) và There were (số nhiều)',
+          mistakeExample: '❌ There was many trees in the garden.',
+          ruleTip: '👉 Nhìn vào danh từ đứng ngay sau: Số ít/không đếm được -> THERE WAS; Số nhiều có -s/es -> THERE WERE.',
+        },
+      },
+      {
+        id: 'tb-2',
+        title: 'Đã có và vẫn còn tồn tại đến nay (Present Perfect): THERE HAS BEEN / THERE HAVE BEEN',
+        formula: 'There has been + N số ít · There have been + N số nhiều (+ since/for)',
+        exampleEn: 'There has been a library in our town since 2005.',
+        exampleVi: 'Đã có một thư viện ở thị trấn của chúng tôi kể từ năm 2005 (đến nay vẫn còn).',
+        explanation: 'Dùng khi muốn nhấn mạnh sự việc đã xuất hiện trong quá khứ và vẫn đang tiếp tục tồn tại ở hiện tại.',
+        commonPitfall: {
+          confusedWith: 'Dùng "There was" khi câu có "since" hoặc "for"',
+          mistakeExample: '❌ There was a library since 2005.',
+          ruleTip: '👉 Thấy có SINCE hoặc FOR chỉ sự tồn tại kéo dài -> Dùng "There has/have been".',
+        },
+      },
+    ],
+    drillBank: [
+      {
+        id: 'tb-q1',
+        type: 'multiple-choice',
+        typeLabel: 'Trắc nghiệm ngữ cảnh',
+        prompt: 'Chọn phương án đúng để hoàn thành câu miêu tả quá khứ:',
+        passage: 'In the 19th century, __________ no electricity or smartphones in ordinary homes.',
+        options: ['there was', 'there were', 'there has been', 'there have been'],
+        correctAnswer: 'there was',
+        explanation: {
+          ruleReason: '"Electricity" là danh từ không đếm được, sự việc xảy ra ở thế kỷ 19 -> dùng "there was".',
+          whyWrong: 'Không dùng "there were" vì electricity không có số nhiều.',
+          grammarTip: 'Danh từ không đếm được trong quá khứ -> THERE WAS.',
+        },
+      },
+      {
+        id: 'tb-q2',
+        type: 'error-correction',
+        typeLabel: 'Tìm lỗi sai & Sửa từ',
+        prompt: 'Tìm từ sai ngữ pháp trong câu sau và gõ từ sửa lại đúng:',
+        passage: 'There was many famous battles fought near this ancient river.',
+        errorWord: 'was',
+        correctAnswer: 'were',
+        explanation: {
+          ruleReason: '"Many famous battles" là danh từ số nhiều (những trận đánh), nên trong quá khứ phải dùng "there were".',
+          whyWrong: '"there was" chỉ đi với danh từ số ít.',
+          grammarTip: 'Danh từ số nhiều trong quá khứ -> THERE WERE.',
+        },
+      },
+      {
+        id: 'tb-q3',
+        type: 'sentence-rewrite',
+        typeLabel: 'Viết lại câu giữ nguyên nghĩa',
+        prompt: 'Viết lại câu sang cấu trúc "There has been" với từ khóa gợi ý:',
+        passage: 'A museum opened here in 2010 and it is still here today.',
+        targetKeyword: 'BEEN',
+        correctAnswer: 'There has been a museum here since 2010.',
+        explanation: {
+          ruleReason: 'Bảo tàng mở từ 2010 và nay vẫn còn -> dùng cấu trúc Hiện tại hoàn thành "There has been a museum here since 2010".',
+          whyWrong: 'A museum là số ít nên dùng "has been".',
+          grammarTip: 'There has been + N số ít + since...',
+        },
+      },
+      {
+        id: 'tb-q4',
+        type: 'reading-cloze',
+        typeLabel: 'Bài đọc KET điền từ',
+        prompt: 'Điền "was" hoặc "were" vào chỗ trống đoạn văn lịch sử:',
+        passage: 'Long ago, there [1:were] several stone temples built on top of the mountain.',
+        correctAnswer: 'were',
+        explanation: {
+          ruleReason: '"Several stone temples" (vài ngôi đền đá) là danh từ số nhiều -> dùng "were".',
+          whyWrong: 'Không dùng "was" cho danh từ số nhiều temples.',
+          grammarTip: 'several + danh từ số nhiều -> were.',
+        },
+      },
+      {
+        id: 'tb-q5',
+        type: 'word-scramble',
+        typeLabel: 'Xếp từ thành câu hoàn chỉnh',
+        prompt: 'Sắp xếp các từ sau thành câu hỏi quá khứ với There was/were:',
+        scrambledWords: ['castle', 'Was', 'there', 'here', 'a', 'before', '?'],
+        correctAnswer: 'Was there a castle here before ?',
+        explanation: {
+          ruleReason: 'Câu hỏi đảo ngữ quá khứ: Was there + a + N số ít + trạng từ nơi chốn + ?',
+          whyWrong: 'Đảo "Was" lên đầu câu.',
+          grammarTip: 'Was there a...?',
+        },
+      },
+      {
+        id: 'tb-q6',
+        type: 'multiple-choice',
+        typeLabel: 'Trắc nghiệm ngữ cảnh',
+        prompt: 'Chọn phương án đúng:',
+        passage: 'Look at the historic photos! __________ over fifty sailing ships in the harbor.',
+        options: ['There were', 'There was', 'There is', 'There has been'],
+        correctAnswer: 'There were',
+        explanation: {
+          ruleReason: '"Over fifty sailing ships" là số nhiều, miêu tả cảnh trong ảnh lịch sử quá khứ -> dùng "There were".',
+          whyWrong: 'Không dùng There was cho 50 con tàu.',
+          grammarTip: 'Số lượng > 1 trong quá khứ -> There were.',
+        },
+      },
+    ],
+  },
+};
