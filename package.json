@@ -1,0 +1,12 @@
+{
+  "name": "learning-material",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "parse": "node scripts/parse-markdown.mjs",
+    "dev": "node scripts/parse-markdown.mjs && npm --prefix client run dev",
+    "build": "node scripts/parse-markdown.mjs && npm --prefix client run build",
+    "preview": "npm --prefix client run preview"
+  }
+}

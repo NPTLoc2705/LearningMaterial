@@ -1,0 +1,964 @@
+[
+  {
+    "id": "u7-superlative-adjectives",
+    "unit": 7,
+    "sectionNumber": 1,
+    "lesson": "Lesson 2",
+    "title": "Superlative adjectives",
+    "category": "Main grammar",
+    "summaryText": "Use a superlative to say that one person or thing has the most (or least) of a quality in a group.",
+    "ruleTables": [
+      {
+        "headers": [
+          "Adjective type",
+          "Rule",
+          "Examples"
+        ],
+        "rows": [
+          [
+            "1 syllable",
+            "the + adj + **-est**",
+            "long → the longest · tall → the tallest"
+          ],
+          [
+            "1 syllable, consonant + vowel + consonant",
+            "Double the last consonant, then add **-est**",
+            "big → the biggest"
+          ],
+          [
+            "1 syllable, ends in **-e**",
+            "Add **-st**",
+            "large → the largest"
+          ],
+          [
+            "2 syllables, ends in **-y**",
+            "Change **-y** to **-iest**",
+            "easy → the easiest"
+          ],
+          [
+            "2 syllables (other)",
+            "the + **most / least** + adj",
+            "honest → the most / least honest"
+          ],
+          [
+            "3 or more syllables",
+            "the + **most / least** + adj",
+            "exciting → the most / least exciting"
+          ],
+          [
+            "Irregular",
+            "good → the **best** · bad → the **worst**",
+            "the best feature · the worst singer"
+          ]
+        ]
+      }
+    ],
+    "patterns": [],
+    "examples": [
+      "I am the tallest in my family.",
+      "This box is the biggest one.",
+      "My house is the largest one in our neighborhood.",
+      "This exam is the easiest one.",
+      "This is the most famous dish.",
+      "It is the most interesting movie in my life."
+    ],
+    "notes": [],
+    "practiceExercises": [
+      {
+        "id": "u7-sup-1",
+        "prompt": "I am ______ in my family. (tall)",
+        "correctAnswer": "the tallest",
+        "type": "fill-in-the-blank",
+        "sourceSentence": "I am the tallest in my family."
+      },
+      {
+        "id": "u7-sup-2",
+        "prompt": "This box is ______ one. (big)",
+        "correctAnswer": "the biggest",
+        "type": "fill-in-the-blank",
+        "sourceSentence": "This box is the biggest one."
+      },
+      {
+        "id": "u7-sup-3",
+        "prompt": "My house is ______ one in our neighborhood. (large)",
+        "correctAnswer": "the largest",
+        "type": "fill-in-the-blank",
+        "sourceSentence": "My house is the largest one in our neighborhood."
+      },
+      {
+        "id": "u7-sup-4",
+        "prompt": "This exam is ______ one. (easy)",
+        "correctAnswer": "the easiest",
+        "type": "fill-in-the-blank",
+        "sourceSentence": "This exam is the easiest one."
+      },
+      {
+        "id": "u7-sup-5",
+        "prompt": "This is ______ dish. (famous)",
+        "correctAnswer": "the most famous",
+        "type": "fill-in-the-blank",
+        "sourceSentence": "This is the most famous dish."
+      },
+      {
+        "id": "u7-sup-6",
+        "prompt": "It is ______ movie in my life. (interesting)",
+        "correctAnswer": "the most interesting",
+        "type": "fill-in-the-blank",
+        "sourceSentence": "It is the most interesting movie in my life."
+      }
+    ]
+  },
+  {
+    "id": "u7-future-will-vs-going-to",
+    "unit": 7,
+    "sectionNumber": 2,
+    "lesson": "Lesson 4",
+    "title": "Future: *will* vs. *going to*",
+    "category": "Main grammar",
+    "summaryText": "",
+    "ruleTables": [
+      {
+        "headers": [
+          "",
+          "will + V",
+          "going to + V"
+        ],
+        "rows": [
+          [
+            "Decisions / plans",
+            "**Instant decisions** (decided while speaking). *I will buy some milk after work.*",
+            "**Plans / intentions** (already decided before speaking). *I'm going to buy some milk after work.*"
+          ],
+          [
+            "Predictions",
+            "**Opinion** (we think something will happen). *They won't win their next match.*",
+            "**Based on evidence** (we can see it now). *Look at those clouds. It's going to rain.*"
+          ]
+        ]
+      }
+    ],
+    "patterns": [
+      "Useful pattern for opinion + decision: **I think I'll …** / **I don't think I'll …** + verb"
+    ],
+    "examples": [
+      "It's cold today. I don't think I'll go out.",
+      "I'm hungry. I think I'll have something to eat."
+    ],
+    "notes": [],
+    "practiceExercises": [
+      {
+        "id": "u7-fut-1",
+        "prompt": "Look at those clouds. It is ______ rain. (Prediction based on evidence)",
+        "correctAnswer": "going to",
+        "options": [
+          "going to",
+          "will"
+        ],
+        "type": "multiple-choice",
+        "sourceSentence": "Look at those clouds. It's going to rain."
+      },
+      {
+        "id": "u7-fut-2",
+        "prompt": "They ______ win their next match. (Opinion prediction: we think something will happen)",
+        "correctAnswer": "won't",
+        "options": [
+          "won't",
+          "aren't going to"
+        ],
+        "type": "multiple-choice",
+        "sourceSentence": "They won't win their next match."
+      },
+      {
+        "id": "u7-fut-3",
+        "prompt": "It's cold today. I don't think I'll ______ out.",
+        "correctAnswer": "go",
+        "options": [
+          "go",
+          "going to go",
+          "went"
+        ],
+        "type": "multiple-choice",
+        "sourceSentence": "It's cold today. I don't think I'll go out."
+      },
+      {
+        "id": "u7-fut-4",
+        "prompt": "I'm hungry. I think I'll ______ something to eat.",
+        "correctAnswer": "have",
+        "options": [
+          "have",
+          "having",
+          "am going to have"
+        ],
+        "type": "multiple-choice",
+        "sourceSentence": "I'm hungry. I think I'll have something to eat."
+      }
+    ]
+  },
+  {
+    "id": "u7-making-and-responding-to-requests",
+    "unit": 7,
+    "sectionNumber": 3,
+    "lesson": "Lesson 1, Speaking",
+    "title": "Making and responding to requests",
+    "category": "Speaking strategy",
+    "summaryText": "",
+    "ruleTables": [
+      {
+        "headers": [
+          "Making requests",
+          "Example"
+        ],
+        "rows": [
+          [
+            "Could / May I + V …?",
+            "Could I borrow your pen?"
+          ],
+          [
+            "Can you + V …?",
+            "Can you lend me your smartphone?"
+          ],
+          [
+            "Please let me + V",
+            "Please let me go out."
+          ]
+        ]
+      },
+      {
+        "headers": [
+          "Responding to requests",
+          "Meaning"
+        ],
+        "rows": [
+          [
+            "Of course. Here you are! / Sure. Here you go.",
+            "Agree"
+          ],
+          [
+            "Sorry. / I'm sorry.",
+            "Refuse"
+          ]
+        ]
+      }
+    ],
+    "patterns": [],
+    "examples": [],
+    "notes": [],
+    "practiceExercises": [
+      {
+        "id": "u7-req-1",
+        "prompt": "______ I borrow your pen?",
+        "correctAnswer": "Could",
+        "options": [
+          "Could",
+          "Please let",
+          "Do"
+        ],
+        "type": "multiple-choice",
+        "sourceSentence": "Could I borrow your pen?"
+      },
+      {
+        "id": "u7-req-2",
+        "prompt": "______ you lend me your smartphone?",
+        "correctAnswer": "Can",
+        "options": [
+          "Can",
+          "May I",
+          "Let"
+        ],
+        "type": "multiple-choice",
+        "sourceSentence": "Can you lend me your smartphone?"
+      },
+      {
+        "id": "u7-req-3",
+        "prompt": "Please ______ me go out.",
+        "correctAnswer": "let",
+        "options": [
+          "let",
+          "could",
+          "may"
+        ],
+        "type": "multiple-choice",
+        "sourceSentence": "Please let me go out."
+      },
+      {
+        "id": "u7-req-4",
+        "prompt": "When responding to a request with agreement, you can say: \"Of course. ______ you are!\"",
+        "correctAnswer": "Here",
+        "options": [
+          "Here",
+          "There",
+          "Where"
+        ],
+        "type": "multiple-choice",
+        "sourceSentence": "Of course. Here you are! / Sure. Here you go."
+      }
+    ]
+  },
+  {
+    "id": "u7-word-level-language-points-in-unit-7",
+    "unit": 7,
+    "sectionNumber": 4,
+    "title": "Word-level language points in Unit 7",
+    "category": "Language notes",
+    "summaryText": "",
+    "ruleTables": [],
+    "patterns": [],
+    "examples": [],
+    "notes": [
+      "**Suffix -ible / -able** (Lesson 1): both make adjectives. *-ible* cannot stand alone (possible – poss); *-able* can stand alone (suitable – suit).",
+      "**Parts of speech** (Lesson 2): noun, verb, adjective, adverb, pronoun, preposition.",
+      "**Adjectives in a product review** (Lesson 5): use adjectives to help the reader understand your opinion.",
+      "Lesson 3 (video lesson) has no new grammar target."
+    ],
+    "practiceExercises": []
+  },
+  {
+    "id": "u8-present-perfect",
+    "unit": 8,
+    "sectionNumber": 1,
+    "lesson": "Lesson 2",
+    "title": "Present perfect",
+    "category": "Main grammar",
+    "summaryText": "**Use:** to describe an action that began in the past and continues in the present. Lesson 3 also practices *Have you ever …?* (life experience) as a warm-up.",
+    "ruleTables": [
+      {
+        "headers": [
+          "Form",
+          "Structure",
+          "Example"
+        ],
+        "rows": [
+          [
+            "Affirmative (+)",
+            "S + have / has + V past participle",
+            "They have learned English for 2 years."
+          ],
+          [
+            "Negative (−)",
+            "S + have / has + not + V past participle",
+            "They have not met each other since 1999."
+          ],
+          [
+            "Question (?)",
+            "Have / Has + S + V past participle?",
+            "Have you completed the final exam?"
+          ]
+        ]
+      }
+    ],
+    "patterns": [],
+    "examples": [
+      "People have played cards for about twelve hundred years.",
+      "Players have created about one hundred different solitaire games.",
+      "Many players haven't played solitaire with cards since computers became popular.",
+      "How often have you played it? · How many times have you won?",
+      "Warm-up: Have you ever eaten sushi? → Yes, I have."
+    ],
+    "notes": [],
+    "practiceExercises": [
+      {
+        "id": "u8-pp-1",
+        "prompt": "They ______ (learn) English for 2 years.",
+        "correctAnswer": "have learned",
+        "type": "fill-in-the-blank",
+        "sourceSentence": "They have learned English for 2 years."
+      },
+      {
+        "id": "u8-pp-2",
+        "prompt": "They ______ (not meet) each other since 1999.",
+        "correctAnswer": "have not met",
+        "type": "fill-in-the-blank",
+        "sourceSentence": "They have not met each other since 1999."
+      },
+      {
+        "id": "u8-pp-3",
+        "prompt": "______ you completed the final exam?",
+        "correctAnswer": "Have",
+        "options": [
+          "Have",
+          "Has",
+          "Did"
+        ],
+        "type": "multiple-choice",
+        "sourceSentence": "Have you completed the final exam?"
+      },
+      {
+        "id": "u8-pp-4",
+        "prompt": "People ______ (play) cards for about twelve hundred years.",
+        "correctAnswer": "have played",
+        "type": "fill-in-the-blank",
+        "sourceSentence": "People have played cards for about twelve hundred years."
+      },
+      {
+        "id": "u8-pp-5",
+        "prompt": "______ you ever eaten sushi? → Yes, I have.",
+        "correctAnswer": "Have",
+        "options": [
+          "Have",
+          "Did",
+          "Were"
+        ],
+        "type": "multiple-choice",
+        "sourceSentence": "Have you ever eaten sushi? → Yes, I have."
+      }
+    ]
+  },
+  {
+    "id": "u8-for-and-since",
+    "unit": 8,
+    "sectionNumber": 2,
+    "title": "*For* and *since*",
+    "category": "Main grammar",
+    "summaryText": "",
+    "ruleTables": [
+      {
+        "headers": [
+          "Word",
+          "Use",
+          "Examples"
+        ],
+        "rows": [
+          [
+            "**for** + period of time",
+            "Shows the **amount of time**",
+            "We have talked for 30 minutes in the class. · It has rained for a week."
+          ],
+          [
+            "**since** + starting point",
+            "Shows **when** an event started",
+            "I have waited here since 9 a.m. · My parents have lived in Vietnam since 1980."
+          ]
+        ]
+      }
+    ],
+    "patterns": [],
+    "examples": [],
+    "notes": [],
+    "practiceExercises": [
+      {
+        "id": "u8-fs-1",
+        "prompt": "We have talked ______ 30 minutes in the class.",
+        "correctAnswer": "for",
+        "options": [
+          "for",
+          "since"
+        ],
+        "type": "multiple-choice",
+        "sourceSentence": "We have talked for 30 minutes in the class."
+      },
+      {
+        "id": "u8-fs-2",
+        "prompt": "It has rained ______ a week.",
+        "correctAnswer": "for",
+        "options": [
+          "for",
+          "since"
+        ],
+        "type": "multiple-choice",
+        "sourceSentence": "It has rained for a week."
+      },
+      {
+        "id": "u8-fs-3",
+        "prompt": "I have waited here ______ 9 a.m.",
+        "correctAnswer": "since",
+        "options": [
+          "since",
+          "for"
+        ],
+        "type": "multiple-choice",
+        "sourceSentence": "I have waited here since 9 a.m."
+      },
+      {
+        "id": "u8-fs-4",
+        "prompt": "My parents have lived in Vietnam ______ 1980.",
+        "correctAnswer": "since",
+        "options": [
+          "since",
+          "for"
+        ],
+        "type": "multiple-choice",
+        "sourceSentence": "My parents have lived in Vietnam since 1980."
+      }
+    ]
+  },
+  {
+    "id": "u8-cause-and-effect",
+    "unit": 8,
+    "sectionNumber": 3,
+    "lesson": "Lesson 2, Reading strategy",
+    "title": "Cause and effect",
+    "category": "Reading strategy",
+    "summaryText": "",
+    "ruleTables": [
+      {
+        "headers": [
+          "Word",
+          "Introduces",
+          "Example"
+        ],
+        "rows": [
+          [
+            "**because**",
+            "Cause",
+            "She is never interested in studying because she wants to become a basketball player."
+          ],
+          [
+            "**since**",
+            "Cause (same meaning as *because*)",
+            "I don't think he wants to attend the party since he is an introvert."
+          ],
+          [
+            "**so**",
+            "Effect",
+            "It rained, so I got wet."
+          ],
+          [
+            "**As a result,**",
+            "Effect",
+            "She used to play taekwondo. As a result, she knows how to defend herself."
+          ]
+        ]
+      }
+    ],
+    "patterns": [
+      "Note: *since* has two meanings. With a time (since 1980) it is a starting point; with a clause (since he is an introvert) it means *because*."
+    ],
+    "examples": [],
+    "notes": [],
+    "practiceExercises": [
+      {
+        "id": "u8-ce-1",
+        "prompt": "She is never interested in studying ______ she wants to become a basketball player.",
+        "correctAnswer": "because",
+        "options": [
+          "because",
+          "so",
+          "as a result"
+        ],
+        "type": "multiple-choice",
+        "sourceSentence": "She is never interested in studying because she wants to become a basketball player."
+      },
+      {
+        "id": "u8-ce-2",
+        "prompt": "I don't think he wants to attend the party ______ he is an introvert.",
+        "correctAnswer": "since",
+        "options": [
+          "since",
+          "so",
+          "therefore"
+        ],
+        "type": "multiple-choice",
+        "sourceSentence": "I don't think he wants to attend the party since he is an introvert."
+      },
+      {
+        "id": "u8-ce-3",
+        "prompt": "It rained, ______ I got wet.",
+        "correctAnswer": "so",
+        "options": [
+          "so",
+          "because",
+          "since"
+        ],
+        "type": "multiple-choice",
+        "sourceSentence": "It rained, so I got wet."
+      },
+      {
+        "id": "u8-ce-4",
+        "prompt": "She used to play taekwondo. ______, she knows how to defend herself.",
+        "correctAnswer": "As a result",
+        "options": [
+          "As a result",
+          "Because",
+          "Since"
+        ],
+        "type": "multiple-choice",
+        "sourceSentence": "She used to play taekwondo. As a result, she knows how to defend herself."
+      }
+    ]
+  },
+  {
+    "id": "u8-there-to-be",
+    "unit": 8,
+    "sectionNumber": 4,
+    "lesson": "Lesson 4",
+    "title": "*There* + *to be*",
+    "category": "Main grammar",
+    "summaryText": "Use *there* + *to be* to say that something exists or happens. The verb agrees with the noun that follows.",
+    "ruleTables": [
+      {
+        "headers": [
+          "Tense",
+          "Form",
+          "Example"
+        ],
+        "rows": [
+          [
+            "Present",
+            "There is / There are",
+            "There are twenty chairs in the classroom."
+          ],
+          [
+            "Past",
+            "There was / There were",
+            "There were three worms in my salad."
+          ],
+          [
+            "Present perfect",
+            "There has been / There have been",
+            "There have been many earthquakes in this century."
+          ],
+          [
+            "Future (will)",
+            "There will be",
+            "There will be an excellent party next weekend."
+          ],
+          [
+            "Future (going to)",
+            "There is / are going to be",
+            "There are going to be fireworks at the festival."
+          ]
+        ]
+      },
+      {
+        "headers": [
+          "",
+          "Positive",
+          "Negative",
+          "Question"
+        ],
+        "rows": [
+          [
+            "Present",
+            "There is / are",
+            "There isn't / aren't",
+            "Is / Are there …?"
+          ],
+          [
+            "Past",
+            "There was / were",
+            "There wasn't / weren't",
+            "Was / Were there …?"
+          ],
+          [
+            "Future",
+            "There will be",
+            "There won't be",
+            "Will there be …?"
+          ]
+        ]
+      }
+    ],
+    "patterns": [],
+    "examples": [],
+    "notes": [],
+    "practiceExercises": [
+      {
+        "id": "u8-ttb-1",
+        "prompt": "______ twenty chairs in the classroom. (Present)",
+        "correctAnswer": "There are",
+        "options": [
+          "There are",
+          "There is",
+          "There were"
+        ],
+        "type": "multiple-choice",
+        "sourceSentence": "There are twenty chairs in the classroom."
+      },
+      {
+        "id": "u8-ttb-2",
+        "prompt": "______ three worms in my salad. (Past)",
+        "correctAnswer": "There were",
+        "options": [
+          "There were",
+          "There was",
+          "There are"
+        ],
+        "type": "multiple-choice",
+        "sourceSentence": "There were three worms in my salad."
+      },
+      {
+        "id": "u8-ttb-3",
+        "prompt": "______ many earthquakes in this century. (Present perfect)",
+        "correctAnswer": "There have been",
+        "options": [
+          "There have been",
+          "There has been",
+          "There were"
+        ],
+        "type": "multiple-choice",
+        "sourceSentence": "There have been many earthquakes in this century."
+      },
+      {
+        "id": "u8-ttb-4",
+        "prompt": "______ an excellent party next weekend. (Future with will)",
+        "correctAnswer": "There will be",
+        "options": [
+          "There will be",
+          "There was",
+          "There is"
+        ],
+        "type": "multiple-choice",
+        "sourceSentence": "There will be an excellent party next weekend."
+      },
+      {
+        "id": "u8-ttb-5",
+        "prompt": "______ fireworks at the festival. (Future with going to)",
+        "correctAnswer": "There are going to be",
+        "options": [
+          "There are going to be",
+          "There is going to be",
+          "There will"
+        ],
+        "type": "multiple-choice",
+        "sourceSentence": "There are going to be fireworks at the festival."
+      }
+    ]
+  },
+  {
+    "id": "u8-wh-questions",
+    "unit": 8,
+    "sectionNumber": 5,
+    "lesson": "Lesson 4, Extra grammar",
+    "title": "WH-questions",
+    "category": "Extra grammar",
+    "summaryText": "WH-questions ask for specific information. The answer is not just *yes* or *no*.",
+    "ruleTables": [
+      {
+        "headers": [
+          "WH-word",
+          "Asks about",
+          "Example"
+        ],
+        "rows": [
+          [
+            "**What**",
+            "Things, animals, objects",
+            "What is this? – It's a book."
+          ],
+          [
+            "**Where**",
+            "Place",
+            "Where do you live? – I live in Hanoi."
+          ],
+          [
+            "**When**",
+            "Time",
+            "When do you go to school? – In the morning."
+          ],
+          [
+            "**Why**",
+            "Reason",
+            "Why do you like to eat apples? – Because they are sweet."
+          ],
+          [
+            "**Who**",
+            "People (subject)",
+            "Who do you love the most? – My mom."
+          ],
+          [
+            "**Whom**",
+            "People (object of the verb or preposition)",
+            "With whom am I speaking? – You are speaking with Lisa."
+          ],
+          [
+            "**Which**",
+            "Making a choice",
+            "Which color do you prefer to wear? – Pink."
+          ],
+          [
+            "**How**",
+            "Manner, condition, quality; also distance, length, quantity, age",
+            "How old are you? – I'm 11 years old."
+          ]
+        ]
+      }
+    ],
+    "patterns": [
+      "The lesson practices turning a statement into a question in different tenses:"
+    ],
+    "examples": [
+      "What is she doing in her room? (present continuous)",
+      "When do they play soccer? (present simple)",
+      "What did Tom buy last week? (past simple)",
+      "When will the concert start? (future with *will*)",
+      "Where are we going this weekend? (*going to* / present continuous)",
+      "How long has he been working at a software company? (present perfect continuous)"
+    ],
+    "notes": [],
+    "practiceExercises": [
+      {
+        "id": "u8-wh-1",
+        "prompt": "______ is this? – It's a book. (Asks about things/objects)",
+        "correctAnswer": "What",
+        "options": [
+          "What",
+          "Where",
+          "When",
+          "Who"
+        ],
+        "type": "multiple-choice",
+        "sourceSentence": "What is this? – It's a book."
+      },
+      {
+        "id": "u8-wh-2",
+        "prompt": "______ do you live? – I live in Hanoi. (Asks about place)",
+        "correctAnswer": "Where",
+        "options": [
+          "Where",
+          "When",
+          "Why",
+          "How"
+        ],
+        "type": "multiple-choice",
+        "sourceSentence": "Where do you live? – I live in Hanoi."
+      },
+      {
+        "id": "u8-wh-3",
+        "prompt": "______ do you go to school? – In the morning. (Asks about time)",
+        "correctAnswer": "When",
+        "options": [
+          "When",
+          "Where",
+          "What",
+          "Which"
+        ],
+        "type": "multiple-choice",
+        "sourceSentence": "When do you go to school? – In the morning."
+      },
+      {
+        "id": "u8-wh-4",
+        "prompt": "______ do you like to eat apples? – Because they are sweet. (Asks about reason)",
+        "correctAnswer": "Why",
+        "options": [
+          "Why",
+          "How",
+          "What",
+          "Where"
+        ],
+        "type": "multiple-choice",
+        "sourceSentence": "Why do you like to eat apples? – Because they are sweet."
+      },
+      {
+        "id": "u8-wh-5",
+        "prompt": "With ______ am I speaking? – You are speaking with Lisa. (Object of preposition)",
+        "correctAnswer": "whom",
+        "options": [
+          "whom",
+          "who",
+          "what",
+          "whose"
+        ],
+        "type": "multiple-choice",
+        "sourceSentence": "With whom am I speaking? – You are speaking with Lisa."
+      },
+      {
+        "id": "u8-wh-6",
+        "prompt": "______ color do you prefer to wear? – Pink. (Making a choice)",
+        "correctAnswer": "Which",
+        "options": [
+          "Which",
+          "Where",
+          "When",
+          "Who"
+        ],
+        "type": "multiple-choice",
+        "sourceSentence": "Which color do you prefer to wear? – Pink."
+      }
+    ]
+  },
+  {
+    "id": "u8-talking-about-likes-and-dislikes",
+    "unit": 8,
+    "sectionNumber": 6,
+    "lesson": "Lesson 1, Speaking",
+    "title": "Talking about likes and dislikes",
+    "category": "Speaking strategy",
+    "summaryText": "Examples: Eating healthy food is my favorite. · I don't like staying up late.",
+    "ruleTables": [
+      {
+        "headers": [
+          "Likes",
+          "Dislikes"
+        ],
+        "rows": [
+          [
+            "I am (really) into …",
+            "I don't like …"
+          ],
+          [
+            "I like … / I love …",
+            "I'm not into …"
+          ],
+          [
+            "… is my favorite.",
+            "I dislike / hate …"
+          ],
+          [
+            "I don't mind … / … doesn't bother me. (neutral)",
+            ""
+          ]
+        ]
+      }
+    ],
+    "patterns": [
+      "After these expressions, the lesson examples use a noun or a verb + **-ing**."
+    ],
+    "examples": [],
+    "notes": [],
+    "practiceExercises": [
+      {
+        "id": "u8-ld-1",
+        "prompt": "Eating healthy food is my ______.",
+        "correctAnswer": "favorite",
+        "options": [
+          "favorite",
+          "into",
+          "dislike"
+        ],
+        "type": "multiple-choice",
+        "sourceSentence": "Eating healthy food is my favorite."
+      },
+      {
+        "id": "u8-ld-2",
+        "prompt": "I don't like ______ up late. (Note: use noun or verb + -ing)",
+        "correctAnswer": "staying",
+        "options": [
+          "staying",
+          "stay",
+          "stayed"
+        ],
+        "type": "multiple-choice",
+        "sourceSentence": "I don't like staying up late."
+      },
+      {
+        "id": "u8-ld-3",
+        "prompt": "I am really ______ playing mobile games.",
+        "correctAnswer": "into",
+        "options": [
+          "into",
+          "favorite",
+          "mind"
+        ],
+        "type": "multiple-choice",
+        "sourceSentence": "I am (really) into …"
+      }
+    ]
+  },
+  {
+    "id": "u8-other-language-points-in-unit-8",
+    "unit": 8,
+    "sectionNumber": 7,
+    "title": "Other language points in Unit 8",
+    "category": "Language notes",
+    "summaryText": "",
+    "ruleTables": [],
+    "patterns": [],
+    "examples": [],
+    "notes": [
+      "**Suffix -ful** (Lesson 1): noun + -ful → adjective meaning \"full of\" or \"characteristic of\" (help → helpful, wonder → wonderful, thank → thankful, joy → joyful, peace → peaceful).",
+      "**Contrast connectors in the writing model** (Lesson 5): *Unlike …, Instead, However, both … and …*, used to compare how different places celebrate the summer solstice. The model also uses *There have been … since ancient times* (present perfect).",
+      "Lesson 3 (video lesson) has no new grammar target beyond the *Have you ever …?* warm-up."
+    ],
+    "practiceExercises": []
+  }
+]

@@ -1,0 +1,698 @@
+[
+  {
+    "id": "u7-app",
+    "unit": 7,
+    "word": "App",
+    "partOfSpeech": "N",
+    "meaningVi": "ứng dụng",
+    "example": {
+      "sentenceEn": "I installed a new app to learn English.",
+      "sentenceVi": "Tôi đã cài đặt một ứng dụng mới để học tiếng Anh.",
+      "rawText": "*Ex: I installed a new app to learn English. (Tôi đã cài đặt một ứng dụng mới để học tiếng Anh.)*"
+    }
+  },
+  {
+    "id": "u7-connect",
+    "unit": 7,
+    "word": "Connect",
+    "partOfSpeech": "V",
+    "meaningVi": "kết nối",
+    "example": {
+      "sentenceEn": "You need Wi-Fi to connect to the server.",
+      "sentenceVi": "Bạn cần có Wi-Fi để kết nối với máy chủ.",
+      "rawText": "*Ex: You need Wi-Fi to connect to the server. (Bạn cần có Wi-Fi để kết nối với máy chủ.)*"
+    }
+  },
+  {
+    "id": "u7-chat",
+    "unit": 7,
+    "word": "Chat",
+    "partOfSpeech": "N / V",
+    "meaningVi": "cuộc hội thoại, trò chuyện / nhắn tin, tán gẫu",
+    "example": {
+      "sentenceEn": "We had a short chat before the meeting.",
+      "sentenceVi": "Chúng tôi đã có một cuộc trò chuyện ngắn trước cuộc họp.",
+      "rawText": "*Ex: We had a short chat before the meeting. (Chúng tôi đã có một cuộc trò chuyện ngắn trước cuộc họp.)*"
+    }
+  },
+  {
+    "id": "u7-gadget",
+    "unit": 7,
+    "word": "Gadget",
+    "partOfSpeech": "N",
+    "meaningVi": "thiết bị, đồ dùng",
+    "example": {
+      "sentenceEn": "This useful gadget helps me track my daily steps.",
+      "sentenceVi": "Thiết bị hữu ích này giúp tôi theo dõi số bước chân hàng ngày.",
+      "rawText": "*Ex: This useful gadget helps me track my daily steps. (Thiết bị hữu ích này giúp tôi theo dõi số bước chân hàng ngày.)*"
+    }
+  },
+  {
+    "id": "u7-internet",
+    "unit": 7,
+    "word": "Internet",
+    "partOfSpeech": "N",
+    "meaningVi": "mạng Internet",
+    "example": {
+      "sentenceEn": "The Internet allows us to find information quickly.",
+      "sentenceVi": "Mạng Internet cho phép chúng ta tìm kiếm thông tin nhanh chóng.",
+      "rawText": "*Ex: The Internet allows us to find information quickly. (Mạng Internet cho phép chúng ta tìm kiếm thông tin nhanh chóng.)*"
+    }
+  },
+  {
+    "id": "u7-game",
+    "unit": 7,
+    "word": "Game",
+    "partOfSpeech": "N",
+    "meaningVi": "trò chơi",
+    "example": {
+      "sentenceEn": "Playing mobile games is his favorite hobby.",
+      "sentenceVi": "Chơi trò chơi trên điện thoại là sở thích yêu thích của anh ấy.",
+      "rawText": "*Ex: Playing mobile games is his favorite hobby. (Chơi trò chơi trên điện thoại là sở thích yêu thích của anh ấy.)*"
+    }
+  },
+  {
+    "id": "u7-send",
+    "unit": 7,
+    "word": "Send",
+    "partOfSpeech": "V",
+    "meaningVi": "gửi, chuyển",
+    "example": {
+      "sentenceEn": "Don't forget to send an email to the teacher.",
+      "sentenceVi": "Đừng quên gửi một email cho giáo viên.",
+      "rawText": "*Ex: Don't forget to send an email to the teacher. (Đừng quên gửi một email cho giáo viên.)*"
+    }
+  },
+  {
+    "id": "u7-share",
+    "unit": 7,
+    "word": "Share",
+    "partOfSpeech": "V",
+    "meaningVi": "chia sẻ",
+    "example": {
+      "sentenceEn": "She likes to share her photos on social media.",
+      "sentenceVi": "Cô ấy thích chia sẻ những bức ảnh của mình lên mạng xã hội.",
+      "rawText": "*Ex: She likes to share her photos on social media. (Cô ấy thích chia sẻ những bức ảnh của mình lên mạng xã hội.)*"
+    }
+  },
+  {
+    "id": "u7-smartphone",
+    "unit": 7,
+    "word": "Smartphone",
+    "partOfSpeech": "N",
+    "meaningVi": "điện thoại thông minh",
+    "example": {
+      "sentenceEn": "Modern smartphones have powerful cameras.",
+      "sentenceVi": "Điện thoại thông minh hiện đại có camera rất xịn.",
+      "rawText": "*Ex: Modern smartphones have powerful cameras. (Điện thoại thông minh hiện đại có camera rất xịn.)*"
+    }
+  },
+  {
+    "id": "u7-wifi",
+    "unit": 7,
+    "word": "Wifi",
+    "partOfSpeech": "N",
+    "meaningVi": "mạng Wifi",
+    "example": {
+      "sentenceEn": "Is there free Wifi in this coffee shop?",
+      "sentenceVi": "Ở quán cà phê này có Wifi miễn phí không?",
+      "rawText": "*Ex: Is there free Wifi in this coffee shop? (Ở quán cà phê này có Wifi miễn phí không?)*"
+    }
+  },
+  {
+    "id": "u7-useful",
+    "unit": 7,
+    "word": "Useful",
+    "partOfSpeech": "Adj",
+    "meaningVi": "có ích, hữu ích",
+    "example": {
+      "sentenceEn": "This dictionary is very useful for English learners.",
+      "sentenceVi": "Cuốn từ điển này rất hữu ích cho người học tiếng Anh.",
+      "rawText": "*Ex: This dictionary is very useful for English learners. (Cuốn từ điển này rất hữu ích cho người học tiếng Anh.)*"
+    }
+  },
+  {
+    "id": "u7-incredible",
+    "unit": 7,
+    "word": "Incredible",
+    "partOfSpeech": "Adj",
+    "meaningVi": "phi thường, không thể thốt nên lời",
+    "example": {
+      "sentenceEn": "Modern technology has made incredible progress.",
+      "sentenceVi": "Công nghệ hiện đại đã có những tiến bộ phi thường.",
+      "rawText": "*Ex: Modern technology has made incredible progress. (Công nghệ hiện đại đã có những tiến bộ phi thường.)*"
+    }
+  },
+  {
+    "id": "u7-possible",
+    "unit": 7,
+    "word": "Possible",
+    "partOfSpeech": "N / Adj",
+    "meaningVi": "có khả thi, có thể làm được",
+    "example": {
+      "sentenceEn": "It is possible to solve this problem quickly.",
+      "sentenceVi": "Có thể giải quyết vấn đề này một cách nhanh chóng.",
+      "rawText": "*Ex: It is possible to solve this problem quickly. (Có thể giải quyết vấn đề này một cách nhanh chóng.)*"
+    }
+  },
+  {
+    "id": "u7-tablet",
+    "unit": 7,
+    "word": "Tablet",
+    "partOfSpeech": "N",
+    "meaningVi": "máy tính bảng",
+    "example": {
+      "sentenceEn": "He uses a tablet to read digital books.",
+      "sentenceVi": "Anh ấy dùng máy tính bảng để đọc sách điện tử.",
+      "rawText": "*Ex: He uses a tablet to read digital books. (Anh ấy dùng máy tính bảng để đọc sách điện tử.)*"
+    }
+  },
+  {
+    "id": "u7-look-up",
+    "unit": 7,
+    "word": "Look up",
+    "partOfSpeech": "V",
+    "synonym": "search",
+    "meaningVi": "tìm kiếm",
+    "example": {
+      "sentenceEn": "You can look up new words in the online dictionary.",
+      "sentenceVi": "Bạn có thể tìm kiếm từ mới trong từ điển trực tuyến.",
+      "rawText": "*Ex: You can look up new words in the online dictionary. (Bạn có thể tìm kiếm từ mới trong từ điển trực tuyến.)*"
+    }
+  },
+  {
+    "id": "u7-receive",
+    "unit": 7,
+    "word": "Receive",
+    "partOfSpeech": "V",
+    "meaningVi": "nhận, thu",
+    "example": {
+      "sentenceEn": "I received a text message from my friend this morning.",
+      "sentenceVi": "Sáng nay tôi đã nhận được một tin nhắn từ bạn tôi.",
+      "rawText": "*Ex: I received a text message from my friend this morning. (Sáng nay tôi đã nhận được một tin nhắn từ bạn tôi.)*"
+    }
+  },
+  {
+    "id": "u7-swipe",
+    "unit": 7,
+    "word": "Swipe",
+    "partOfSpeech": "V",
+    "meaningVi": "lướt",
+    "example": {
+      "sentenceEn": "Swipe left to see the next photo.",
+      "sentenceVi": "Lướt sang trái để xem bức ảnh tiếp theo.",
+      "rawText": "*Ex: Swipe left to see the next photo. (Lướt sang trái để xem bức ảnh tiếp theo.)*"
+    }
+  },
+  {
+    "id": "u7-technology",
+    "unit": 7,
+    "word": "Technology",
+    "partOfSpeech": "N",
+    "meaningVi": "thiết bị công nghệ",
+    "example": {
+      "sentenceEn": "Technology changes the way we live and work.",
+      "sentenceVi": "Công nghệ thay đổi cách chúng ta sống và làm việc.",
+      "rawText": "*Ex: Technology changes the way we live and work. (Công nghệ thay đổi cách chúng ta sống và làm việc.)*"
+    }
+  },
+  {
+    "id": "u7-text",
+    "unit": 7,
+    "word": "Text",
+    "partOfSpeech": "N / V",
+    "meaningVi": "đoạn tin nhắn / nhắn tin",
+    "example": {
+      "sentenceEn": "Please text me when you arrive.",
+      "sentenceVi": "Hãy nhắn tin cho tôi khi bạn đến nơi nhé.",
+      "rawText": "*Ex: Please text me when you arrive. (Hãy nhắn tin cho tôi khi bạn đến nơi nhé.)*"
+    }
+  },
+  {
+    "id": "u7-invent",
+    "unit": 7,
+    "word": "Invent",
+    "partOfSpeech": "V",
+    "meaningVi": "phát minh",
+    "example": {
+      "sentenceEn": "Who invented the telephone?",
+      "sentenceVi": "Ai đã phát minh ra điện thoại?",
+      "rawText": "*Ex: Who invented the telephone? (Ai đã phát minh ra điện thoại?)*"
+    }
+  },
+  {
+    "id": "u7-suffer",
+    "unit": 7,
+    "word": "Suffer",
+    "partOfSpeech": "V",
+    "meaningVi": "chịu đựng",
+    "example": {
+      "sentenceEn": "Looking at screens for too long makes my eyes suffer.",
+      "sentenceVi": "Nhìn vào màn hình quá lâu khiến mắt tôi phải chịu đựng đau mỏi.",
+      "rawText": "*Ex: Looking at screens for too long makes my eyes suffer. (Nhìn vào màn hình quá lâu khiến mắt tôi phải chịu đựng đau mỏi.)*"
+    }
+  },
+  {
+    "id": "u7-function",
+    "unit": 7,
+    "word": "Function",
+    "partOfSpeech": "N / V",
+    "meaningVi": "chức năng / hoạt động",
+    "example": {
+      "sentenceEn": "The main function of this key is to open the door.",
+      "sentenceVi": "Chức năng chính của chiếc chìa khóa này là mở cửa.",
+      "rawText": "*Ex: The main function of this key is to open the door. (Chức năng chính của chiếc chìa khóa này là mở cửa.)*"
+    }
+  },
+  {
+    "id": "u7-borrow",
+    "unit": 7,
+    "word": "Borrow",
+    "partOfSpeech": "V",
+    "meaningVi": "mượn",
+    "example": {
+      "sentenceEn": "Can I borrow your charger for a moment?",
+      "sentenceVi": "Tôi có thể mượn dây sạc của bạn một chút được không?",
+      "rawText": "*Ex: Can I borrow your charger for a moment? (Tôi có thể mượn dây sạc của bạn một chút được không?)*"
+    }
+  },
+  {
+    "id": "u7-lend",
+    "unit": 7,
+    "word": "Lend",
+    "partOfSpeech": "V",
+    "meaningVi": "cho mượn",
+    "example": {
+      "sentenceEn": "She agreed to lend me her laptop.",
+      "sentenceVi": "Cô ấy đã đồng ý cho tôi mượn máy tính xách tay của cô ấy.",
+      "rawText": "*Ex: She agreed to lend me her laptop. (Cô ấy đã đồng ý cho tôi mượn máy tính xách tay của cô ấy.)*"
+    }
+  },
+  {
+    "id": "u7-solve",
+    "unit": 7,
+    "word": "Solve",
+    "meaningVi": "giải quyết, xử lý",
+    "example": {
+      "sentenceEn": "We need to solve this technical problem quickly.",
+      "sentenceVi": "Chúng tôi cần giải quyết sự cố kỹ thuật này nhanh chóng.",
+      "rawText": "*Ex: We need to solve this technical problem quickly. (Chúng tôi cần giải quyết sự cố kỹ thuật này nhanh chóng.)*"
+    }
+  },
+  {
+    "id": "u7-depend-on",
+    "unit": 7,
+    "word": "Depend on",
+    "partOfSpeech": "V",
+    "meaningVi": "phụ thuộc vào ai đó hoặc cái gì đó",
+    "example": {
+      "sentenceEn": "Many teenagers depend on their smartphones too much.",
+      "sentenceVi": "Nhiều bạn trẻ phụ thuộc vào điện thoại thông minh quá nhiều.",
+      "rawText": "*Ex: Many teenagers depend on their smartphones too much. (Nhiều bạn trẻ phụ thuộc vào điện thoại thông minh quá nhiều.)*"
+    }
+  },
+  {
+    "id": "u7-convenient",
+    "unit": 7,
+    "word": "Convenient",
+    "partOfSpeech": "N",
+    "meaningVi": "tiện lợi, tiện nghi",
+    "example": {
+      "sentenceEn": "Online shopping is fast and convenient.",
+      "sentenceVi": "Mua sắm trực tuyến rất nhanh chóng và tiện lợi.",
+      "rawText": "*Ex: Online shopping is fast and convenient. (Mua sắm trực tuyến rất nhanh chóng và tiện lợi.)*"
+    }
+  },
+  {
+    "id": "u7-develop",
+    "unit": 7,
+    "word": "Develop",
+    "partOfSpeech": "V",
+    "meaningVi": "phát triển",
+    "example": {
+      "sentenceEn": "Engineers are working to develop new software.",
+      "sentenceVi": "Các kỹ sư đang làm việc để phát triển phần mềm mới.",
+      "rawText": "*Ex: Engineers are working to develop new software. (Các kỹ sư đang làm việc để phát triển phần mềm mới.)*"
+    }
+  },
+  {
+    "id": "u7-direction",
+    "unit": 7,
+    "word": "Direction",
+    "partOfSpeech": "N",
+    "meaningVi": "hướng đi, phương hướng",
+    "example": {
+      "sentenceEn": "Use the map app to find the correct direction.",
+      "sentenceVi": "Sử dụng ứng dụng bản đồ để tìm đúng phương hướng.",
+      "rawText": "*Ex: Use the map app to find the correct direction. (Sử dụng ứng dụng bản đồ để tìm đúng phương hướng.)*"
+    }
+  },
+  {
+    "id": "u7-heavy",
+    "unit": 7,
+    "word": "Heavy",
+    "partOfSpeech": "adj",
+    "meaningVi": "nặng",
+    "example": {
+      "sentenceEn": "This old computer is very heavy.",
+      "sentenceVi": "Chiếc máy tính cũ này rất nặng.",
+      "rawText": "*Ex: This old computer is very heavy. (Chiếc máy tính cũ này rất nặng.)*"
+    }
+  },
+  {
+    "id": "u7-instant",
+    "unit": 7,
+    "word": "Instant",
+    "partOfSpeech": "adj",
+    "meaningVi": "tức thì, ngay lập tức",
+    "example": {
+      "sentenceEn": "The app provides instant feedback on your progress.",
+      "sentenceVi": "Ứng dụng cung cấp phản hồi tức thì về tiến trình của bạn.",
+      "rawText": "*Ex: The app provides instant feedback on your progress. (Ứng dụng cung cấp phản hồi tức thì về tiến trình của bạn.)*"
+    }
+  },
+  {
+    "id": "u7-pocket",
+    "unit": 7,
+    "word": "Pocket",
+    "partOfSpeech": "N",
+    "meaningVi": "túi (túi áo, túi quần)",
+    "example": {
+      "sentenceEn": "He put his phone into his back pocket.",
+      "sentenceVi": "Anh ấy bỏ điện thoại vào túi quần sau.",
+      "rawText": "*Ex: He put his phone into his back pocket. (Anh ấy bỏ điện thoại vào túi quần sau.)*"
+    }
+  },
+  {
+    "id": "u7-portable",
+    "unit": 7,
+    "word": "Portable",
+    "partOfSpeech": "adj",
+    "meaningVi": "có thể cầm theo, mang theo, xách tay được",
+    "example": {
+      "sentenceEn": "A portable charger is useful when traveling.",
+      "sentenceVi": "Sạc dự phòng mang theo rất tiện khi đi du lịch.",
+      "rawText": "*Ex: A portable charger is useful when traveling. (Sạc dự phòng mang theo rất tiện khi đi du lịch.)*"
+    }
+  },
+  {
+    "id": "u7-experience",
+    "unit": 7,
+    "word": "Experience",
+    "partOfSpeech": "V",
+    "meaningVi": "trải nghiệm",
+    "example": {
+      "sentenceEn": "VR glasses let you experience virtual reality.",
+      "sentenceVi": "Kính VR cho phép bạn trải nghiệm thực tế ảo.",
+      "rawText": "*Ex: VR glasses let you experience virtual reality. (Kính VR cho phép bạn trải nghiệm thực tế ảo.)*"
+    }
+  },
+  {
+    "id": "u8-adult",
+    "unit": 8,
+    "word": "Adult",
+    "partOfSpeech": "N",
+    "meaningVi": "người lớn",
+    "example": {
+      "sentenceEn": "Tickets are ten dollars for adults.",
+      "sentenceVi": "Vé dành cho người lớn là mười đô la.",
+      "rawText": "*Ex: Tickets are ten dollars for adults. (Vé dành cho người lớn là mười đô la.)*"
+    }
+  },
+  {
+    "id": "u8-ancestor",
+    "unit": 8,
+    "word": "Ancestor",
+    "partOfSpeech": "N",
+    "synonym": "origin",
+    "meaningVi": "cội nguồn, tổ tiên",
+    "example": {
+      "sentenceEn": "Our ancestors lived in this region hundreds of years ago.",
+      "sentenceVi": "Tổ tiên của chúng ta đã sống ở vùng này hàng trăm năm trước.",
+      "rawText": "*Ex: Our ancestors lived in this region hundreds of years ago. (Tổ tiên của chúng ta đã sống ở vùng này hàng trăm năm trước.)*"
+    }
+  },
+  {
+    "id": "u8-skeleton",
+    "unit": 8,
+    "word": "Skeleton",
+    "partOfSpeech": "N",
+    "meaningVi": "bộ xương",
+    "example": {
+      "sentenceEn": "Archeologists discovered a human skeleton at the site.",
+      "sentenceVi": "Các nhà khảo cổ học đã phát hiện một bộ xương người tại di tích.",
+      "rawText": "*Ex: Archeologists discovered a human skeleton at the site. (Các nhà khảo cổ học đã phát hiện một bộ xương người tại di tích.)*"
+    }
+  },
+  {
+    "id": "u8-skull",
+    "unit": 8,
+    "word": "Skull",
+    "partOfSpeech": "N",
+    "meaningVi": "cái sọ",
+    "example": {
+      "sentenceEn": "The skull protects the brain from injury.",
+      "sentenceVi": "Hộp sọ bảo vệ bộ não khỏi bị tổn thương.",
+      "rawText": "*Ex: The skull protects the brain from injury. (Hộp sọ bảo vệ bộ não khỏi bị tổn thương.)*"
+    }
+  },
+  {
+    "id": "u8-civilization",
+    "unit": 8,
+    "word": "Civilization",
+    "partOfSpeech": "N",
+    "meaningVi": "nền văn minh",
+    "example": {
+      "sentenceEn": "Ancient Egypt was one of the earliest civilizations.",
+      "sentenceVi": "Ai Cập cổ đại là một trong những nền văn minh sớm nhất.",
+      "rawText": "*Ex: Ancient Egypt was one of the earliest civilizations. (Ai Cập cổ đại là một trong những nền văn minh sớm nhất.)*"
+    }
+  },
+  {
+    "id": "u8-diet",
+    "unit": 8,
+    "word": "Diet",
+    "partOfSpeech": "N",
+    "meaningVi": "bữa ăn kiêng",
+    "example": {
+      "sentenceEn": "A healthy diet includes plenty of vegetables and fruits.",
+      "sentenceVi": "Một chế độ ăn uống lành mạnh bao gồm nhiều rau và trái cây.",
+      "rawText": "*Ex: A healthy diet includes plenty of vegetables and fruits. (Một chế độ ăn uống lành mạnh bao gồm nhiều rau và trái cây.)*"
+    }
+  },
+  {
+    "id": "u8-site",
+    "unit": 8,
+    "word": "Site",
+    "partOfSpeech": "N",
+    "meaningVi": "địa điểm, khu vực",
+    "example": {
+      "sentenceEn": "This historical site attracts thousands of tourists.",
+      "sentenceVi": "Địa điểm lịch sử này thu hút hàng ngàn du khách.",
+      "rawText": "*Ex: This historical site attracts thousands of tourists. (Địa điểm lịch sử này thu hút hàng ngàn du khách.)*"
+    }
+  },
+  {
+    "id": "u8-species",
+    "unit": 8,
+    "word": "Species",
+    "meaningVi": "giống loài, loài vật",
+    "example": {
+      "sentenceEn": "Many rare species live in the tropical rainforest.",
+      "sentenceVi": "Nhiều loài quý hiếm sống trong rừng mưa nhiệt đới.",
+      "rawText": "*Ex: Many rare species live in the tropical rainforest. (Nhiều loài quý hiếm sống trong rừng mưa nhiệt đới.)*"
+    }
+  },
+  {
+    "id": "u8-go-back",
+    "unit": 8,
+    "word": "Go back",
+    "meaningVi": "quay trở lại, trở lại",
+    "example": {
+      "sentenceEn": "These artifacts go back thousands of years.",
+      "sentenceVi": "Những hiện vật này có từ thời điểm hàng ngàn năm trước.",
+      "rawText": "*Ex: These artifacts go back thousands of years. (Những hiện vật này có từ thời điểm hàng ngàn năm trước.)*"
+    }
+  },
+  {
+    "id": "u8-descendant",
+    "unit": 8,
+    "word": "Descendant",
+    "partOfSpeech": "N",
+    "meaningVi": "hậu duệ",
+    "example": {
+      "sentenceEn": "They are descendants of ancient royal families.",
+      "sentenceVi": "Họ là hậu duệ của các dòng họ hoàng gia cổ đại.",
+      "rawText": "*Ex: They are descendants of ancient royal families. (Họ là hậu duệ của các dòng họ hoàng gia cổ đại.)*"
+    }
+  },
+  {
+    "id": "u8-advanced",
+    "unit": 8,
+    "word": "Advanced",
+    "partOfSpeech": "adj",
+    "meaningVi": "tiên tiến",
+    "example": {
+      "sentenceEn": "They used advanced tools to build pyramids.",
+      "sentenceVi": "Họ đã dùng những công cụ tiên tiến để xây dựng kim tự tháp.",
+      "rawText": "*Ex: They used advanced tools to build pyramids. (Họ đã dùng những công cụ tiên tiến để xây dựng kim tự tháp.)*"
+    }
+  },
+  {
+    "id": "u8-discover",
+    "unit": 8,
+    "word": "Discover",
+    "meaningVi": "phát hiện, tìm thấy, khám phá ra",
+    "example": {
+      "sentenceEn": "Scientists discovered a new cave system yesterday.",
+      "sentenceVi": "Hôm qua các nhà khoa học đã khám phá ra một hệ thống hang động mới.",
+      "rawText": "*Ex: Scientists discovered a new cave system yesterday. (Hôm qua các nhà khoa học đã khám phá ra một hệ thống hang động mới.)*"
+    }
+  },
+  {
+    "id": "u8-chore",
+    "unit": 8,
+    "word": "Chore",
+    "partOfSpeech": "N",
+    "synonym": "Task",
+    "meaningVi": "công việc, việc vặt",
+    "example": {
+      "sentenceEn": "Cleaning the floor is a daily household chore.",
+      "sentenceVi": "Lau nhà là một công việc vặt hàng ngày trong gia đình.",
+      "rawText": "*Ex: Cleaning the floor is a daily household chore. (Lau nhà là một công việc vặt hàng ngày trong gia đình.)*"
+    }
+  },
+  {
+    "id": "u8-age",
+    "unit": 8,
+    "word": "Age",
+    "partOfSpeech": "N / V",
+    "meaningVi": "tuổi / già đi",
+    "example": {
+      "sentenceEn": "Wine tastes better as it ages.",
+      "sentenceVi": "Rượu vang có hương vị ngon hơn khi để lâu năm.",
+      "rawText": "*Ex: Wine tastes better as it ages. (Rượu vang có hương vị ngon hơn khi để lâu năm.)*"
+    }
+  },
+  {
+    "id": "u8-culture",
+    "unit": 8,
+    "word": "Culture",
+    "partOfSpeech": "N",
+    "meaningVi": "văn hóa",
+    "example": {
+      "sentenceEn": "Traveling helps you learn about different cultures.",
+      "sentenceVi": "Đi du lịch giúp bạn tìm hiểu về các nền văn hóa khác nhau.",
+      "rawText": "*Ex: Traveling helps you learn about different cultures. (Đi du lịch giúp bạn tìm hiểu về các nền văn hóa khác nhau.)*"
+    }
+  },
+  {
+    "id": "u8-education",
+    "unit": 8,
+    "word": "Education",
+    "partOfSpeech": "N",
+    "meaningVi": "giáo dục",
+    "example": {
+      "sentenceEn": "Good education provides better career opportunities.",
+      "sentenceVi": "Nền giáo dục tốt mang lại cơ hội nghề nghiệp tốt hơn.",
+      "rawText": "*Ex: Good education provides better career opportunities. (Nền giáo dục tốt mang lại cơ hội nghề nghiệp tốt hơn.)*"
+    }
+  },
+  {
+    "id": "u8-teenager",
+    "unit": 8,
+    "word": "Teenager",
+    "partOfSpeech": "N",
+    "meaningVi": "thanh thiếu niên",
+    "example": {
+      "sentenceEn": "Many teenagers enjoy listening to pop music.",
+      "sentenceVi": "Nhiều bạn thanh thiếu niên thích nghe nhạc pop.",
+      "rawText": "*Ex: Many teenagers enjoy listening to pop music. (Nhiều bạn thanh thiếu niên thích nghe nhạc pop.)*"
+    }
+  },
+  {
+    "id": "u8-complain",
+    "unit": 8,
+    "word": "Complain",
+    "partOfSpeech": "V",
+    "meaningVi": "phàn nàn",
+    "example": {
+      "sentenceEn": "He usually complains about the bad weather.",
+      "sentenceVi": "Anh ấy thường hay phàn nàn về thời tiết xấu.",
+      "rawText": "*Ex: He usually complains about the bad weather. (Anh ấy thường hay phàn nàn về thời tiết xấu.)*"
+    }
+  },
+  {
+    "id": "u8-border",
+    "unit": 8,
+    "word": "Border",
+    "partOfSpeech": "N",
+    "meaningVi": "ranh giới, đường biên giới",
+    "example": {
+      "sentenceEn": "They crossed the border into another country.",
+      "sentenceVi": "Họ đã vượt qua đường biên giới để sang nước khác.",
+      "rawText": "*Ex: They crossed the border into another country. (Họ đã vượt qua đường biên giới để sang nước khác.)*"
+    }
+  },
+  {
+    "id": "u8-boundary",
+    "unit": 8,
+    "word": "Boundary",
+    "partOfSpeech": "N",
+    "meaningVi": "giới hạn, ranh giới",
+    "example": {
+      "sentenceEn": "The river forms a natural boundary between two farms.",
+      "sentenceVi": "Dòng sông tạo thành ranh giới tự nhiên giữa hai trang trại.",
+      "rawText": "*Ex: The river forms a natural boundary between two farms. (Dòng sông tạo thành ranh giới tự nhiên giữa hai trang trại.)*"
+    },
+    "notes": "**Lưu ý:** *Border* nói về ranh giới giữa quốc gia, vùng lãnh thổ, khu vực với nhau. *Boundary* nói về ranh giới phân chia hoặc giới hạn phạm vi ở trong 1 khu vực."
+  },
+  {
+    "id": "u8-riverbed",
+    "unit": 8,
+    "word": "Riverbed",
+    "partOfSpeech": "N",
+    "meaningVi": "lòng sông",
+    "example": {
+      "sentenceEn": "In the dry season, you can walk on the riverbed.",
+      "sentenceVi": "Vào mùa khô, bạn có thể đi bộ trên lòng sông.",
+      "rawText": "*Ex: In the dry season, you can walk on the riverbed. (Vào mùa khô, bạn có thể đi bộ trên lòng sông.)*"
+    }
+  },
+  {
+    "id": "u8-partial",
+    "unit": 8,
+    "word": "Partial",
+    "partOfSpeech": "adj",
+    "meaningVi": "1 phần của gì đó, chưa hoàn thiện, từng phần",
+    "example": {
+      "sentenceEn": "The museum has a partial collection of ancient tools.",
+      "sentenceVi": "Bảo tàng có một bộ sưu tập một phần các công cụ cổ đại.",
+      "rawText": "*Ex: The museum has a partial collection of ancient tools. (Bảo tàng có một bộ sưu tập một phần các công cụ cổ đại.)*"
+    }
+  },
+  {
+    "id": "u8-snapshot",
+    "unit": 8,
+    "word": "Snapshot",
+    "partOfSpeech": "N",
+    "meaningVi": "chụp ảnh nhanh",
+    "example": {
+      "sentenceEn": "He took a quick snapshot of the sunset.",
+      "sentenceVi": "Anh ấy đã chụp một bức ảnh nhanh cảnh hoàng hôn.",
+      "rawText": "*Ex: He took a quick snapshot of the sunset. (Anh ấy đã chụp một bức ảnh nhanh cảnh hoàng hôn.)*"
+    }
+  },
+  {
+    "id": "u8-solstice",
+    "unit": 8,
+    "word": "Solstice",
+    "partOfSpeech": "N",
+    "meaningVi": "điểm chí",
+    "example": {
+      "sentenceEn": "The summer solstice is the longest day of the year.",
+      "sentenceVi": "Hạ chí là ngày dài nhất trong năm.",
+      "rawText": "*Ex: The summer solstice is the longest day of the year. (Hạ chí là ngày dài nhất trong năm.)*"
+    }
+  }
+]
