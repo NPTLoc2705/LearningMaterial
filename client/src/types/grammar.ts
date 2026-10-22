@@ -42,6 +42,9 @@ export interface DynamicDrillQuestion {
   bracketVerb?: string;
   options?: string[];
   correctAnswer: string;
+  acceptableAnswers?: string[];
+  orderedAnswers?: string[];
+  fullCorrectSentence?: string;
   errorWord?: string;
   targetKeyword?: string;
   scrambledWords?: string[];

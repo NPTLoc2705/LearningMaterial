@@ -13,12 +13,42 @@ export interface DynamicDrillEngineProps {
   onCompleteDrill?: (score: number, total: number) => void;
 }
 
+/**
+ * Normalizes text for flexible answer comparison:
+ * 1. Lowercase
+ * 2. Replaces punctuation with space (handles commas, periods, question marks, quotes, brackets, etc.)
+ * 3. Collapses multiple whitespace to single space
+ * 4. Trims leading and trailing spaces
+ */
+export function normalizeAnswer(str: string): string {
+  if (!str) return '';
+  return str
+    .toLowerCase()
+    .replace(/[.,/#!$%^&*;:{}=\-_`~()?"'’]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+/**
+ * Splits user answers for multiple-blank cloze tasks.
+ * Supports slashes, dashes, commas, and semicolons as separators.
+ */
+export function splitClozeAnswers(text: string): string[] {
+  if (!text) return [];
+  return text
+    .split(/\s*(?:\/|,|;|\s+-\s+|\s*-\s*)\s*/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+}
+
 export function DynamicDrillEngine({
   drillBank,
   onCompleteDrill,
 }: DynamicDrillEngineProps) {
   const [activeQuestions, setActiveQuestions] = useState<DynamicDrillQuestion[]>([]);
   const [answers, setAnswers] = useState<Record<string, string>>({});
+  // Track selected chips for word-scramble questions by question id: array of clicked word chip indices
+  const [scrambleSelections, setScrambleSelections] = useState<Record<string, number[]>>({});
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   // Initialize or re-sample a 6-question mixed drill (from at least 3 types)
@@ -26,6 +56,7 @@ export function DynamicDrillEngine({
     const sampled = generateMixedDrill(drillBank, 6, 3);
     setActiveQuestions(sampled);
     setAnswers({});
+    setScrambleSelections({});
     setIsSubmitted(false);
   };
 
@@ -36,6 +67,7 @@ export function DynamicDrillEngine({
   // "Làm lại đề này": Preserves activeQuestions, resets answers and submission state
   const handleRetrySameDrill = () => {
     setAnswers({});
+    setScrambleSelections({});
     setIsSubmitted(false);
   };
 
@@ -45,18 +77,97 @@ export function DynamicDrillEngine({
     setAnswers((prev) => ({ ...prev, [questionId]: val }));
   };
 
-  // Evaluation logic
+  // Word Scramble chip click handler
+  const handleScrambleChipClick = (qId: string, word: string, wIdx: number) => {
+    if (isSubmitted) return;
+    const currentSelected = scrambleSelections[qId] || [];
+    if (currentSelected.includes(wIdx)) return; // already used
+
+    const nextSelected = [...currentSelected, wIdx];
+    setScrambleSelections((prev) => ({ ...prev, [qId]: nextSelected }));
+
+    const currentText = answers[qId] || '';
+    const newText = currentText.trim() ? `${currentText.trim()} ${word}` : word;
+    setAnswers((prev) => ({ ...prev, [qId]: newText }));
+  };
+
+  // Word Scramble backspace last chip
+  const handleScrambleBackspace = (q: DynamicDrillQuestion) => {
+    if (isSubmitted || !q.scrambledWords) return;
+    const currentSelected = scrambleSelections[q.id] || [];
+    if (currentSelected.length === 0) {
+      setAnswers((prev) => ({ ...prev, [q.id]: '' }));
+      return;
+    }
+    const nextSelected = currentSelected.slice(0, -1);
+    setScrambleSelections((prev) => ({ ...prev, [q.id]: nextSelected }));
+
+    // Reconstruct text from remaining selected chips
+    const reconstructed = nextSelected.map((idx) => q.scrambledWords![idx]).join(' ');
+    setAnswers((prev) => ({ ...prev, [q.id]: reconstructed }));
+  };
+
+  // Word Scramble clear all
+  const handleScrambleClear = (qId: string) => {
+    if (isSubmitted) return;
+    setScrambleSelections((prev) => ({ ...prev, [qId]: [] }));
+    setAnswers((prev) => ({ ...prev, [qId]: '' }));
+  };
+
+  // Flexible Evaluation logic
   const checkIsCorrect = (q: DynamicDrillQuestion): boolean => {
-    const userAns = (answers[q.id] || '').trim().toLowerCase();
-    const targetAns = q.correctAnswer.trim().toLowerCase();
+    const rawUserAns = (answers[q.id] || '').trim();
+    if (!rawUserAns) return false;
 
-    if (!userAns) return false;
+    const cleanUser = normalizeAnswer(rawUserAns);
+    const cleanTarget = normalizeAnswer(q.correctAnswer);
 
-    // Normalizing spaces and punctuation for flexible comparison
-    const cleanUser = userAns.replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, '').replace(/\s+/g, ' ');
-    const cleanTarget = targetAns.replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, '').replace(/\s+/g, ' ');
+    // 1. Exact normalized match with primary correctAnswer
+    if (cleanUser === cleanTarget) return true;
 
-    return cleanUser === cleanTarget;
+    // 2. Match with any explicit acceptableAnswers
+    if (q.acceptableAnswers && q.acceptableAnswers.length > 0) {
+      if (q.acceptableAnswers.some((alt) => normalizeAnswer(alt) === cleanUser)) {
+        return true;
+      }
+    }
+
+    // 3. For multi-blank reading-cloze: check orderedAnswers
+    if (q.type === 'reading-cloze' && q.orderedAnswers && q.orderedAnswers.length > 1) {
+      const userParts = splitClozeAnswers(rawUserAns);
+      if (userParts.length === q.orderedAnswers.length) {
+        const allMatch = q.orderedAnswers.every((expected, idx) => {
+          return normalizeAnswer(userParts[idx]) === normalizeAnswer(expected);
+        });
+        if (allMatch) return true;
+      }
+    }
+
+    // 4. For error-correction:
+    // Allow either the corrected word, or the full sentence
+    if (q.type === 'error-correction') {
+      // Check fullCorrectSentence if provided
+      if (q.fullCorrectSentence && normalizeAnswer(q.fullCorrectSentence) === cleanUser) {
+        return true;
+      }
+      // Compute full corrected sentence from passage + errorWord + correctAnswer
+      if (q.passage && q.errorWord && q.correctAnswer) {
+        const regex = new RegExp(`\\b${q.errorWord.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
+        const computedSentence = q.passage.replace(regex, q.correctAnswer);
+        if (normalizeAnswer(computedSentence) === cleanUser) {
+          return true;
+        }
+      }
+      // If student wrote something like "more -> most" or "more: most"
+      if (rawUserAns.includes('->') || rawUserAns.includes(':')) {
+        const rhs = rawUserAns.split(/->|:/)[1]?.trim();
+        if (rhs && normalizeAnswer(rhs) === cleanTarget) {
+          return true;
+        }
+      }
+    }
+
+    return false;
   };
 
   const handleSubmit = (e?: React.FormEvent) => {
@@ -193,6 +304,7 @@ export function DynamicDrillEngine({
         {activeQuestions.map((q, idx) => {
           const userAns = answers[q.id] || '';
           const isCorrect = checkIsCorrect(q);
+          const currentSelected = scrambleSelections[q.id] || [];
 
           return (
             <Card key={q.id} innerClassName="p-5 sm:p-6 space-y-4">
@@ -238,8 +350,52 @@ export function DynamicDrillEngine({
                 </div>
               )}
 
-              {/* Type 1: Reading Cloze & Sentence Rewrite & Generic Input */}
-              {(q.type === 'reading-cloze' || q.type === 'sentence-rewrite') && (
+              {/* Type 1: Reading Cloze */}
+              {q.type === 'reading-cloze' && (
+                <div className="space-y-2.5">
+                  {/* Guidance description for multi-blank cloze */}
+                  {q.orderedAnswers && q.orderedAnswers.length > 1 && (
+                    <div className="p-3 bg-[#F4F3EF] rounded-lg border border-[#E8E7E4] text-xs text-[#52514D] flex items-start gap-2">
+                      <IconInfo size={14} className="mt-0.5 shrink-0 text-[#6B6A66]" />
+                      <div className="leading-relaxed">
+                        <strong className="text-[#141413]">Hướng dẫn nhập đáp án:</strong> Đoạn văn có{' '}
+                        {q.orderedAnswers.length} chỗ trống theo thứ tự (1), (2), (3)... Bạn có thể nhập các từ cần
+                        điền cách nhau bằng dấu gạch chéo{' '}
+                        <code className="bg-white px-1.5 py-0.5 rounded border border-[#DDD] font-mono text-[11px] text-[#141413]">
+                          /
+                        </code>{' '}
+                        hoặc gạch ngang{' '}
+                        <code className="bg-white px-1.5 py-0.5 rounded border border-[#DDD] font-mono text-[11px] text-[#141413]">
+                          -
+                        </code>{' '}
+                        (Ví dụ:{' '}
+                        <span className="font-mono text-[#141413]">{q.orderedAnswers.join(' / ')}</span>).
+                      </div>
+                    </div>
+                  )}
+
+                  <Input
+                    disabled={isSubmitted}
+                    placeholder={
+                      q.orderedAnswers && q.orderedAnswers.length > 1
+                        ? 'Ví dụ: từ 1 / từ 2 / từ 3...'
+                        : 'Nhập câu trả lời của bạn...'
+                    }
+                    value={userAns}
+                    onChange={(e) => handleSetAnswer(q.id, e.target.value)}
+                    className={
+                      isSubmitted
+                        ? isCorrect
+                          ? 'border-[#DCE8DA] bg-[#EDF3EC] text-[#346538]'
+                          : 'border-[#FAD4D6] bg-[#FDEBEC] text-[#9F2F2D]'
+                        : ''
+                    }
+                  />
+                </div>
+              )}
+
+              {/* Type 2: Sentence Rewrite */}
+              {q.type === 'sentence-rewrite' && (
                 <div className="space-y-2">
                   {q.targetKeyword && (
                     <div className="flex items-center gap-1.5 text-xs text-[#6B6A66]">
@@ -251,7 +407,7 @@ export function DynamicDrillEngine({
                   )}
                   <Input
                     disabled={isSubmitted}
-                    placeholder="Nhập câu trả lời của bạn..."
+                    placeholder="Nhập câu hoàn chỉnh của bạn..."
                     value={userAns}
                     onChange={(e) => handleSetAnswer(q.id, e.target.value)}
                     className={
@@ -265,15 +421,22 @@ export function DynamicDrillEngine({
                 </div>
               )}
 
-              {/* Type 2: Error Correction */}
+              {/* Type 3: Error Correction */}
               {q.type === 'error-correction' && (
                 <div className="space-y-2">
-                  <span className="font-mono text-[10px] uppercase tracking-wider text-[#9E9D97] block">
-                    Gõ từ sửa lại đúng:
-                  </span>
+                  <div className="flex items-center justify-between text-xs text-[#6B6A66]">
+                    <span className="font-mono text-[10px] uppercase tracking-wider text-[#9E9D97] block">
+                      Gõ từ sửa lại đúng (hoặc nhập lại cả câu đã sửa):
+                    </span>
+                    {q.errorWord && (
+                      <span className="text-[11px] text-[#956400]">
+                        Từ sai: <strong className="font-mono bg-[#FBF3DB] px-1.5 py-0.5 rounded border border-[#F5E6BF]">{q.errorWord}</strong>
+                      </span>
+                    )}
+                  </div>
                   <Input
                     disabled={isSubmitted}
-                    placeholder="Nhập từ chính xác thay thế..."
+                    placeholder="Ví dụ: gõ từ sửa lại đúng hoặc viết lại cả câu..."
                     value={userAns}
                     onChange={(e) => handleSetAnswer(q.id, e.target.value)}
                     className={
@@ -287,7 +450,7 @@ export function DynamicDrillEngine({
                 </div>
               )}
 
-              {/* Type 3: Multiple Choice */}
+              {/* Type 4: Multiple Choice */}
               {q.type === 'multiple-choice' && q.options && (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                   {q.options.map((opt, optIdx) => {
@@ -323,39 +486,54 @@ export function DynamicDrillEngine({
                 </div>
               )}
 
-              {/* Type 4: Word Scramble */}
+              {/* Type 5: Word Scramble */}
               {q.type === 'word-scramble' && q.scrambledWords && (
                 <div className="space-y-3">
                   {!isSubmitted && (
-                    <div className="flex items-center gap-1.5 flex-wrap">
-                      {q.scrambledWords.map((word, wIdx) => (
-                        <button
-                          key={wIdx}
-                          type="button"
-                          onClick={() => {
-                            const newText = userAns ? `${userAns.trim()} ${word}` : word;
-                            handleSetAnswer(q.id, newText);
-                          }}
-                          className="px-2.5 py-1 text-xs font-mono bg-[#F4F3EF] hover:bg-[#EAE8E3] text-[#141413] rounded-md border border-[#E8E7E4] transition-colors touch-manipulation"
-                        >
-                          {word}
-                        </button>
-                      ))}
+                    <div className="flex items-center gap-2 flex-wrap">
+                      {q.scrambledWords.map((word, wIdx) => {
+                        const isUsed = currentSelected.includes(wIdx);
+                        return (
+                          <button
+                            key={wIdx}
+                            type="button"
+                            disabled={isUsed}
+                            onClick={() => handleScrambleChipClick(q.id, word, wIdx)}
+                            className={`px-3 py-1.5 text-xs font-mono rounded-md border transition-all touch-manipulation ${
+                              isUsed
+                                ? 'bg-[#EAE8E3] text-[#9E9D97] border-[#DDD] cursor-not-allowed line-through opacity-60'
+                                : 'bg-[#F4F3EF] hover:bg-[#EAE8E3] text-[#141413] border-[#E8E7E4] shadow-xs active:scale-95'
+                            }`}
+                          >
+                            {word}
+                          </button>
+                        );
+                      })}
                       {userAns && (
-                        <button
-                          type="button"
-                          onClick={() => handleSetAnswer(q.id, '')}
-                          className="text-[11px] font-mono text-[#9F2F2D] hover:underline ml-2"
-                        >
-                          Xóa làm lại
-                        </button>
+                        <div className="flex items-center gap-2 ml-auto">
+                          <button
+                            type="button"
+                            onClick={() => handleScrambleBackspace(q)}
+                            className="text-[11px] font-mono text-[#6B6A66] hover:text-[#141413] hover:underline"
+                          >
+                            Xóa từ cuối
+                          </button>
+                          <span className="text-[#DDD]">|</span>
+                          <button
+                            type="button"
+                            onClick={() => handleScrambleClear(q.id)}
+                            className="text-[11px] font-mono text-[#9F2F2D] hover:underline"
+                          >
+                            Xóa hết
+                          </button>
+                        </div>
                       )}
                     </div>
                   )}
 
                   <Input
                     disabled={isSubmitted}
-                    placeholder="Chạm các từ phía trên hoặc gõ câu hoàn chỉnh..."
+                    placeholder="Chạm các từ phía trên hoặc tự gõ câu hoàn chỉnh..."
                     value={userAns}
                     onChange={(e) => handleSetAnswer(q.id, e.target.value)}
                     className={
@@ -372,17 +550,58 @@ export function DynamicDrillEngine({
               {/* Review & Explanations when Submitted */}
               {isSubmitted && (
                 <div className="pt-3 border-t border-[#EFEFEA] space-y-3 text-xs sm:text-sm">
-                  {/* Correct Answer comparison if user was wrong */}
-                  {!isCorrect && (
-                    <div className="p-3 bg-[#FDEBEC] border border-[#FAD4D6] rounded-lg text-[#9F2F2D] space-y-1">
+                  {/* Correct Answer comparison box */}
+                  <div
+                    className={`p-3.5 rounded-lg border space-y-2 ${
+                      isCorrect
+                        ? 'bg-[#EDF3EC] border-[#DCE8DA] text-[#346538]'
+                        : 'bg-[#FDEBEC] border-[#FAD4D6] text-[#9F2F2D]'
+                    }`}
+                  >
+                    {!isCorrect && (
                       <p className="font-mono text-xs">
                         Câu trả lời của bạn: <span className="line-through">{userAns || '(bỏ trống)'}</span>
                       </p>
+                    )}
+
+                    {/* Detailed correct answer presentation depending on type */}
+                    {q.type === 'reading-cloze' && q.orderedAnswers && q.orderedAnswers.length > 1 ? (
+                      <div className="space-y-1.5 pt-1">
+                        <span className="font-semibold text-xs block text-[#141413]">
+                          Đáp án đúng theo thứ tự các chỗ trống:
+                        </span>
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                          {q.orderedAnswers.map((ans, aIdx) => (
+                            <div
+                              key={aIdx}
+                              className="p-2.5 bg-white rounded-lg border border-[#E8E7E4] font-mono text-xs flex items-center gap-2"
+                            >
+                              <span className="w-5 h-5 rounded-full bg-[#EDF3EC] text-[#346538] font-bold text-[11px] flex items-center justify-center shrink-0">
+                                {aIdx + 1}
+                              </span>
+                              <span className="text-[#346538] font-semibold">{ans}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ) : q.type === 'error-correction' ? (
+                      <div className="space-y-1 text-xs">
+                        <p>
+                          Từ sửa lại đúng: <strong className="font-mono text-[#346538]">{q.correctAnswer}</strong>
+                        </p>
+                        {q.fullCorrectSentence && (
+                          <p className="text-[#6B6A66]">
+                            Câu hoàn chỉnh:{' '}
+                            <span className="italic font-serif text-[#141413]">"{q.fullCorrectSentence}"</span>
+                          </p>
+                        )}
+                      </div>
+                    ) : (
                       <p className="font-semibold text-xs">
                         Đáp án đúng: <span className="font-mono text-[#141413]">{q.correctAnswer}</span>
                       </p>
-                    </div>
-                  )}
+                    )}
+                  </div>
 
                   {/* Detailed Explanation Box */}
                   <div className="p-3.5 bg-[#F6F5F2] border border-[#E8E7E4] rounded-lg text-[#141413] space-y-2">
