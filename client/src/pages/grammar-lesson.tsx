@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import { useParams, NavLink, Navigate } from 'react-router-dom';
 import grammarData from '../data/grammar.json';
+import { GRAMMAR_EXTENDED_DATA } from '../data/grammar-extended';
 import type { GrammarTopic } from '../types/grammar';
 import { GrammarRuleRenderer } from '../components/grammar/GrammarRuleRenderer';
+import { ModularRuleRenderer } from '../components/grammar/ModularRuleRenderer';
 import { TopicPracticeDrill } from '../components/grammar/TopicPracticeDrill';
+import { DynamicDrillEngine } from '../components/grammar/DynamicDrillEngine';
 import { Badge } from '../components/ui/Badge';
 import { Button } from '../components/ui/Button';
 import { Card } from '../components/ui/Card';
@@ -28,6 +31,7 @@ export function GrammarLessonPage({ progressHook }: GrammarLessonPageProps) {
     return <Navigate to="/grammar" replace />;
   }
 
+  const extendedData = GRAMMAR_EXTENDED_DATA[topic.id];
   const topicProgress = progress.grammar[topic.id];
   const isCompleted = !!topicProgress?.completed;
 
@@ -42,6 +46,8 @@ export function GrammarLessonPage({ progressHook }: GrammarLessonPageProps) {
     'Extra grammar': 'Ngữ pháp mở rộng',
     'Language notes': 'Ghi chú ngôn ngữ',
   };
+
+  const exerciseCount = extendedData?.drillBank?.length || topic.practiceExercises.length;
 
   return (
     <div className="max-w-4xl mx-auto space-y-6 animate-fade-in">
@@ -113,9 +119,9 @@ export function GrammarLessonPage({ progressHook }: GrammarLessonPageProps) {
         >
           <IconPen size={14} />
           <span>Bài tập vận dụng</span>
-          {topic.practiceExercises.length > 0 && (
+          {exerciseCount > 0 && (
             <span className="font-mono text-[10px] bg-[#F4F3EF] text-[#6B6A66] px-1.5 py-0.5 rounded">
-              {topic.practiceExercises.length}
+              {extendedData?.drillBank ? '6 câu / lượt' : exerciseCount}
             </span>
           )}
         </button>
@@ -123,7 +129,21 @@ export function GrammarLessonPage({ progressHook }: GrammarLessonPageProps) {
 
       {/* Tab Contents */}
       {activeTab === 'rules' ? (
-        <GrammarRuleRenderer topic={topic} />
+        extendedData?.modularRules ? (
+          <ModularRuleRenderer
+            topic={topic}
+            modularRules={extendedData.modularRules}
+          />
+        ) : (
+          <GrammarRuleRenderer topic={topic} />
+        )
+      ) : extendedData?.drillBank && extendedData.drillBank.length > 0 ? (
+        <DynamicDrillEngine
+          drillBank={extendedData.drillBank}
+          onCompleteDrill={(score, total) => {
+            recordGrammarScore(topic.id, score, total);
+          }}
+        />
       ) : (
         <TopicPracticeDrill
           exercises={topic.practiceExercises}
