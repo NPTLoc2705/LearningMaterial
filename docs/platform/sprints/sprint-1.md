@@ -36,7 +36,7 @@ Backend rule: BO → DAL → Repository → Service → Api; DI in `Program.cs`;
 - Do: endpoints per 04; `IClassroomAccessService` (`EnsureCanManageClassroom`, `EnsureCanViewStudent`, `EnsureEnrolled`); prefer 404 over 403 to avoid leaking existence; creator becomes Lead.
 - Acceptance: TC-03/TC-12 foundations; archived classroom read-only; duplicate enrollment → 409.
 - Docs: `docs/modules/ClassManagement.md`
-- [ ] Done
+- [x] Done
 
 ### S1-T05b — Class access link (Young)  [P0][M]
 - Depends on: S1-T05
