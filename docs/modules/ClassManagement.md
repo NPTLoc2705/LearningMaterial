@@ -23,3 +23,4 @@ Manages curriculum levels (`GET /api/levels`), classrooms (`GET/POST /api/classr
     - `GetActiveLevelsWithSettingsAsync`: $O(L \log L)$ with $L = 9$ rows.
     - `GetClassroomsForActorAsync`: $O(\log N + K)$ paged query filtered by `ClassroomStaff` (`IX_ClassroomStaffs_ClassroomId_TeacherId`) or `Enrollment` (`IX_Enrollments_StudentId`).
     - `GetByIdWithSettingsAndStaffAsync`: $O(\log N + S + E)$ where $S$ is staff count ($\le 3$) and $E$ is classroom roster size ($< 20$).
+

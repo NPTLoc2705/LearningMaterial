@@ -43,7 +43,7 @@ Backend rule: BO → DAL → Repository → Service → Api; DI in `Program.cs`;
 - Do: `ClassAccessLink` entity/migration; create/rotate/revoke endpoints; public `GET /access/class/{token}` and `POST /access/class/{token}/enter` (D-16): token ≥ 32 random bytes, stored hashed, constant-time compare, per-IP and per-token rate limit, only for levels with `AccessMode=ClassLink`; returns only nickname/avatar.
 - Acceptance: TC-29.
 - Docs: `docs/modules/ClassAccess.md`
-- [ ] Done
+- [x] Done
 
 ### S1-T06 — Lesson shell  [P0][M]
 - Depends on: S1-T05
