@@ -90,4 +90,4 @@ Backend rule: BO → DAL → Repository → Service → Api; DI in `Program.cs`;
 - Depends on: S1-T02
 - Do: `scripts/backup/backup.ps1|sh` (pg_dump of schema `app`, compressed, dated, stored outside git) and `restore` script; document how to run weekly (Task Scheduler/cron) — **needed because the free plan has no automatic backups**.
 - Acceptance: TC-33.
-- [ ] Done
+- [x] Done
