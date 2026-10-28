@@ -29,7 +29,7 @@ Backend rule: BO → DAL → Repository → Service → Api; DI in `Program.cs`;
 - Depends on: S1-T03
 - Do: Admin/Teacher create Teachers (Admin only), **Senior students** (username + temp password, forced change), **Young profiles** (nickname + avatarKey, `LoginMode=ClassLink`, no password, generated internal username). Deactivate/reset.
 - Acceptance: Young profile cannot log in via `/auth/login`; deactivated user's token stops working.
-- [ ] Done
+- [x] Done
 
 ### S1-T05 — Levels, classrooms, enrollment, staff + `IClassroomAccessService`  [P0][L]
 - Depends on: S1-T04
