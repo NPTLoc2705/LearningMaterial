@@ -23,7 +23,7 @@ Backend rule: BO → DAL → Repository → Service → Api; DI in `Program.cs`;
 - Do: `POST /auth/login`, `GET /auth/me`, `POST /auth/change-password`; `PasswordHasher<User>`; JWT (8 h; claims NameIdentifier, Role, LoginMode); `IsActive` check; identical error for unknown user vs wrong password; login rate-limit; role policies.
 - Acceptance: TC-21; only the documented public endpoints are anonymous.
 - Docs: `docs/modules/Identity.md`
-- [ ] Done
+- [x] Done
 
 ### S1-T04 — User & roster management  [P0][M]
 - Depends on: S1-T03
