@@ -5,7 +5,7 @@
 ### S2-T01 — Vocabulary entity  [P0][S]
 - Depends on: S1-T06
 - Do: `VocabularyItem` (03: image key optional, meaning optional, source page) + migration; unique `(LessonId, lower(Word))` for non-archived.
-- [ ] Done
+- [x] Done
 
 ### S2-T02 — Image storage (`IFileStorage` + Supabase)  [P0][M]
 - Depends on: S1-T01

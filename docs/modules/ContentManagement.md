@@ -16,6 +16,7 @@ Manages lesson shells (`Lesson`) shared across classrooms of the same `Level` (d
 - Database table `app."Lessons"` enforces a unique index on `(LevelId, UnitNo, LessonNo)` ($O(\log N)$ duplicate check, returning `409 Conflict` on collision) and a composite index on `(LevelId, Status)` for filtered listing.
 - Lessons are level-shared among `Teacher` and `Admin` roles (`TeacherOrAdmin` policy); students are forbidden from `/api/lessons` and only see assigned `Published` lessons via `/api/me/assignments`.
 - Archived lessons (`LessonStatus.Archived`) are read-only and reject updates with `409 Conflict`.
+- Database table `app."VocabularyItems"` (`S2-T01`) stores lesson vocabulary (`Word` with `case_insensitive_icu` collation, optional `MeaningVi`, `MeaningEn`, `PartOfSpeech`, `ExampleEn`, `ExampleVi`, `Topic`, `ImageKey`, `ImageSha256`, `SourcePage`, `SortOrder`, `IsArchived`) with a partial unique index `IX_VocabularyItems_LessonId_Word WHERE "IsArchived" = FALSE` ($O(\log N)$ case-insensitive uniqueness check per lesson) and a composite index `IX_VocabularyItems_LessonId_IsArchived_SortOrder` ($O(\log N + K)$ ordered retrieval).
 
 ---
 
