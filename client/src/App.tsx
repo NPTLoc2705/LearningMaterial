@@ -1,6 +1,9 @@
 import { lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
+import { RoleRoute } from './components/auth/RoleRoute';
 import { Layout } from './components/layout/Layout';
+import { StudentLayout } from './components/layout/StudentLayout';
+import { TeacherLayout } from './components/layout/TeacherLayout';
 import { useProgress } from './hooks/use-progress';
 
 const DashboardPage = lazy(() =>
@@ -21,6 +24,18 @@ const GrammarListPage = lazy(() =>
 const GrammarLessonPage = lazy(() =>
   import('./pages/grammar-lesson').then((m) => ({ default: m.GrammarLessonPage }))
 );
+const LoginPage = lazy(() =>
+  import('./pages/login').then((m) => ({ default: m.LoginPage }))
+);
+const TeacherClassesPage = lazy(() =>
+  import('./pages/teacher/classes').then((m) => ({ default: m.TeacherClassesPage }))
+);
+const TeacherLessonsPage = lazy(() =>
+  import('./pages/teacher/lessons').then((m) => ({ default: m.TeacherLessonsPage }))
+);
+const StudentHomePage = lazy(() =>
+  import('./pages/student').then((m) => ({ default: m.StudentHomePage }))
+);
 
 function RouteLoadingFallback() {
   return (
@@ -37,9 +52,48 @@ export function App() {
 
   return (
     <BrowserRouter>
-      <Layout progress={progressHook.progress}>
-        <Suspense fallback={<RouteLoadingFallback />}>
-          <Routes>
+      <Suspense fallback={<RouteLoadingFallback />}>
+        <Routes>
+          {/* Platform Auth Route */}
+          <Route path="/login" element={<LoginPage />} />
+
+          {/* Platform Teacher & Admin Routes */}
+          <Route
+            path="/teacher"
+            element={
+              <RoleRoute allowedRoles={['Admin', 'Teacher']}>
+                <TeacherLayout />
+              </RoleRoute>
+            }
+          >
+            <Route index element={<Navigate to="classes" replace />} />
+            <Route path="classes" element={<TeacherClassesPage />} />
+            <Route path="lessons" element={<TeacherLessonsPage />} />
+            <Route path="*" element={<Navigate to="/teacher/classes" replace />} />
+          </Route>
+
+          {/* Platform Student Routes */}
+          <Route
+            path="/student"
+            element={
+              <RoleRoute allowedRoles={['Student']}>
+                <StudentLayout />
+              </RoleRoute>
+            }
+          >
+            <Route index element={<StudentHomePage />} />
+            <Route path="review" element={<StudentHomePage />} />
+            <Route path="*" element={<Navigate to="/student" replace />} />
+          </Route>
+
+          {/* Legacy Archive Portal Routes (Read-Only / Untouched) */}
+          <Route
+            element={
+              <Layout progress={progressHook.progress}>
+                <Outlet />
+              </Layout>
+            }
+          >
             <Route path="/" element={<DashboardPage progressHook={progressHook} />} />
             <Route
               path="/vocabulary"
@@ -61,10 +115,11 @@ export function App() {
               path="/grammar/:topicId"
               element={<GrammarLessonPage progressHook={progressHook} />}
             />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-        </Suspense>
-      </Layout>
+          </Route>
+
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 }

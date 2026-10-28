@@ -56,7 +56,7 @@ Backend rule: BO → DAL → Repository → Service → Api; DI in `Program.cs`;
 - Depends on: S1-T03
 - Do: `lib/authFetch.ts`, `Service/AuthService.ts`, `hooks/use-auth.ts`, `RoleRoute`, `/login` page, `StudentLayout`/`TeacherLayout`, `VITE_API_BASE_URL`; token in memory + guarded `sessionStorage`. Legacy routes untouched.
 - Acceptance: login by role; forbidden URLs redirect; build + lint pass.
-- [ ] Done
+- [x] Done
 
 ### S1-T08 — Teacher UI: classes, roster, class link  [P0][L]
 - Depends on: S1-T05b, S1-T07
