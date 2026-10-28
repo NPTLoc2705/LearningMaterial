@@ -68,23 +68,23 @@ Backend rule: BO → DAL → Repository → Service → Api; DI in `Program.cs`;
 - Depends on: S1-T05b, S1-T07
 - Do: route `/c/:token`; big avatar tiles with nickname; remembers last profile on the device with "Not me?"; no text input; friendly error for bad/revoked links; Young UI kit foundations (`components/kids/`, ≥ 64 px targets).
 - Acceptance: works on 375 px phone and iPad; no typing needed.
-- [ ] Done
+- [x] Done
 
 ### S1-T09 — Teacher UI: lesson list + metadata  [P0][S]
 - Depends on: S1-T06, S1-T07
 - Do: lessons list filtered by level/status; create form (Level, Unit, Lesson no., Title).
-- [ ] Done
+- [x] Done
 
 ### S1-T10 — CI  [P1][S]
 - Depends on: S1-T01
 - Do: GitHub Actions: backend build+test (Testcontainers), frontend lint+build, **secret scan + forbidden files** (S0-T06 script). No secrets in workflow.
-- [ ] Done
+- [x] Done
 
 ### S1-T11 — Integration harness + authorization matrix  [P0][M]
 - Depends on: S1-T05
 - Do: `WebApplicationFactory` + Testcontainers; helpers to create users/tokens/classes; matrix tests from 04.
 - Acceptance: TC-03, TC-12 foundations green in CI.
-- [ ] Done
+- [x] Done
 
 ### S1-T12 — Backup & restore scripts  [P0][S]
 - Depends on: S1-T02

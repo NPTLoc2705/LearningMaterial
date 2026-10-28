@@ -27,6 +27,9 @@ const GrammarLessonPage = lazy(() =>
 const LoginPage = lazy(() =>
   import('./pages/login').then((m) => ({ default: m.LoginPage }))
 );
+const ClassAccessPage = lazy(() =>
+  import('./pages/class-access').then((m) => ({ default: m.ClassAccessPage }))
+);
 const TeacherClassesPage = lazy(() =>
   import('./pages/teacher/classes').then((m) => ({ default: m.TeacherClassesPage }))
 );
@@ -59,8 +62,9 @@ export function App() {
     <BrowserRouter>
       <Suspense fallback={<RouteLoadingFallback />}>
         <Routes>
-          {/* Platform Auth Route */}
+          {/* Platform Auth & Young Class Link Routes */}
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/c/:token" element={<ClassAccessPage />} />
 
           {/* Platform Teacher & Admin Routes */}
           <Route

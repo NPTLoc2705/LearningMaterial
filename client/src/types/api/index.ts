@@ -144,3 +144,46 @@ export interface ClassAccessProfilesResponseDto {
   levelDisplayName: string;
   profiles: ClassAccessProfileDto[];
 }
+
+export type LessonStatus = 'Draft' | 'Published' | 'Archived';
+
+export interface LessonDto {
+  id: number;
+  levelId: number;
+  levelCode: string;
+  levelDisplayName: string;
+  levelGroup: LevelGroup;
+  unitNo: number;
+  unitTitle: string | null;
+  lessonNo: number;
+  title: string;
+  status: LessonStatus;
+  createdByUserId: number;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string | null;
+}
+
+export interface CreateLessonRequestDto {
+  levelId: number;
+  unitNo: number;
+  lessonNo: number;
+  title: string;
+  unitTitle?: string | null;
+}
+
+export interface UpdateLessonRequestDto {
+  unitNo: number;
+  lessonNo: number;
+  title: string;
+  unitTitle?: string | null;
+}
+
+export interface LessonFilterDto {
+  levelId?: number | null;
+  status?: LessonStatus | null;
+  q?: string | null;
+  page?: number;
+  pageSize?: number;
+}
+

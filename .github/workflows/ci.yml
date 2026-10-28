@@ -1,0 +1,60 @@
+name: Platform CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  repo-safety-and-frontend:
+    name: Secret Scan & Frontend Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: client/package-lock.json
+
+      - name: Run repository safety & forbidden-file check (S0-T06)
+        run: node scripts/check-repo-safety.mjs
+
+      - name: Install frontend dependencies
+        run: npm --prefix client ci
+
+      - name: Run frontend linter
+        run: npm --prefix client run lint
+
+      - name: Build frontend production bundle
+        run: npm --prefix client run build
+
+  backend-test:
+    name: Backend Build & Test (.NET 9)
+    runs-on: ubuntu-latest
+    if: hashFiles('server/LearningPlatform/LearningPlatform.sln') != ''
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 9
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore server/LearningPlatform/LearningPlatform.sln
+
+      - name: Build solution
+        run: dotnet build server/LearningPlatform/LearningPlatform.sln --no-restore --configuration Release
+
+      - name: Run unit & integration tests
+        run: dotnet test server/LearningPlatform/LearningPlatform.sln --no-build --configuration Release --verbosity normal
+
