@@ -50,7 +50,7 @@ Backend rule: BO → DAL → Repository → Service → Api; DI in `Program.cs`;
 - Do: `Lesson` (Level, UnitNo, LessonNo, Title) + migration (unique per level/unit/lesson); CRUD, filters, pagination; starts Draft.
 - Acceptance: TC-01 part 1; duplicate (level, unit, lesson) → 409.
 - Docs: `docs/modules/ContentManagement.md`
-- [ ] Done
+- [x] Done
 
 ### S1-T07 — Frontend foundation  [P0][M]
 - Depends on: S1-T03

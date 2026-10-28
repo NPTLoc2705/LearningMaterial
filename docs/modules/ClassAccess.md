@@ -21,3 +21,4 @@ Provides passwordless classroom entry for Young-group classrooms (`AccessMode = 
 - Constant-time comparison (`CryptographicOperations.FixedTimeEquals`) is always executed against either the stored hash bytes or a static 32-byte dummy digest to prevent timing side-channels.
 - Public endpoints (`GET /api/access/class/{token}` and `POST /api/access/class/{token}/enter`) are protected by `ClassAccessPolicy`, enforcing fixed-window rate limits per IP and per token (`TC-29`).
 - Never logs or persists raw class-link tokens; never exposes internal generated usernames or emails on public endpoints.
+
