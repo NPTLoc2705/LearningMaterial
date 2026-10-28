@@ -23,6 +23,13 @@ export interface FlashcardViewerProps {
   onSetStatus: (status: WordLearningStatus) => void;
 }
 
+const STATUS_LABELS: Record<WordLearningStatus, string> = {
+  known: 'ĐÃ THUỘC',
+  review: 'CẦN ÔN',
+  learning: 'ĐANG HỌC',
+  new: 'MỚI',
+};
+
 export function FlashcardViewer({
   items,
   currentIndex,
@@ -84,13 +91,6 @@ export function FlashcardViewer({
     );
   }
 
-  const statusLabels: Record<WordLearningStatus, string> = {
-    known: 'ĐÃ THUỘC',
-    review: 'CẦN ÔN',
-    learning: 'ĐANG HỌC',
-    new: 'MỚI',
-  };
-
   return (
     <div className="max-w-xl mx-auto flex flex-col items-center w-full">
       {/* Top indicator */}
@@ -112,7 +112,7 @@ export function FlashcardViewer({
             }
             size="sm"
           >
-            {statusLabels[status]}
+            {STATUS_LABELS[status]}
           </Badge>
         </div>
       </div>

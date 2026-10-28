@@ -1,14 +1,17 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useDeferredValue } from 'react';
 import type { VocabularyItem, UnitFilter, POSFilter, WordStatusFilter } from '../types/vocabulary';
 import type { AppProgressState, WordLearningStatus } from '../types/progress';
 
 export function useVocabFilter(items: VocabularyItem[], progress: AppProgressState) {
   const [searchQuery, setSearchQuery] = useState('');
+  const deferredQuery = useDeferredValue(searchQuery);
   const [unitFilter, setUnitFilter] = useState<UnitFilter>('all');
   const [posFilter, setPosFilter] = useState<POSFilter>('all');
   const [statusFilter, setStatusFilter] = useState<WordStatusFilter>('all');
 
   const filteredItems = useMemo(() => {
+    const trimmedQuery = deferredQuery.trim().toLowerCase();
+
     return items.filter((item) => {
       // Unit filter
       if (unitFilter !== 'all' && item.unit !== unitFilter) {
@@ -36,18 +39,17 @@ export function useVocabFilter(items: VocabularyItem[], progress: AppProgressSta
       }
 
       // Search query
-      if (searchQuery.trim()) {
-        const query = searchQuery.toLowerCase().trim();
-        const matchesWord = item.word.toLowerCase().includes(query);
-        const matchesMeaning = item.meaningVi.toLowerCase().includes(query);
-        const matchesSynonym = item.synonym ? item.synonym.toLowerCase().includes(query) : false;
-        const matchesExample = item.example ? item.example.sentenceEn.toLowerCase().includes(query) : false;
+      if (trimmedQuery) {
+        const matchesWord = item.word.toLowerCase().includes(trimmedQuery);
+        const matchesMeaning = item.meaningVi.toLowerCase().includes(trimmedQuery);
+        const matchesSynonym = item.synonym ? item.synonym.toLowerCase().includes(trimmedQuery) : false;
+        const matchesExample = item.example ? item.example.sentenceEn.toLowerCase().includes(trimmedQuery) : false;
         return matchesWord || matchesMeaning || matchesSynonym || matchesExample;
       }
 
       return true;
     });
-  }, [items, unitFilter, posFilter, statusFilter, searchQuery, progress]);
+  }, [items, unitFilter, posFilter, statusFilter, deferredQuery, progress]);
 
   return {
     searchQuery,

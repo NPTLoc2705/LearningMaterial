@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, lazy, Suspense } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Card } from '../components/ui/Card';
 import { Badge } from '../components/ui/Badge';
@@ -12,6 +12,10 @@ import {
   IconInfo,
 } from '../components/ui/Icons';
 import type { useProgress } from '../hooks/use-progress';
+
+const Hero3D = lazy(() =>
+  import('../components/3d/Hero3D').then((m) => ({ default: m.Hero3D }))
+);
 
 export interface DashboardPageProps {
   progressHook: ReturnType<typeof useProgress>;
@@ -58,6 +62,17 @@ export function DashboardPage({ progressHook }: DashboardPageProps) {
           </div>
         </div>
       </div>
+
+      {/* 3D WebGL Product Showcase (Unit 7: Cool Apps and Gadgets) */}
+      <Suspense
+        fallback={
+          <div className="w-full h-80 rounded-2xl bg-[#F4F3EF] border border-[#E8E7E4] animate-pulse flex items-center justify-center font-mono text-xs text-[#9E9D97]">
+            Đang tải không gian 3D Hero...
+          </div>
+        }
+      >
+        <Hero3D />
+      </Suspense>
 
       {/* Asymmetrical Bento Box Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">

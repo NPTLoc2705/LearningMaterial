@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 interface KeyboardNavOptions {
   onFlip?: () => void;
@@ -17,6 +17,25 @@ export function useKeyboardNav({
   onMarkKnown,
   enabled = true,
 }: KeyboardNavOptions) {
+  const handlersRef = useRef({
+    onFlip,
+    onNext,
+    onPrev,
+    onMarkReview,
+    onMarkKnown,
+  });
+
+  // Synchronize latest callbacks in effect to keep render pure
+  useEffect(() => {
+    handlersRef.current = {
+      onFlip,
+      onNext,
+      onPrev,
+      onMarkReview,
+      onMarkKnown,
+    };
+  });
+
   useEffect(() => {
     if (!enabled) return;
 
@@ -34,25 +53,25 @@ export function useKeyboardNav({
       switch (e.code) {
         case 'Space':
           e.preventDefault();
-          onFlip?.();
+          handlersRef.current.onFlip?.();
           break;
         case 'ArrowRight':
           e.preventDefault();
-          onNext?.();
+          handlersRef.current.onNext?.();
           break;
         case 'ArrowLeft':
           e.preventDefault();
-          onPrev?.();
+          handlersRef.current.onPrev?.();
           break;
         case 'Digit1':
         case 'Numpad1':
           e.preventDefault();
-          onMarkReview?.();
+          handlersRef.current.onMarkReview?.();
           break;
         case 'Digit2':
         case 'Numpad2':
           e.preventDefault();
-          onMarkKnown?.();
+          handlersRef.current.onMarkKnown?.();
           break;
         default:
           break;
@@ -61,5 +80,5 @@ export function useKeyboardNav({
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [enabled, onFlip, onNext, onPrev, onMarkReview, onMarkKnown]);
+  }, [enabled]);
 }

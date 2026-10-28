@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import type { VocabularyItem } from '../../types/vocabulary';
 import type { WordLearningStatus } from '../../types/progress';
 import { Card } from '../ui/Card';
@@ -9,10 +10,17 @@ import { FormattedText } from '../ui/FormattedText';
 export interface VocabCardProps {
   item: VocabularyItem;
   status: WordLearningStatus;
-  onSetStatus: (status: WordLearningStatus) => void;
+  onSetStatus: (wordId: string, status: WordLearningStatus) => void;
 }
 
-export function VocabCard({ item, status, onSetStatus }: VocabCardProps) {
+const STATUS_BADGE_CONFIG = {
+  known: { variant: 'green' as const, label: 'ĐÃ THUỘC' },
+  review: { variant: 'red' as const, label: 'CẦN ÔN' },
+  learning: { variant: 'blue' as const, label: 'ĐANG HỌC' },
+  new: { variant: 'slate' as const, label: 'MỚI' },
+};
+
+export const VocabCard = memo(function VocabCard({ item, status, onSetStatus }: VocabCardProps) {
   const speakWord = () => {
     if ('speechSynthesis' in window) {
       window.speechSynthesis.cancel();
@@ -22,14 +30,7 @@ export function VocabCard({ item, status, onSetStatus }: VocabCardProps) {
     }
   };
 
-  const statusBadgeConfig = {
-    known: { variant: 'green' as const, label: 'ĐÃ THUỘC' },
-    review: { variant: 'red' as const, label: 'CẦN ÔN' },
-    learning: { variant: 'blue' as const, label: 'ĐANG HỌC' },
-    new: { variant: 'slate' as const, label: 'MỚI' },
-  };
-
-  const currentBadge = statusBadgeConfig[status];
+  const currentBadge = STATUS_BADGE_CONFIG[status];
 
   return (
     <Card hoverable innerClassName="p-5 flex flex-col justify-between h-full">
@@ -104,7 +105,7 @@ export function VocabCard({ item, status, onSetStatus }: VocabCardProps) {
           variant={status === 'review' ? 'danger' : 'outline'}
           size="sm"
           className="flex-1"
-          onClick={() => onSetStatus(status === 'review' ? 'new' : 'review')}
+          onClick={() => onSetStatus(item.id, status === 'review' ? 'new' : 'review')}
           title="Đánh dấu cần ôn lại"
         >
           <IconRefresh size={12} />
@@ -115,7 +116,7 @@ export function VocabCard({ item, status, onSetStatus }: VocabCardProps) {
           variant={status === 'known' ? 'success' : 'secondary'}
           size="sm"
           className="flex-1"
-          onClick={() => onSetStatus(status === 'known' ? 'new' : 'known')}
+          onClick={() => onSetStatus(item.id, status === 'known' ? 'new' : 'known')}
           title="Đánh dấu đã thuộc"
         >
           <IconCheck size={12} />
@@ -124,4 +125,4 @@ export function VocabCard({ item, status, onSetStatus }: VocabCardProps) {
       </div>
     </Card>
   );
-}
+});

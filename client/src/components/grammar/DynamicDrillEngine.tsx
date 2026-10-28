@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import type { DynamicDrillQuestion } from '../../types/grammar';
 import { generateMixedDrill } from '../../utils/drillGenerator';
 import { Card } from '../ui/Card';
@@ -6,7 +6,6 @@ import { Button } from '../ui/Button';
 import { Input } from '../ui/Input';
 import { Badge } from '../ui/Badge';
 import { IconCheck, IconCross, IconRefresh, IconAward, IconInfo, IconShuffle } from '../ui/Icons';
-import confetti from 'canvas-confetti';
 
 export interface DynamicDrillEngineProps {
   drillBank: DynamicDrillQuestion[];
@@ -45,7 +44,9 @@ export function DynamicDrillEngine({
   drillBank,
   onCompleteDrill,
 }: DynamicDrillEngineProps) {
-  const [activeQuestions, setActiveQuestions] = useState<DynamicDrillQuestion[]>([]);
+  const [activeQuestions, setActiveQuestions] = useState<DynamicDrillQuestion[]>(() =>
+    generateMixedDrill(drillBank, 6, 3)
+  );
   const [answers, setAnswers] = useState<Record<string, string>>({});
   // Track selected chips for word-scramble questions by question id: array of clicked word chip indices
   const [scrambleSelections, setScrambleSelections] = useState<Record<string, number[]>>({});
@@ -59,10 +60,6 @@ export function DynamicDrillEngine({
     setScrambleSelections({});
     setIsSubmitted(false);
   };
-
-  useEffect(() => {
-    initNewDrill();
-  }, [drillBank]);
 
   // "Làm lại đề này": Preserves activeQuestions, resets answers and submission state
   const handleRetrySameDrill = () => {
@@ -185,11 +182,13 @@ export function DynamicDrillEngine({
     }
 
     if (score >= Math.ceil(activeQuestions.length * 0.8)) {
-      try {
-        confetti({ particleCount: 60, spread: 55, origin: { y: 0.6 } });
-      } catch {
-        // ignore
-      }
+      import('canvas-confetti')
+        .then(({ default: confetti }) => {
+          confetti({ particleCount: 60, spread: 55, origin: { y: 0.6 } });
+        })
+        .catch(() => {
+          // ignore
+        });
     }
   };
 

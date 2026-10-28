@@ -9,6 +9,11 @@ import type { GrammarTopic } from '../types/grammar';
 const vocabList = vocabData as VocabularyItem[];
 const grammarList = grammarData as GrammarTopic[];
 
+const TOTAL_WORDS = vocabList.length;
+const U7_TOTAL = vocabList.filter((v) => v.unit === 7).length;
+const U8_TOTAL = vocabList.filter((v) => v.unit === 8).length;
+const TOTAL_GRAMMAR = grammarList.length;
+
 export function useProgress() {
   const [progress, setProgress] = useState<AppProgressState>(() => loadProgress());
 
@@ -110,15 +115,12 @@ export function useProgress() {
 
   // Aggregate Statistics
   const stats = useMemo(() => {
-    const totalWords = vocabList.length;
     let knownWords = 0;
     let reviewWords = 0;
     let learningWords = 0;
 
     let u7Known = 0;
     let u8Known = 0;
-    const u7Total = vocabList.filter((v) => v.unit === 7).length;
-    const u8Total = vocabList.filter((v) => v.unit === 8).length;
 
     vocabList.forEach((w) => {
       const s = progress.words[w.id]?.status || 'new';
@@ -133,22 +135,20 @@ export function useProgress() {
       }
     });
 
-    const newWords = totalWords - (knownWords + reviewWords + learningWords);
-
-    const totalGrammar = grammarList.length;
+    const newWords = TOTAL_WORDS - (knownWords + reviewWords + learningWords);
     const completedGrammar = Object.values(progress.grammar).filter((g) => g.completed).length;
 
     return {
-      totalWords,
+      totalWords: TOTAL_WORDS,
       knownWords,
       reviewWords,
       learningWords,
       newWords,
-      u7: { total: u7Total, known: u7Known },
-      u8: { total: u8Total, known: u8Known },
-      totalGrammar,
+      u7: { total: U7_TOTAL, known: u7Known },
+      u8: { total: U8_TOTAL, known: u8Known },
+      totalGrammar: TOTAL_GRAMMAR,
       completedGrammar,
-      overallPercent: Math.round(((knownWords + completedGrammar) / (totalWords + totalGrammar)) * 100),
+      overallPercent: Math.round(((knownWords + completedGrammar) / (TOTAL_WORDS + TOTAL_GRAMMAR)) * 100),
     };
   }, [progress]);
 

@@ -15,6 +15,15 @@ import { FormattedText } from '../components/ui/FormattedText';
 import type { useProgress } from '../hooks/use-progress';
 
 const allTopics = grammarData as GrammarTopic[];
+const TOPIC_MAP = new Map<string, GrammarTopic>(allTopics.map((t) => [t.id, t]));
+
+const CATEGORY_TRANSLATIONS: Record<string, string> = {
+  'Main grammar': 'Ngữ pháp chính',
+  'Speaking strategy': 'Kỹ năng nói',
+  'Reading strategy': 'Kỹ năng đọc',
+  'Extra grammar': 'Ngữ pháp mở rộng',
+  'Language notes': 'Ghi chú ngôn ngữ',
+};
 
 export interface GrammarLessonPageProps {
   progressHook: ReturnType<typeof useProgress>;
@@ -24,7 +33,7 @@ export function GrammarLessonPage({ progressHook }: GrammarLessonPageProps) {
   const { topicId } = useParams<{ topicId: string }>();
   const { progress, setGrammarCompleted, recordGrammarScore } = progressHook;
 
-  const topic = allTopics.find((t) => t.id === topicId);
+  const topic = topicId ? TOPIC_MAP.get(topicId) : undefined;
   const [activeTab, setActiveTab] = useState<'rules' | 'practice'>('rules');
 
   if (!topic) {
@@ -37,14 +46,6 @@ export function GrammarLessonPage({ progressHook }: GrammarLessonPageProps) {
 
   const toggleCompleted = () => {
     setGrammarCompleted(topic.id, !isCompleted);
-  };
-
-  const categoryTranslations: Record<string, string> = {
-    'Main grammar': 'Ngữ pháp chính',
-    'Speaking strategy': 'Kỹ năng nói',
-    'Reading strategy': 'Kỹ năng đọc',
-    'Extra grammar': 'Ngữ pháp mở rộng',
-    'Language notes': 'Ghi chú ngôn ngữ',
   };
 
   const exerciseCount = extendedData?.drillBank?.length || topic.practiceExercises.length;
@@ -84,7 +85,7 @@ export function GrammarLessonPage({ progressHook }: GrammarLessonPageProps) {
             </Badge>
           )}
           <Badge variant="blue" size="sm">
-            {categoryTranslations[topic.category] || topic.category}
+            {CATEGORY_TRANSLATIONS[topic.category] || topic.category}
           </Badge>
         </div>
 
@@ -139,6 +140,7 @@ export function GrammarLessonPage({ progressHook }: GrammarLessonPageProps) {
         )
       ) : extendedData?.drillBank && extendedData.drillBank.length > 0 ? (
         <DynamicDrillEngine
+          key={topic.id}
           drillBank={extendedData.drillBank}
           onCompleteDrill={(score, total) => {
             recordGrammarScore(topic.id, score, total);
@@ -146,6 +148,7 @@ export function GrammarLessonPage({ progressHook }: GrammarLessonPageProps) {
         />
       ) : (
         <TopicPracticeDrill
+          key={topic.id}
           exercises={topic.practiceExercises}
           onCompleteDrill={(score, total) => {
             recordGrammarScore(topic.id, score, total);

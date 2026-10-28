@@ -14,6 +14,30 @@ import {
 import type { AppProgressState } from '../../types/progress';
 import vocabData from '../../data/vocabulary.json';
 
+const TOTAL_WORDS = vocabData.length;
+
+const NAV_LINKS = [
+  { to: '/', label: 'Tổng quan', icon: IconHome },
+  { to: '/vocabulary', label: 'Từ vựng', icon: IconBook },
+  { to: '/vocabulary/flashcards', label: 'Thẻ ghi nhớ', icon: IconCards },
+  { to: '/vocabulary/quiz', label: 'Luyện từ vựng', icon: IconQuiz },
+  { to: '/grammar', label: 'Ngữ pháp', icon: IconGrammar },
+];
+
+const getLinkClasses = ({ isActive }: { isActive: boolean }) =>
+  `inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium rounded-md transition-all touch-manipulation ${
+    isActive
+      ? 'bg-[#141413] text-white shadow-subtle'
+      : 'text-[#6B6A66] hover:text-[#141413] hover:bg-[#F4F3EF]'
+  }`;
+
+const getMobileLinkClasses = ({ isActive }: { isActive: boolean }) =>
+  `flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-lg transition-all touch-manipulation ${
+    isActive
+      ? 'bg-[#141413] text-white'
+      : 'text-[#6B6A66] hover:bg-[#F4F3EF] hover:text-[#141413]'
+  }`;
+
 export interface NavbarProps {
   progress: AppProgressState;
 }
@@ -21,32 +45,9 @@ export interface NavbarProps {
 export function Navbar({ progress }: NavbarProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const totalWords = vocabData.length;
   const knownCount = Object.values(progress.words).filter(
     (w) => w.status === 'known'
   ).length;
-
-  const navLinks = [
-    { to: '/', label: 'Tổng quan', icon: IconHome },
-    { to: '/vocabulary', label: 'Từ vựng', icon: IconBook },
-    { to: '/vocabulary/flashcards', label: 'Thẻ ghi nhớ', icon: IconCards },
-    { to: '/vocabulary/quiz', label: 'Luyện từ vựng', icon: IconQuiz },
-    { to: '/grammar', label: 'Ngữ pháp', icon: IconGrammar },
-  ];
-
-  const getLinkClasses = ({ isActive }: { isActive: boolean }) =>
-    `inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium rounded-md transition-all touch-manipulation ${
-      isActive
-        ? 'bg-[#141413] text-white shadow-subtle'
-        : 'text-[#6B6A66] hover:text-[#141413] hover:bg-[#F4F3EF]'
-    }`;
-
-  const getMobileLinkClasses = ({ isActive }: { isActive: boolean }) =>
-    `flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-lg transition-all touch-manipulation ${
-      isActive
-        ? 'bg-[#141413] text-white'
-        : 'text-[#6B6A66] hover:bg-[#F4F3EF] hover:text-[#141413]'
-    }`;
 
   return (
     <header className="sticky top-0 z-40 w-full bg-[#FBFBFA]/90 backdrop-blur-md border-b border-[#E8E7E4]">
@@ -69,7 +70,7 @@ export function Navbar({ progress }: NavbarProps) {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => {
+            {NAV_LINKS.map((link) => {
               const Icon = link.icon;
               return (
                 <NavLink
@@ -89,7 +90,7 @@ export function Navbar({ progress }: NavbarProps) {
           <div className="flex items-center gap-3">
             <Badge variant="green" size="sm" className="hidden sm:inline-flex">
               <IconCheck size={12} />
-              <span>{knownCount}/{totalWords} từ đã thuộc</span>
+              <span>{knownCount}/{TOTAL_WORDS} từ đã thuộc</span>
             </Badge>
 
             <button
@@ -107,7 +108,7 @@ export function Navbar({ progress }: NavbarProps) {
       {/* Mobile Drawer */}
       {isMobileMenuOpen && (
         <div className="md:hidden border-t border-[#E8E7E4] bg-white px-4 py-3 space-y-1 shadow-diffuse animate-fade-in">
-          {navLinks.map((link) => {
+          {NAV_LINKS.map((link) => {
             const Icon = link.icon;
             return (
               <NavLink
@@ -125,7 +126,7 @@ export function Navbar({ progress }: NavbarProps) {
           <div className="pt-2.5 mt-2 border-t border-[#EFEFEA] flex items-center justify-between px-2 text-xs text-[#6B6A66]">
             <span>Tiến độ ghi nhớ:</span>
             <Badge variant="green" size="sm">
-              {knownCount} / {totalWords} từ
+              {knownCount} / {TOTAL_WORDS} từ
             </Badge>
           </div>
         </div>

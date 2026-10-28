@@ -1,20 +1,24 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 export interface FormattedTextProps {
   text: string;
   className?: string;
 }
 
+// Hoisted RegExp to avoid repeated compilation across renders (js-hoist-regexp)
+const FORMATTED_TEXT_REGEX = /(\*\*[^*]+\*\*|\*[^*]+\*)/g;
+
 /**
  * Safe, zero-HTML-injection text renderer for inline markdown (**bold**, *italic*).
  * Replaces dangerouslySetInnerHTML with pure React element tree construction.
  */
-export function FormattedText({ text, className = '' }: FormattedTextProps) {
+export const FormattedText = memo(function FormattedText({
+  text,
+  className = '',
+}: FormattedTextProps) {
   if (!text) return null;
 
-  // Split by bold (**...**) and italic (*...*) tokens
-  const regex = /(\*\*[^*]+\*\*|\*[^*]+\*)/g;
-  const parts = text.split(regex);
+  const parts = text.split(FORMATTED_TEXT_REGEX);
 
   return (
     <span className={className}>
@@ -37,4 +41,4 @@ export function FormattedText({ text, className = '' }: FormattedTextProps) {
       })}
     </span>
   );
-}
+});

@@ -87,7 +87,7 @@ export function VocabularyListPage({ progressHook }: VocabularyListPageProps) {
                 key={item.id}
                 item={item}
                 status={currentStatus}
-                onSetStatus={(newStatus) => setWordStatus(item.id, newStatus)}
+                onSetStatus={setWordStatus}
               />
             );
           })}

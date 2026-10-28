@@ -9,7 +9,6 @@ import { Card } from '../components/ui/Card';
 import { IconShuffle, IconRefresh, IconArrowLeft, IconAward } from '../components/ui/Icons';
 import type { useProgress } from '../hooks/use-progress';
 import { shuffleArray } from '../utils/quizGenerator';
-import confetti from 'canvas-confetti';
 
 const allVocab = vocabData as VocabularyItem[];
 
@@ -25,8 +24,10 @@ export function VocabularyFlashcardsPage({
   const [unitFilter, setUnitFilter] = useState<UnitFilter>('all');
   const [onlyReview, setOnlyReview] = useState(false);
   const [isShuffled, setIsShuffled] = useState(false);
+  const [shuffleKey, setShuffleKey] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Stabilize deck so updating word learning status does not reshuffle the deck in-flight
   const deck = useMemo(() => {
     let items = allVocab.filter((v) => {
       if (unitFilter !== 'all' && v.unit !== unitFilter) return false;
@@ -41,13 +42,15 @@ export function VocabularyFlashcardsPage({
       items = shuffleArray(items);
     }
     return items;
-  }, [unitFilter, onlyReview, isShuffled, progress]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [unitFilter, onlyReview, isShuffled, shuffleKey]);
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (currentIndex < deck.length - 1) {
       setCurrentIndex((prev) => prev + 1);
     } else {
       try {
+        const { default: confetti } = await import('canvas-confetti');
         confetti({ particleCount: 50, spread: 45, origin: { y: 0.7 } });
       } catch {
         // ignore
@@ -62,6 +65,7 @@ export function VocabularyFlashcardsPage({
   };
 
   const handleRestart = () => {
+    setShuffleKey((k) => k + 1);
     setCurrentIndex(0);
   };
 
@@ -127,6 +131,7 @@ export function VocabularyFlashcardsPage({
             size="sm"
             onClick={() => {
               setIsShuffled(!isShuffled);
+              setShuffleKey((k) => k + 1);
               setCurrentIndex(0);
             }}
             title="Xáo trộn thứ tự thẻ"

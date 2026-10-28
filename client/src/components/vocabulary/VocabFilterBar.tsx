@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import type { UnitFilter, POSFilter, WordStatusFilter } from '../../types/vocabulary';
 import { Input } from '../ui/Input';
 import { IconSearch } from '../ui/Icons';
@@ -15,7 +16,23 @@ export interface VocabFilterBarProps {
   filteredCount: number;
 }
 
-export function VocabFilterBar({
+const POS_OPTIONS: { label: string; value: POSFilter }[] = [
+  { label: 'Tất cả', value: 'all' },
+  { label: 'Danh từ (N)', value: 'N' },
+  { label: 'Động từ (V)', value: 'V' },
+  { label: 'Tính từ (Adj)', value: 'Adj' },
+  { label: 'Khác', value: 'Other' },
+];
+
+const STATUS_OPTIONS: { label: string; value: WordStatusFilter }[] = [
+  { label: 'Tất cả trạng thái', value: 'all' },
+  { label: 'Đã thuộc', value: 'known' },
+  { label: 'Cần ôn lại', value: 'review' },
+  { label: 'Đang học', value: 'learning' },
+  { label: 'Chưa học', value: 'new' },
+];
+
+export const VocabFilterBar = memo(function VocabFilterBar({
   searchQuery,
   onSearchChange,
   unitFilter,
@@ -27,21 +44,6 @@ export function VocabFilterBar({
   totalCount,
   filteredCount,
 }: VocabFilterBarProps) {
-  const posOptions: { label: string; value: POSFilter }[] = [
-    { label: 'Tất cả', value: 'all' },
-    { label: 'Danh từ (N)', value: 'N' },
-    { label: 'Động từ (V)', value: 'V' },
-    { label: 'Tính từ (Adj)', value: 'Adj' },
-    { label: 'Khác', value: 'Other' },
-  ];
-
-  const statusOptions: { label: string; value: WordStatusFilter }[] = [
-    { label: 'Tất cả trạng thái', value: 'all' },
-    { label: 'Đã thuộc', value: 'known' },
-    { label: 'Cần ôn lại', value: 'review' },
-    { label: 'Đang học', value: 'learning' },
-    { label: 'Chưa học', value: 'new' },
-  ];
 
   return (
     <div className="bg-white rounded-xl border border-[#E8E7E4] p-4 mb-6 space-y-4 shadow-subtle">
@@ -86,7 +88,7 @@ export function VocabFilterBar({
           <span className="font-mono text-[11px] uppercase tracking-wider text-[#9E9D97] mr-1">
             Từ loại:
           </span>
-          {posOptions.map((opt) => (
+          {POS_OPTIONS.map((opt) => (
             <button
               key={opt.value}
               type="button"
@@ -108,7 +110,7 @@ export function VocabFilterBar({
             onChange={(e) => onStatusChange(e.target.value as WordStatusFilter)}
             className="text-xs font-medium text-[#141413] bg-[#F4F3EF] border border-[#E8E7E4] rounded-md px-2.5 py-1.5 focus:outline-none focus:border-[#141413] touch-manipulation"
           >
-            {statusOptions.map((opt) => (
+            {STATUS_OPTIONS.map((opt) => (
               <option key={opt.value} value={opt.value}>
                 {opt.label}
               </option>
@@ -122,4 +124,4 @@ export function VocabFilterBar({
       </div>
     </div>
   );
-}
+});

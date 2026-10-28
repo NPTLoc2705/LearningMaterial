@@ -24,8 +24,10 @@ export function Modal({
   onConfirm,
 }: ModalProps) {
   useEffect(() => {
+    if (!isOpen) return;
+
     function handleKeyDown(e: KeyboardEvent) {
-      if (e.key === 'Escape' && isOpen) {
+      if (e.key === 'Escape') {
         onClose();
       }
     }

@@ -7,6 +7,8 @@ import { IconCheck, IconSparkles } from '../components/ui/Icons';
 import type { useProgress } from '../hooks/use-progress';
 
 const allTopics = grammarData as GrammarTopic[];
+const UNIT_7_TOPICS = allTopics.filter((t) => t.unit === 7);
+const UNIT_8_TOPICS = allTopics.filter((t) => t.unit === 8);
 
 export interface GrammarListPageProps {
   progressHook: ReturnType<typeof useProgress>;
@@ -15,9 +17,6 @@ export interface GrammarListPageProps {
 export function GrammarListPage({ progressHook }: GrammarListPageProps) {
   const { progress } = progressHook;
   const [unitFilter, setUnitFilter] = useState<UnitFilter>('all');
-
-  const unit7Topics = allTopics.filter((t) => t.unit === 7);
-  const unit8Topics = allTopics.filter((t) => t.unit === 8);
 
   const completedCount = allTopics.filter(
     (t) => progress.grammar[t.id]?.completed
@@ -75,12 +74,12 @@ export function GrammarListPage({ progressHook }: GrammarListPageProps) {
               Unit 7: Cool Apps and Gadgets
             </h2>
             <span className="font-mono text-xs text-[#9E9D97]">
-              ({unit7Topics.length} chủ điểm)
+              ({UNIT_7_TOPICS.length} chủ điểm)
             </span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {unit7Topics.map((topic) => (
+            {UNIT_7_TOPICS.map((topic) => (
               <GrammarTopicCard
                 key={topic.id}
                 topic={topic}
@@ -100,12 +99,12 @@ export function GrammarListPage({ progressHook }: GrammarListPageProps) {
               Unit 8: Into the Past
             </h2>
             <span className="font-mono text-xs text-[#9E9D97]">
-              ({unit8Topics.length} chủ điểm)
+              ({UNIT_8_TOPICS.length} chủ điểm)
             </span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {unit8Topics.map((topic) => (
+            {UNIT_8_TOPICS.map((topic) => (
               <GrammarTopicCard
                 key={topic.id}
                 topic={topic}

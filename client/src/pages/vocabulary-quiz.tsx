@@ -18,7 +18,6 @@ import {
   IconArrowLeft,
 } from '../components/ui/Icons';
 import type { useProgress } from '../hooks/use-progress';
-import confetti from 'canvas-confetti';
 
 const allVocab = vocabData as VocabularyItem[];
 
@@ -69,11 +68,13 @@ export function VocabularyQuizPage({ progressHook }: VocabularyQuizPageProps) {
       setIsCompleted(true);
       const finalScore = isCorrect ? score + 1 : score;
       if (finalScore >= Math.ceil(questions.length * 0.8)) {
-        try {
-          confetti({ particleCount: 50, spread: 50, origin: { y: 0.6 } });
-        } catch {
-          // ignore
-        }
+        import('canvas-confetti')
+          .then(({ default: confetti }) => {
+            confetti({ particleCount: 50, spread: 50, origin: { y: 0.6 } });
+          })
+          .catch(() => {
+            // ignore
+          });
       }
     }
   };

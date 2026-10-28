@@ -4,7 +4,6 @@ import { Card } from '../ui/Card';
 import { Button } from '../ui/Button';
 import { Input } from '../ui/Input';
 import { IconCheck, IconCross, IconRefresh, IconAward } from '../ui/Icons';
-import confetti from 'canvas-confetti';
 
 export interface TopicPracticeDrillProps {
   exercises: GrammarPracticeItem[];
@@ -42,23 +41,24 @@ export function TopicPracticeDrill({
       });
       onCompleteDrill(score, exercises.length);
       if (score === exercises.length) {
-        try {
-          confetti({ particleCount: 50, spread: 45, origin: { y: 0.7 } });
-        } catch {
-          // ignore
-        }
+        import('canvas-confetti')
+          .then(({ default: confetti }) => {
+            confetti({ particleCount: 50, spread: 45, origin: { y: 0.7 } });
+          })
+          .catch(() => {
+            // ignore
+          });
       }
     }
   };
 
   const handleSelectOption = (questionId: string, option: string) => {
     if (submittedQuestions[questionId]) return;
-    setAnswers((prev) => ({ ...prev, [questionId]: option }));
-    setSubmittedQuestions((prev) => {
-      const next = { ...prev, [questionId]: true };
-      checkAllCompleted(next, { ...answers, [questionId]: option });
-      return next;
-    });
+    const nextAnswers = { ...answers, [questionId]: option };
+    const nextSubmitted = { ...submittedQuestions, [questionId]: true };
+    setAnswers(nextAnswers);
+    setSubmittedQuestions(nextSubmitted);
+    checkAllCompleted(nextSubmitted, nextAnswers);
   };
 
   const handleFillSubmit = (questionId: string, e: React.FormEvent) => {
@@ -66,11 +66,9 @@ export function TopicPracticeDrill({
     const currentVal = answers[questionId]?.trim();
     if (!currentVal || submittedQuestions[questionId]) return;
 
-    setSubmittedQuestions((prev) => {
-      const next = { ...prev, [questionId]: true };
-      checkAllCompleted(next, answers);
-      return next;
-    });
+    const nextSubmitted = { ...submittedQuestions, [questionId]: true };
+    setSubmittedQuestions(nextSubmitted);
+    checkAllCompleted(nextSubmitted, answers);
   };
 
   const handleResetDrill = () => {
