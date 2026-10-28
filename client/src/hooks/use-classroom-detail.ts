@@ -207,3 +207,4 @@ export function useClassroomDetail(classroomId: number): UseClassroomDetailResul
     archiveClassroom,
   };
 }
+

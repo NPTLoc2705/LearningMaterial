@@ -35,13 +35,21 @@ export interface ChangePasswordRequestDto {
   newPassword: string;
 }
 
+export interface ValidationDiagnosticDto {
+  path: string;
+  message: string;
+}
+
 export interface ProblemDetailsDto {
   type?: string;
   title?: string;
   status?: number;
   detail?: string;
   instance?: string;
-  errors?: Record<string, string[]> | string[];
+  errors?:
+    | Record<string, string[]>
+    | string[]
+    | ValidationDiagnosticDto[];
 }
 
 export interface PagedResultDto<T> {
@@ -185,5 +193,121 @@ export interface LessonFilterDto {
   q?: string | null;
   page?: number;
   pageSize?: number;
+}
+
+export interface VocabularyItemDto {
+  id: number;
+  lessonId: number;
+  word: string;
+  meaningVi: string | null;
+  meaningEn: string | null;
+  partOfSpeech: string | null;
+  exampleEn: string | null;
+  exampleVi: string | null;
+  topic: string | null;
+  imageKey: string | null;
+  imageSha256: string | null;
+  sourcePage: number | null;
+  sortOrder: number;
+}
+
+export interface CreateVocabularyItemRequestDto {
+  word: string;
+  meaningVi?: string | null;
+  meaningEn?: string | null;
+  partOfSpeech?: string | null;
+  exampleEn?: string | null;
+  exampleVi?: string | null;
+  topic?: string | null;
+  imageKey?: string | null;
+  imageSha256?: string | null;
+  sourcePage?: number | null;
+  sortOrder?: number | null;
+}
+
+export interface UpdateVocabularyItemRequestDto {
+  word: string;
+  meaningVi?: string | null;
+  meaningEn?: string | null;
+  partOfSpeech?: string | null;
+  exampleEn?: string | null;
+  exampleVi?: string | null;
+  topic?: string | null;
+  imageKey?: string | null;
+  imageSha256?: string | null;
+  sourcePage?: number | null;
+  sortOrder: number;
+}
+
+export interface SignedMediaUrlDto {
+  imageKey: string;
+  url: string;
+  expiresAt: string;
+}
+
+export interface CreateLessonAssignmentRequestDto {
+  lessonId: number;
+  dueAt?: string | null;
+}
+
+export interface LessonAssignmentDto {
+  id: number;
+  classroomId: number;
+  classroomName: string;
+  lessonId: number;
+  unitNo: number;
+  unitTitle: string | null;
+  lessonNo: number;
+  lessonTitle: string;
+  lessonStatus: LessonStatus;
+  assignedByUserId: number;
+  assignedAt: string;
+  dueAt: string | null;
+}
+
+export interface StudentAssignedLessonDto {
+  assignmentId: number;
+  classroomId: number;
+  classroomName: string;
+  lessonId: number;
+  levelId: number;
+  levelCode: string;
+  levelDisplayName: string;
+  levelGroup: LevelGroup;
+  unitNo: number;
+  unitTitle: string | null;
+  lessonNo: number;
+  title: string;
+  vocabularyCount: number;
+  assignedAt: string;
+  dueAt: string | null;
+}
+
+export interface StudentVocabularyPreviewDto {
+  id: number;
+  word: string;
+  meaningVi: string | null;
+  meaningEn: string | null;
+  partOfSpeech: string | null;
+  exampleEn: string | null;
+  exampleVi: string | null;
+  imageKey: string | null;
+  sortOrder: number;
+}
+
+export interface StudentLessonHubDto {
+  lessonId: number;
+  levelId: number;
+  levelCode: string;
+  levelDisplayName: string;
+  levelGroup: LevelGroup;
+  unitNo: number;
+  unitTitle: string | null;
+  lessonNo: number;
+  title: string;
+  levelSettings: LevelSettingsDto;
+  vocabularyCount: number;
+  grammarTopicCount: number;
+  vocabulary: StudentVocabularyPreviewDto[];
 }
 

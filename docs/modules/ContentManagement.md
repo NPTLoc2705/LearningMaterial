@@ -40,3 +40,40 @@ Provides the teacher lesson library interface (`/teacher/lessons`) with filterin
 
 ### Prerequisites / Context
 - Accessible to `Teacher` and `Admin` roles inside `TeacherLayout`.
+
+---
+
+## Teacher Vocabulary Editor, Publish & Assign UI (`client/src/pages/teacher/lessons/lesson-detail.tsx`, `client/src/hooks/use-lesson-detail.ts`, `client/src/Service/VocabularyService.ts`)
+
+### Purpose
+Provides the teacher lesson workspace (`/teacher/lessons/:id`) for editing lesson metadata (`LessonMetadataEditorCard`), managing vocabulary rows with keyboard-friendly inline autosave, image upload/replacement, reordering, and soft deletion (`VocabularyEditorRow`, `AddVocabularyItemForm`), publishing with `422` validation checklist diagnostics (`PublishValidationChecklist`), and assigning published lessons to same-level classrooms (`AssignLessonDialogCard`) (`S2-T06`, `S2-T07`).
+
+### Input / Output
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `lessonId` | `number` | Route `:id` parameter |
+| `payload` | `CreateVocabularyItemRequestDto` / `UpdateVocabularyItemRequestDto` | Vocabulary fields saved via `VocabularyService` |
+| `file` | `File` | PNG/JPEG/WebP image uploaded via `POST /api/vocabulary/{id}/image` |
+
+**Returns:** `JSX.Element` (`TeacherLessonDetailPage`) — Renders live autosave indicator (`idle` / `saving` / `saved` / `error`), authorized signed media thumbnails (`SignedMediaImage`), `422` checklist, and classroom assignment controls.
+
+### Prerequisites / Context
+- Signed media URLs (`GET /api/media/{imageKey}`) are cached client-side in `VocabularyService` until 30 seconds before expiration to avoid redundant network requests.
+
+---
+
+## Development Seeder (`DevSeeder`, `IDevSeeder`)
+
+### Purpose
+Seeds an idempotent local development dataset (`S2-T09`) when running in `Development` environment with `DevSeeder:Enabled = true`: loads `docs/platform/seed/explore1-u3-l1.json` (`Explore 1 · Unit 3 · Lesson 1 — "People"` with 8 vocabulary items), creates 1 teacher account (credentials from `user-secrets`), 1 `Explore 1` classroom, 3 fake Young student profiles (`Sunny`, `Pip`, `Coco` — nicknames and avatar keys only, no email or real child data), and assigns the published lesson to the classroom.
+
+### Input / Output
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `isDevelopmentEnvironment` | `bool` | Must be `true` (`app.Environment.IsDevelopment()`) or seeder exits immediately |
+
+**Returns:** `Task` — Idempotently ensures the development teacher, classroom, 3 fake Young profiles, 8 vocabulary items, and lesson assignment exist.
+
+### Prerequisites / Context
+- Strictly disabled outside `Development` or when `DevSeeder:Enabled` is not `"true"`.
+- Requires `DevSeeder:TeacherPassword` in `dotnet user-secrets` (never hardcoded or committed).

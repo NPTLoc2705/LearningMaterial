@@ -24,3 +24,4 @@ export function getKidAvatar(avatarKey: string | null | undefined): KidAvatarOpt
   if (!avatarKey) return KID_AVATARS[0];
   return KID_AVATARS.find((item) => item.key === avatarKey) ?? KID_AVATARS[0];
 }
+

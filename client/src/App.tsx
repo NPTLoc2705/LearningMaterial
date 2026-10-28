@@ -41,8 +41,18 @@ const TeacherClassDetailPage = lazy(() =>
 const TeacherLessonsPage = lazy(() =>
   import('./pages/teacher/lessons').then((m) => ({ default: m.TeacherLessonsPage }))
 );
+const TeacherLessonDetailPage = lazy(() =>
+  import('./pages/teacher/lessons/lesson-detail').then((m) => ({
+    default: m.TeacherLessonDetailPage,
+  }))
+);
 const StudentHomePage = lazy(() =>
   import('./pages/student').then((m) => ({ default: m.StudentHomePage }))
+);
+const StudentLessonHubPage = lazy(() =>
+  import('./pages/student/lesson-hub').then((m) => ({
+    default: m.StudentLessonHubPage,
+  }))
 );
 
 function RouteLoadingFallback() {
@@ -79,6 +89,7 @@ export function App() {
             <Route path="classes" element={<TeacherClassesPage />} />
             <Route path="classes/:id" element={<TeacherClassDetailPage />} />
             <Route path="lessons" element={<TeacherLessonsPage />} />
+            <Route path="lessons/:id" element={<TeacherLessonDetailPage />} />
             <Route path="*" element={<Navigate to="/teacher/classes" replace />} />
           </Route>
 
@@ -92,6 +103,7 @@ export function App() {
             }
           >
             <Route index element={<StudentHomePage />} />
+            <Route path="lessons/:id" element={<StudentLessonHubPage />} />
             <Route path="review" element={<StudentHomePage />} />
             <Route path="*" element={<Navigate to="/student" replace />} />
           </Route>

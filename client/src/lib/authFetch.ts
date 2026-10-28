@@ -2,6 +2,7 @@ import type {
   LoginResponseDto,
   ProblemDetailsDto,
   UserProfileDto,
+  ValidationDiagnosticDto,
 } from '../types/api';
 
 const SESSION_STORAGE_KEY = 'learning_platform_auth_v1';
@@ -141,13 +142,19 @@ export class ApiError extends Error {
   public readonly status: number;
   public readonly title: string;
   public readonly detail: string;
-  public readonly errors?: Record<string, string[]> | string[];
+  public readonly errors?:
+    | Record<string, string[]>
+    | string[]
+    | ValidationDiagnosticDto[];
 
   constructor(
     status: number,
     title: string,
     detail: string,
-    errors?: Record<string, string[]> | string[]
+    errors?:
+      | Record<string, string[]>
+      | string[]
+      | ValidationDiagnosticDto[]
   ) {
     super(detail || title || `HTTP Error ${status}`);
     this.name = 'ApiError';
@@ -258,3 +265,4 @@ export async function authFetch<T>(
 
   return JSON.parse(text) as T;
 }
+

@@ -82,3 +82,4 @@ export function StudentLayout({ children }: StudentLayoutProps) {
     </div>
   );
 }
+

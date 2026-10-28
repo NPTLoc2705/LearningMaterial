@@ -49,10 +49,7 @@ export function CreateLessonForm({
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
           <div className="sm:col-span-2">
-            <label
-              htmlFor="lesson-level"
-              className="block text-xs font-medium text-[#141413] mb-1.5"
-            >
+            <label htmlFor="lesson-level" className="block text-xs font-medium text-[#141413] mb-1.5">
               Cấp độ (Level)
             </label>
             <select
@@ -70,10 +67,7 @@ export function CreateLessonForm({
           </div>
 
           <div>
-            <label
-              htmlFor="lesson-unit-no"
-              className="block text-xs font-medium text-[#141413] mb-1.5"
-            >
+            <label htmlFor="lesson-unit-no" className="block text-xs font-medium text-[#141413] mb-1.5">
               Unit số
             </label>
             <Input
@@ -87,10 +81,7 @@ export function CreateLessonForm({
           </div>
 
           <div>
-            <label
-              htmlFor="lesson-no"
-              className="block text-xs font-medium text-[#141413] mb-1.5"
-            >
+            <label htmlFor="lesson-no" className="block text-xs font-medium text-[#141413] mb-1.5">
               Lesson số
             </label>
             <Input
@@ -106,10 +97,7 @@ export function CreateLessonForm({
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label
-              htmlFor="lesson-unit-title"
-              className="block text-xs font-medium text-[#141413] mb-1.5"
-            >
+            <label htmlFor="lesson-unit-title" className="block text-xs font-medium text-[#141413] mb-1.5">
               Tên Unit (tùy chọn)
             </label>
             <Input
@@ -121,10 +109,7 @@ export function CreateLessonForm({
           </div>
 
           <div>
-            <label
-              htmlFor="lesson-title"
-              className="block text-xs font-medium text-[#141413] mb-1.5"
-            >
+            <label htmlFor="lesson-title" className="block text-xs font-medium text-[#141413] mb-1.5">
               Tiêu đề bài giảng (Title)
             </label>
             <Input
@@ -138,20 +123,10 @@ export function CreateLessonForm({
         </div>
 
         <div className="flex items-center justify-end gap-2 pt-2">
-          <Button
-            type="button"
-            variant="ghost"
-            size="sm"
-            onClick={onCancel}
-            disabled={isCreating}
-          >
+          <Button type="button" variant="ghost" size="sm" onClick={onCancel} disabled={isCreating}>
             Hủy
           </Button>
-          <Button
-            type="submit"
-            size="sm"
-            disabled={isCreating || !title.trim()}
-          >
+          <Button type="submit" size="sm" disabled={isCreating || !title.trim()}>
             {isCreating ? 'Đang tạo...' : 'Tạo bài giảng'}
           </Button>
         </div>
@@ -159,4 +134,3 @@ export function CreateLessonForm({
     </Card>
   );
 }
-

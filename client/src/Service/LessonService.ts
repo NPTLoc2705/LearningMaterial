@@ -45,10 +45,21 @@ export const LessonService = {
     });
   },
 
+  async publishLesson(id: number): Promise<LessonDto> {
+    return authFetch<LessonDto>(`/lessons/${id}/publish`, {
+      method: 'POST',
+    });
+  },
+
   async archiveLesson(id: number): Promise<LessonDto> {
     return authFetch<LessonDto>(`/lessons/${id}/archive`, {
       method: 'POST',
     });
   },
-};
 
+  async restoreLesson(id: number): Promise<LessonDto> {
+    return authFetch<LessonDto>(`/lessons/${id}/restore`, {
+      method: 'POST',
+    });
+  },
+};

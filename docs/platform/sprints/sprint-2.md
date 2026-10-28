@@ -37,25 +37,25 @@
 - Depends on: S2-T03, S2-T02, S1-T09
 - Do: lesson editor: Info · Vocabulary (editable rows with image thumbnail, replace/upload image, reorder, delete, keyboard-friendly) · Draft review (later task). Autosave with visible state.
 - Acceptance: enter 8 words with pictures quickly; errors inline.
-- [ ] Done
+- [x] Done
 
 ### S2-T07 — Media URLs + Teacher UI: publish & assign  [P0][M]
 - Depends on: S2-T04, S2-T05, S2-T06
 - Do: `GET /media/{imageKey}` (authorized signed URL); publish button showing `422` checklist; assign dialog (same-level classes).
 - Acceptance: TC-34.
-- [ ] Done
+- [x] Done
 
 ### S2-T08 — Student UI: my lessons + lesson hub (Young & Senior)  [P0][M]
 - Depends on: S2-T05, S1-T08b
 - Do: Young: very large lesson cards with picture + 1–2 words, activity buttons (disabled until S3). Senior: standard list. Mobile-first.
 - Acceptance: only assigned+Published lessons; usable at 375 px without reading Vietnamese.
-- [ ] Done
+- [x] Done
 
 ### S2-T09 — Dev seeder  [P0][S]
 - Depends on: S2-T04, S0-T05
 - Do: `DevSeeder` (Development + flag only): loads `explore1-u3-l1.json`, creates an Explore 1 class, 3 Young profiles (fake nicknames), 1 teacher (creds from user-secrets).
 - Acceptance: idempotent; disabled outside Development; **no real children's data**.
-- [ ] Done
+- [x] Done
 
 ### S2-T11 — SPIKE: PDF reading + Gemini on the sample (go/no-go)  [P0][L]
 - Depends on: S0-T02

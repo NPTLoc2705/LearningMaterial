@@ -1,20 +1,11 @@
 import { useState } from 'react';
 import { CreateLessonForm } from '../../../components/teacher/CreateLessonForm';
 import { LessonFilterBar } from '../../../components/teacher/LessonFilterBar';
-import { Badge } from '../../../components/ui/Badge';
+import { LessonListRowCard } from '../../../components/teacher/LessonListRowCard';
 import { Button } from '../../../components/ui/Button';
 import { Card } from '../../../components/ui/Card';
 import { useLessons } from '../../../hooks/use-lessons';
-import type { CreateLessonRequestDto, LessonStatus } from '../../../types/api';
-
-const STATUS_BADGE_MAP: Record<
-  LessonStatus,
-  { label: string; variant: 'amber' | 'green' | 'slate' }
-> = {
-  Draft: { label: 'Bản nháp', variant: 'amber' },
-  Published: { label: 'Đã xuất bản', variant: 'green' },
-  Archived: { label: 'Đã lưu trữ', variant: 'slate' },
-};
+import type { CreateLessonRequestDto } from '../../../types/api';
 
 export function TeacherLessonsPage() {
   const {
@@ -106,45 +97,13 @@ export function TeacherLessonsPage() {
         </Card>
       ) : (
         <div className="space-y-3">
-          {lessons.map((lesson) => {
-            const statusMeta = STATUS_BADGE_MAP[lesson.status];
-            return (
-              <Card
-                key={lesson.id}
-                hoverable
-                innerClassName="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
-              >
-                <div className="space-y-1">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <Badge variant="blue" size="sm">
-                      {lesson.levelDisplayName}
-                    </Badge>
-                    <span className="font-mono text-xs text-[#6B6A66]">
-                      Unit {lesson.unitNo}
-                      {lesson.unitTitle ? `: ${lesson.unitTitle}` : ''} · Lesson{' '}
-                      {lesson.lessonNo}
-                    </span>
-                    <Badge variant={statusMeta.variant} size="sm">
-                      {statusMeta.label}
-                    </Badge>
-                  </div>
-                  <h2 className="font-serif text-base sm:text-lg font-semibold text-[#141413]">
-                    {lesson.title}
-                  </h2>
-                </div>
-
-                {lesson.status !== 'Archived' && (
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    onClick={() => void archiveLesson(lesson.id)}
-                  >
-                    Lưu trữ
-                  </Button>
-                )}
-              </Card>
-            );
-          })}
+          {lessons.map((lesson) => (
+            <LessonListRowCard
+              key={lesson.id}
+              lesson={lesson}
+              onArchive={archiveLesson}
+            />
+          ))}
         </div>
       )}
     </div>
