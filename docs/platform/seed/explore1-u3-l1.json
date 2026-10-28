@@ -1,0 +1,123 @@
+{
+  "levelCode": "explore-1",
+  "unitNo": 3,
+  "unitTitle": "People",
+  "lessonNo": 1,
+  "title": "People",
+  "status": "Published",
+  "vocabulary": [
+    {
+      "word": "boy",
+      "partOfSpeech": "noun",
+      "meaningEn": "a male child",
+      "exampleEn": "He is a boy.",
+      "topic": "People",
+      "sortOrder": 1
+    },
+    {
+      "word": "girl",
+      "partOfSpeech": "noun",
+      "meaningEn": "a female child",
+      "exampleEn": "She is a girl.",
+      "topic": "People",
+      "sortOrder": 2
+    },
+    {
+      "word": "man",
+      "partOfSpeech": "noun",
+      "meaningEn": "an adult male person",
+      "exampleEn": "This is a man.",
+      "topic": "People",
+      "sortOrder": 3
+    },
+    {
+      "word": "woman",
+      "partOfSpeech": "noun",
+      "meaningEn": "an adult female person",
+      "exampleEn": "This is a woman.",
+      "topic": "People",
+      "sortOrder": 4
+    },
+    {
+      "word": "teacher",
+      "partOfSpeech": "noun",
+      "meaningEn": "a person who teaches in a school",
+      "exampleEn": "This is my teacher.",
+      "topic": "People",
+      "sortOrder": 5
+    },
+    {
+      "word": "classmate",
+      "partOfSpeech": "noun",
+      "meaningEn": "a member of the same class at school",
+      "exampleEn": "She is my classmate.",
+      "topic": "People",
+      "sortOrder": 6
+    },
+    {
+      "word": "student",
+      "partOfSpeech": "noun",
+      "meaningEn": "a person who is studying at a school",
+      "exampleEn": "I am a student.",
+      "topic": "People",
+      "sortOrder": 7
+    },
+    {
+      "word": "friend",
+      "partOfSpeech": "noun",
+      "meaningEn": "a person you know well and like",
+      "exampleEn": "He is my friend.",
+      "topic": "People",
+      "sortOrder": 8
+    }
+  ],
+  "grammarTopics": [
+    {
+      "title": "Asking Who Someone Is (Who's this?)",
+      "summary": "Usage-first pattern for identifying people around us.",
+      "sortOrder": 1,
+      "rules": [
+        {
+          "title": "Who's this? → This is a ...",
+          "formula": null,
+          "explanation": null,
+          "sortOrder": 1,
+          "examples": [
+            {
+              "textEn": "Who's this? — This is a teacher.",
+              "sortOrder": 1
+            },
+            {
+              "textEn": "Who's this? — This is my friend.",
+              "sortOrder": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Yes/No Questions About People (Is this a ...?)",
+      "summary": "Usage-first pattern for checking who someone is.",
+      "sortOrder": 2,
+      "rules": [
+        {
+          "title": "Is this a ...? → Yes, it is. / No, it isn't.",
+          "formula": null,
+          "explanation": null,
+          "sortOrder": 1,
+          "examples": [
+            {
+              "textEn": "Is this a teacher? — Yes, it is.",
+              "sortOrder": 1
+            },
+            {
+              "textEn": "Is this a boy? — No, it isn't. This is a girl.",
+              "sortOrder": 2
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+

@@ -1,11 +1,12 @@
 # 02 — Architecture & Key Decisions
 
-## 1. Repository layout (monorepo, additive)
+## 1. Repository layout (workspace-integrated, separate Backend Git repo)
 ```
-LearningMaterial/
-├── client/                         # EXISTING React app → evolves into the platform frontend
-├── server/
-│   └── LearningPlatform/           # NEW .NET solution
+LearningMaterial/                       # Root Git repo (Frontend + Platform Docs)
+├── client/                             # EXISTING React app → evolves into the platform frontend
+├── server/                             # Ignored by root Git; has its own separate Git repo (server/.git)
+│   ├── .gitignore                      # Ignores **/appsettings.json, **/appsettings.*.json, bin/, obj/
+│   └── LearningPlatform/               # NEW .NET 9 solution
 │       ├── BusinessObject/         # entities, enums, DTOs (pure data)
 │       ├── DAL/                    # LearningPlatformDbContext, DAOs, Migrations/
 │       ├── Repository/             # I{X}Repository + {X}Repository (call DAOs)

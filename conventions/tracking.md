@@ -1,4 +1,6 @@
-# Tracking-System Microservice Conventions
+# Tracking-System Microservice Conventions — REFERENCE ONLY (`Ielts-System`)
+
+> **NOTE (Reference Only — `Ielts-System`)**: Kept as historical reference. `Tracking-System/` is not used in this repository.
 
 > **Scope**: Standalone analytics microservice in `Tracking-System/`.  
 > **Key Principle**: Flat, self-contained architecture. It does **not** follow the full 5-layer pattern of `Ielts-System`.

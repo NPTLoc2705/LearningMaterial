@@ -1,4 +1,6 @@
-# Backend API & Security Rules
+# Backend API & Security Rules — REFERENCE ONLY (`Ielts-System`)
+
+> **NOTE (Reference Only — `Ielts-System`)**: Kept as historical reference. For the Junior English Learning Platform, see [docs/platform/02-architecture.md](../docs/platform/02-architecture.md) and [docs/platform/04-api-contract.md](../docs/platform/04-api-contract.md).
 
 > **Scope**: All API endpoints across `Ielts-System/` and `Tracking-System/`.
 

@@ -8,7 +8,7 @@ Backend rule: BO → DAL → Repository → Service → Api; DI in `Program.cs`;
 - Do: `server/LearningPlatform/` with `BusinessObject, DAL, Repository, Service, LearningPlatform.Api, Tests/Service.Tests, Tests/Api.IntegrationTests` and correct references; EF Core + Npgsql; config via user-secrets/env (Supabase connection string via **session pooler + SSL**, JWT key, Gemini key); `docker-compose.yml` (local Postgres for tests); `/health` (DB check); global `ProblemDetails`; CORS for the Vite dev origin; Swagger in Development only. Architecture test (assembly references).
 - Acceptance: `dotnet build` ok; `/health` = 200 against Supabase and against local Postgres; layer-violation test fails if Service references DAL.
 - Docs: `docs/modules/Solution-Structure.md`
-- [ ] Done
+- [x] Done
 
 ### S1-T02 — DbContext, base entities, secure Supabase schema  [P0][L]
 - Depends on: S1-T01
@@ -16,7 +16,7 @@ Backend rule: BO → DAL → Repository → Service → Api; DI in `Program.cs`;
 - Acceptance: TC-32 — with the project's public `anon` key, REST requests to any `app` table return nothing/denied; unique constraints tested.
 - Tests: integration (constraints), security test (anon key).
 - Docs: `docs/modules/DataAccess-Foundation.md`
-- [ ] Done
+- [x] Done
 
 ### S1-T03 — Authentication (password users)  [P0][M]
 - Depends on: S1-T02

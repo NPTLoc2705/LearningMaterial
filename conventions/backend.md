@@ -1,4 +1,6 @@
-# Backend Architecture & Conventions (`Ielts-System/`)
+# Backend Architecture & Conventions (`Ielts-System/`) — REFERENCE ONLY
+
+> **NOTE (Reference Only — `Ielts-System`)**: Kept as historical reference. For the Junior English Learning Platform (`server/LearningPlatform/`, `LearningPlatformDbContext`), see [conventions/learning-platform-backend.md](learning-platform-backend.md) and [docs/platform/02-architecture.md](../docs/platform/02-architecture.md).
 
 > **Scope**: Primary backend solution (`Ielts-System/`), a 5-layer .NET solution.  
 > **Dependency Rule**: Read top-to-bottom. Each layer only references layers below it.

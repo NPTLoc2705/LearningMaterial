@@ -15,6 +15,20 @@ client/dist/
 dist-ssr/
 client/dist-ssr/
 
+# Separate Backend Git repository (server/ has its own .git and .gitignore)
+server/
+**/appsettings.json
+**/appsettings.*.json
+!**/appsettings.*.example
+
+# Public-repo & child-data guardrails (S0-T01 / S0-T06)
+samples/
+uploads/
+*.pdf
+*.pptx
+*.dump
+*.bak
+
 # Local env & editor
 .env
 .env.local

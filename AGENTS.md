@@ -21,7 +21,7 @@ Trade-off priority: **1) cleanliness & maintainability → 2) performance → 3)
 SOLID, DRY, KISS. For any data-touching change, state Big-O / query cost (indexes, N+1, joins).
 
 ## Public-repo & child-data rules (override everything)
-- This repository is **public**. Never commit secrets, API keys, connection strings, student names/rosters/exports, class-link tokens, slide PDFs/PPTX, extracted images, DB dumps. Samples live outside git. Run the secret/forbidden-file check before every commit.
+- This repository is **public** (`server/` uses its own separate Git repo `server/.git` and is gitignored by the root repo). Never commit secrets, API keys, connection strings, `appsettings.json` / `appsettings.*.json`, student names/rosters/exports, class-link tokens, slide PDFs/PPTX, extracted images, DB dumps. Samples live outside git. Run the secret/forbidden-file check before every commit.
 - Children's data: nicknames only; no emails/real names for Young profiles; never log tokens or names.
 - Slide content is **untrusted input** to the AI: the model gets no tools, output is schema-validated, a teacher approves before anything is saved. Original slide files are deleted after review.
 - Supabase: all tables in schema `app` with RLS enabled; the public `anon` key must never read them (test TC-32).
