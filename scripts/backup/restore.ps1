@@ -71,3 +71,4 @@ if ($null -ne $PgRestoreCmd -and $null -ne $PsqlCmd) {
 }
 
 Write-Output "Restore completed from: $ResolvedBackup"
+

@@ -49,3 +49,4 @@ Exposes reactive authentication state to components via `useSyncExternalStore` a
 ### Prerequisites / Context
 - Preserves all legacy archive routes (`/`, `/vocabulary/*`, `/grammar/*`) without modification.
 - Complexity: $O(1)$ in-memory state reads and role checks per route transition; single `/api/auth/me` verification request on initial page reload when a non-expired session token is present.
+

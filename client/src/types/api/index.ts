@@ -311,3 +311,75 @@ export interface StudentLessonHubDto {
   vocabulary: StudentVocabularyPreviewDto[];
 }
 
+export type ExtractionJobStatus =
+  | 'Uploaded'
+  | 'Extracting'
+  | 'Draft'
+  | 'Approved'
+  | 'Discarded'
+  | 'Failed';
+
+export interface ExtractedVocabularyDraftItemDto {
+  id: string;
+  word: string;
+  meaningVi: string | null;
+  meaningEn: string | null;
+  partOfSpeech: string | null;
+  exampleEn: string | null;
+  exampleVi: string | null;
+  topic: string | null;
+  imageKey: string | null;
+  imagePreviewUrl: string | null;
+  sourcePage: number | null;
+  sortOrder: number;
+  isApproved: boolean;
+}
+
+export interface ExtractedSentencePatternDraftDto {
+  title: string;
+  summary: string | null;
+  sourcePage: number | null;
+  examples: string[];
+}
+
+export interface IgnoredSlideSummaryDto {
+  pageNumber: number;
+  reason: string;
+}
+
+export interface ExtractionDraftDto {
+  vocabulary: ExtractedVocabularyDraftItemDto[];
+  sentencePatterns: ExtractedSentencePatternDraftDto[];
+  ignoredSlides: IgnoredSlideSummaryDto[];
+  warnings: ValidationDiagnosticDto[];
+}
+
+export interface ExtractionJobDto {
+  id: number;
+  lessonId: number;
+  status: ExtractionJobStatus;
+  originalFileName: string;
+  sha256: string;
+  pageCount: number;
+  provider: string;
+  model: string;
+  draft: ExtractionDraftDto | null;
+  errorMessage: string | null;
+  createdByUserId: number;
+  createdAt: string;
+  completedAt: string | null;
+}
+
+export interface CreateExtractionJobResponseDto {
+  jobId: number;
+  lessonId: number;
+  status: string;
+  originalFileName: string;
+  message: string;
+}
+
+export interface UpdateExtractionDraftRequestDto {
+  draft: ExtractionDraftDto;
+}
+
+

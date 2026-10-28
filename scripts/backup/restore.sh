@@ -50,3 +50,4 @@ else
 fi
 
 echo "Restore completed from: ${RESOLVED_BACKUP}"
+

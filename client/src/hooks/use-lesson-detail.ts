@@ -269,6 +269,20 @@ export function useLessonDetail(lessonId: number) {
     [vocabulary, saveVocabularyItem]
   );
 
+  const reloadVocabulary = useCallback(async () => {
+    if (!isValidLessonId) return;
+    try {
+      const vocabData = await VocabularyService.getLessonVocabulary(lessonId);
+      setVocabulary(vocabData);
+    } catch (err) {
+      setError(
+        err instanceof ApiError
+          ? err.detail
+          : 'Không thể tải lại danh sách từ vựng.'
+      );
+    }
+  }, [lessonId, isValidLessonId]);
+
   return {
     lesson,
     vocabulary,
@@ -281,6 +295,7 @@ export function useLessonDetail(lessonId: number) {
       setError(null);
       setPublishDiagnostics([]);
     },
+    reloadVocabulary,
     updateMetadata,
     addVocabularyItem,
     saveVocabularyItem,

@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { AddVocabularyItemForm } from '../../../components/teacher/AddVocabularyItemForm';
 import { AssignLessonDialogCard } from '../../../components/teacher/AssignLessonDialogCard';
 import { LessonDetailHeader } from '../../../components/teacher/LessonDetailHeader';
+import { LessonExtractionTab } from '../../../components/teacher/LessonExtractionTab';
 import { LessonMetadataEditorCard } from '../../../components/teacher/LessonMetadataEditorCard';
+import { LessonVocabularyTab } from '../../../components/teacher/LessonVocabularyTab';
 import { PublishValidationChecklist } from '../../../components/teacher/PublishValidationChecklist';
-import { VocabularyEditorRow } from '../../../components/teacher/VocabularyEditorRow';
 import { Button } from '../../../components/ui/Button';
 import { Card } from '../../../components/ui/Card';
 import { useLessonDetail } from '../../../hooks/use-lesson-detail';
@@ -13,7 +13,7 @@ import { useLessonDetail } from '../../../hooks/use-lesson-detail';
 export function TeacherLessonDetailPage() {
   const { id } = useParams<{ id: string }>();
   const lessonId = Number(id);
-  const [activeTab, setActiveTab] = useState<'vocab' | 'info'>('vocab');
+  const [activeTab, setActiveTab] = useState<'vocab' | 'extract' | 'info'>('vocab');
 
   const {
     lesson,
@@ -23,6 +23,7 @@ export function TeacherLessonDetailPage() {
     saveState,
     error,
     publishDiagnostics,
+    reloadVocabulary,
     updateMetadata,
     addVocabularyItem,
     saveVocabularyItem,
@@ -96,6 +97,13 @@ export function TeacherLessonDetailPage() {
         </Button>
         <Button
           size="sm"
+          variant={activeTab === 'extract' ? 'primary' : 'outline'}
+          onClick={() => setActiveTab('extract')}
+        >
+          Nhập từ Slide/PDF (AI)
+        </Button>
+        <Button
+          size="sm"
           variant={activeTab === 'info' ? 'primary' : 'outline'}
           onClick={() => setActiveTab('info')}
         >
@@ -103,43 +111,35 @@ export function TeacherLessonDetailPage() {
         </Button>
       </div>
 
-      {activeTab === 'info' ? (
+      {activeTab === 'info' && (
         <LessonMetadataEditorCard
           lesson={lesson}
           isReadOnly={isReadOnly}
           onSave={updateMetadata}
         />
-      ) : (
-        <div className="space-y-4">
-          {!isReadOnly && (
-            <AddVocabularyItemForm
-              onAdd={addVocabularyItem}
-              onUploadImage={uploadVocabularyImage}
-            />
-          )}
+      )}
 
-          {vocabulary.length === 0 ? (
-            <Card innerClassName="p-8 text-center text-sm text-[#6B6A66]">
-              Chưa có từ vựng nào trong bài giảng này. Hãy thêm ít nhất 4 từ vựng để đủ điều kiện xuất bản.
-            </Card>
-          ) : (
-            <div className="space-y-2.5">
-              {vocabulary.map((item, idx) => (
-                <VocabularyEditorRow
-                  key={item.id}
-                  item={item}
-                  isFirst={idx === 0}
-                  isLast={idx === vocabulary.length - 1}
-                  isReadOnly={isReadOnly}
-                  onSave={saveVocabularyItem}
-                  onUploadImage={uploadVocabularyImage}
-                  onMove={moveVocabularyItem}
-                  onDelete={removeVocabularyItem}
-                />
-              ))}
-            </div>
-          )}
-        </div>
+      {activeTab === 'extract' && (
+        <LessonExtractionTab
+          lessonId={lesson.id}
+          isReadOnly={isReadOnly}
+          onApproved={async () => {
+            await reloadVocabulary();
+            setActiveTab('vocab');
+          }}
+        />
+      )}
+
+      {activeTab === 'vocab' && (
+        <LessonVocabularyTab
+          vocabulary={vocabulary}
+          isReadOnly={isReadOnly}
+          onAdd={addVocabularyItem}
+          onSave={saveVocabularyItem}
+          onUploadImage={uploadVocabularyImage}
+          onMove={moveVocabularyItem}
+          onDelete={removeVocabularyItem}
+        />
       )}
     </div>
   );

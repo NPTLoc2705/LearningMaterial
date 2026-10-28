@@ -61,7 +61,7 @@
 - Depends on: S0-T02
 - Do: console prototype (not production code) using the sample PDF **kept outside git**: (a) extract text + embedded images per page (PdfPig) and render page images (PDFium wrapper); (b) call Gemini (free key) with page images + text and a JSON schema; (c) measure: words found vs expected 8, ignored slides, image mapping correctness, tokens, rate-limit behaviour, time. Write the result in `docs/platform/discovery/extraction-spike.md` with a **go/no-go** and the chosen libraries/model.
 - Acceptance: documented numbers; if < 90% of words/images are correct, decide prompt/pipeline changes or fall back to manual entry for MVP.
-- [ ] Done
+- [x] Done
 
 ### S2-T12 — Extraction domain: `IDocumentReader`, `IContentExtractor`, validators  [P0][L]
 - Depends on: S2-T11, S2-T02
@@ -69,19 +69,19 @@
 - Do: `ExtractionJob` entity + migration; `IDocumentReader` (PDF; PPTX via same abstraction), `IContentExtractor` + `GeminiContentExtractor` (schema-constrained JSON, no tools, bounded tokens, retry/backoff on 429), draft model, **validators** (schema, trim/dedupe, source page present, scramble-letters-are-permutation, counts/ignored-pages summary), image mapping (largest embedded image on the word's page) + crop/re-encode via `IImageProcessor`.
 - Acceptance: TC-24, TC-25, TC-27 with fake extractor + fixtures; real Gemini only via a manual local script.
 - Docs: `docs/modules/Extraction.md`
-- [ ] Done
+- [x] Done
 
 ### S2-T13 — Extraction API + background worker + temp-file lifecycle  [P0][M]
 - Depends on: S2-T12
 - Do: endpoints in 04 (`POST /lessons/{id}/extractions` → 202, `GET`, `PUT draft`, `POST approve`, `DELETE`); background worker runs jobs sequentially; upload checks (PDF/PPTX ≤ 20 MB, magic bytes); temp file deleted on approve/discard/TTL (24 h); approve is idempotent and writes vocabulary/grammar in one transaction.
 - Acceptance: TC-02 (upload validation), TC-28.
-- [ ] Done
+- [x] Done
 
 ### S2-T14 — Teacher UI: upload + draft review  [P0][L]
 - Depends on: S2-T13, S2-T06
 - Do: upload card with progress/status; **review screen**: list of detected words with cropped picture, editable word, remove/restore, replace picture, add missing word, show ignored pages count and validator warnings, "approve all"; after approve → vocabulary editor.
 - Acceptance: TC-26 manually on the real sample (8 words); a teacher can fix one wrong word and approve in < 3 minutes.
-- [ ] Done
+- [x] Done
 
 ### S2-T15 — Bulk CSV import & duplicate lesson  [P2][M]
 - Do: only if wanted after M1. Not required.

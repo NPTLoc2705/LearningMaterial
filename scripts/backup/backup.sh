@@ -61,3 +61,4 @@ if [[ "${RETAIN_COUNT}" -gt 0 ]]; then
 fi
 
 echo "Backup completed: ${BACKUP_FILE}"
+
