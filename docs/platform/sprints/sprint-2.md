@@ -12,26 +12,26 @@
 - Do: `IFileStorage` with `SupabaseFileStorage` (private bucket, server-side credentials only) and `LocalFileStorage` (tests); `IImageProcessor`: decode PNG/JPEG/WebP → resize (max ~800 px) → WebP, SHA-256 de-dup; signed-URL generation (short expiry).
 - Acceptance: upload → key stored; signed URL works then expires; 2 MB limit; non-images rejected (magic bytes).
 - Docs: `docs/modules/Storage.md`
-- [ ] Done
+- [x] Done
 
 ### S2-T03 — Vocabulary CRUD API  [P0][M]
 - Depends on: S2-T01, S1-T05
 - Do: `GET/POST /lessons/{id}/vocabulary`, `PUT/DELETE /vocabulary/{id}`, `POST /vocabulary/{id}/image`. Validation: `Word` required/trimmed; **at least one of image/`MeaningVi`**; `SortOrder`.
 - Acceptance: CRUD + auth; duplicate word → 409.
-- [ ] Done
+- [x] Done
 
 ### S2-T04 — Publish state machine + `ContentValidator`  [P0][M]
 - Depends on: S2-T03
 - Do: publish/archive/restore; `ContentValidator` returns `{path,message}[]` (D-08 vocabulary part: ≥ 4 items if any MCQ activity is enabled for the level, each item has word + image-or-meaning); `422` on failure.
 - Acceptance: TC-04, TC-13.
-- [ ] Done
+- [x] Done
 
 ### S2-T05 — Assignment API + student lesson list  [P0][M]
 - Depends on: S2-T04, S1-T05
 - Do: `LessonAssignment` + migration; assign (Published + level match), list; `GET /me/assignments`, `GET /me/lessons/{id}` (hub data, no answers).
 - Acceptance: TC-01 part 2, TC-03, TC-19.
 - Docs: `docs/modules/Assignments.md`
-- [ ] Done
+- [x] Done
 
 ### S2-T06 — Teacher UI: vocabulary editor  [P0][L]
 - Depends on: S2-T03, S2-T02, S1-T09
