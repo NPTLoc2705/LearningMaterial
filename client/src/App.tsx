@@ -30,6 +30,11 @@ const LoginPage = lazy(() =>
 const TeacherClassesPage = lazy(() =>
   import('./pages/teacher/classes').then((m) => ({ default: m.TeacherClassesPage }))
 );
+const TeacherClassDetailPage = lazy(() =>
+  import('./pages/teacher/classes/class-detail').then((m) => ({
+    default: m.TeacherClassDetailPage,
+  }))
+);
 const TeacherLessonsPage = lazy(() =>
   import('./pages/teacher/lessons').then((m) => ({ default: m.TeacherLessonsPage }))
 );
@@ -68,6 +73,7 @@ export function App() {
           >
             <Route index element={<Navigate to="classes" replace />} />
             <Route path="classes" element={<TeacherClassesPage />} />
+            <Route path="classes/:id" element={<TeacherClassDetailPage />} />
             <Route path="lessons" element={<TeacherLessonsPage />} />
             <Route path="*" element={<Navigate to="/teacher/classes" replace />} />
           </Route>

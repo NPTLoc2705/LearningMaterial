@@ -62,7 +62,7 @@ Backend rule: BO → DAL → Repository → Service → Api; DI in `Program.cs`;
 - Depends on: S1-T05b, S1-T07
 - Do: `pages/teacher/classes`, `class-detail`: roster with avatar picker, add Young profile / Senior student, show temp password once, create/rotate class link with copy button + QR (client-side generated), warning that the link is shown once.
 - Acceptance: create class at Explore 1, add 3 profiles, copy link.
-- [ ] Done
+- [x] Done
 
 ### S1-T08b — Young UI: class link → profile picker  [P0][M]
 - Depends on: S1-T05b, S1-T07

@@ -24,3 +24,26 @@ Manages curriculum levels (`GET /api/levels`), classrooms (`GET/POST /api/classr
     - `GetClassroomsForActorAsync`: $O(\log N + K)$ paged query filtered by `ClassroomStaff` (`IX_ClassroomStaffs_ClassroomId_TeacherId`) or `Enrollment` (`IX_Enrollments_StudentId`).
     - `GetByIdWithSettingsAndStaffAsync`: $O(\log N + S + E)$ where $S$ is staff count ($\le 3$) and $E$ is classroom roster size ($< 20$).
 
+---
+
+## Teacher Class Management UI (`client/src/pages/teacher/classes/`, `client/src/Service/ClassroomService.ts`)
+
+### Purpose
+Provides the Vietnamese teacher interface for viewing and creating classrooms (`/teacher/classes`), managing student rosters with avatar selection (`/teacher/classes/:id`), displaying one-time temporary passwords for `Password`-mode (Senior) students, and generating/rotating/revoking `ClassLink`-mode access links with client-side SVG QR codes (`generateQrMatrix`).
+
+### Input / Output
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `classroomId` | `number` | Route parameter `:id` used by `useClassroomDetail(classroomId)`. |
+| `payload` (`createClassroom`) | `CreateClassroomRequestDto` | `{ name, levelId, termName? }` submitted from `CreateClassroomForm`. |
+| `payload` (`addStudent`) | `CreateClassroomStudentRequestDto` | `{ displayName, username?, avatarKey }` submitted from `AddStudentFormCard`. |
+
+**Returns:** `JSX.Element` (`TeacherClassesPage`, `TeacherClassDetailPage`) — Driven strictly by `classroom.accessMode` (`ClassLink` vs `Password`) from `LevelSettings`.
+
+### Prerequisites / Context
+- **Child-data & security rules**:
+  - For `ClassLink` classrooms, only `displayName` (nickname) and `avatarKey` are collected — never real names or emails.
+  - Raw class access links and temporary student passwords are shown **once** in memory immediately after creation/rotation and are never persisted in browser storage.
+  - Client-side QR generation (`client/src/utils/qrCode.ts`) implements ISO/IEC 18004 Byte-mode Reed-Solomon ECC Level L in $O(V^2)$ matrix operations ($V \le 45 \times 45$) with zero external dependencies and no `dangerouslySetInnerHTML`.
+
+
