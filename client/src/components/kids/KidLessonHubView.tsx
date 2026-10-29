@@ -1,21 +1,33 @@
+import { useNavigate } from 'react-router-dom';
 import type { StudentLessonHubDto } from '../../types/api';
 import { KidActionButton } from './KidActionButton';
 import { KidVocabularyCard } from './KidVocabularyCard';
 
-const YOUNG_ACTIVITY_LABELS: Record<string, { icon: string; label: string }> = {
-  VocabLookListenRepeat: { icon: '🔊', label: 'Listen & Say' },
-  VocabListenChoose: { icon: '🖼️', label: 'Pick the Picture' },
-  VocabListenPickPicture: { icon: '🖼️', label: 'Pick the Picture' },
-  VocabPictureWordMatch: { icon: '🧩', label: 'Match Words' },
+const YOUNG_ACTIVITY_LABELS: Record<string, { icon: string; label: string; path: string }> = {
+  VocabLookListenRepeat: { icon: '🗣️', label: 'Listen & Say', path: 'look-listen-repeat' },
+  VocabListenChoose: { icon: '🖼️', label: 'Pick the Picture', path: 'listen-pick-picture' },
+  VocabListenPickPicture: { icon: '🖼️', label: 'Pick the Picture', path: 'listen-pick-picture' },
+  VocabPictureWordMatch: { icon: '🧩', label: 'Match Words', path: 'picture-word-match' },
+  VocabWordScramble: { icon: '🔤', label: 'Word Scramble', path: 'word-scramble' },
 };
 
 export interface KidLessonHubViewProps {
   hub: StudentLessonHubDto;
+  classroomId?: number;
   onBack: () => void;
 }
 
-export function KidLessonHubView({ hub, onBack }: KidLessonHubViewProps) {
+export function KidLessonHubView({ hub, classroomId, onBack }: KidLessonHubViewProps) {
+  const navigate = useNavigate();
   const enabledActivities = hub.levelSettings.enabledActivities;
+
+  const handleLaunch = (code: string) => {
+    const meta = YOUNG_ACTIVITY_LABELS[code];
+    if (meta?.path) {
+      const cId = classroomId ? `?classroomId=${classroomId}` : '';
+      navigate(`/student/lessons/${hub.lessonId}/${meta.path}${cId}`);
+    }
+  };
 
   return (
     <div className="space-y-6">
@@ -42,6 +54,7 @@ export function KidLessonHubView({ hub, onBack }: KidLessonHubViewProps) {
           const meta = YOUNG_ACTIVITY_LABELS[code] ?? {
             icon: '⭐',
             label: code,
+            path: '',
           };
           return (
             <KidActionButton
@@ -49,7 +62,7 @@ export function KidLessonHubView({ hub, onBack }: KidLessonHubViewProps) {
               icon={meta.icon}
               variant="primary"
               fullWidth
-              disabled
+              onClick={() => handleLaunch(code)}
             >
               {meta.label}
             </KidActionButton>

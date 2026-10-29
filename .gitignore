@@ -29,6 +29,10 @@ uploads/
 *.dump
 *.bak
 
+# Test outputs
+test-results/
+playwright-report/
+
 # Local env & editor
 .env
 .env.local

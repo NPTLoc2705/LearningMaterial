@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { SignedMediaImage } from '../../components/common/SignedMediaImage';
 import { KidActionButton } from '../../components/kids/KidActionButton';
 import { KidLessonHubView } from '../../components/kids/KidLessonHubView';
@@ -12,10 +12,13 @@ const SENIOR_ACTIVITY_LABELS: Record<string, { icon: string; label: string }> = 
   VocabListenChoose: { icon: '🖼️', label: 'Nghe & Chọn tranh đúng' },
   VocabListenPickPicture: { icon: '🖼️', label: 'Nghe & Chọn tranh đúng' },
   VocabPictureWordMatch: { icon: '🧩', label: 'Nối tranh với từ vựng' },
+  VocabWordScramble: { icon: '🔤', label: 'Sắp xếp chữ cái' },
 };
 
 export function StudentLessonHubPage() {
   const { id } = useParams<{ id: string }>();
+  const [searchParams] = useSearchParams();
+  const classroomId = parseInt(searchParams.get('classroomId') || '0', 10);
   const navigate = useNavigate();
   const lessonId = Number(id);
   const { hub, isLoading, error } = useStudentLessonHub(lessonId);
@@ -47,7 +50,11 @@ export function StudentLessonHubPage() {
 
   if (hub.levelGroup === 'Young') {
     return (
-      <KidLessonHubView hub={hub} onBack={() => navigate('/student')} />
+      <KidLessonHubView
+        hub={hub}
+        classroomId={classroomId}
+        onBack={() => navigate('/student')}
+      />
     );
   }
 

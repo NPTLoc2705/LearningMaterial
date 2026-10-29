@@ -7,12 +7,16 @@
     "parse": "node scripts/parse-markdown.mjs",
     "dev": "node scripts/parse-markdown.mjs && npm --prefix client run dev",
     "build": "node scripts/parse-markdown.mjs && npm --prefix client run build",
-    "preview": "npm --prefix client run preview"
+    "preview": "npm --prefix client run preview",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.9",
     "@react-three/fiber": "^9.8.2",
     "gsap": "^3.15.0",
     "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1"
   }
 }

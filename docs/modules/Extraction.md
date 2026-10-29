@@ -27,3 +27,4 @@ Automates extracting curriculum vocabulary, grammar sentence patterns, and compr
 - **Background Sequential Processing:** Jobs are queued via `ExtractionBackgroundQueue` and processed sequentially by `ExtractionWorker`.
 - **File Lifecycle & Retention (`TC-28`):** Temporary slide files are stored in `learning-platform-temp-slides` and deleted immediately upon approval or discard, with an hourly timer deleting orphaned files exceeding the 24-hour TTL.
 - **Database Table:** `app."ExtractionJobs"` has RLS enabled with no public access; index on `(LessonId, CreatedAt DESC)` ($O(\log N)$) and index on `(Status)`.
+

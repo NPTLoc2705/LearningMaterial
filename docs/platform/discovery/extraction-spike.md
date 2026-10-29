@@ -117,3 +117,4 @@ The extraction pipeline sends the document structure to Gemini using structured 
 ## 6. Conclusion & Recommendation
 
 The spike confirms **GO**. `PdfPig` extracts high-fidelity text and embedded images in memory with zero external dependencies. `Gemini 2.5 Flash` produces accurate structured outputs meeting all requirements for Sprint 2.
+

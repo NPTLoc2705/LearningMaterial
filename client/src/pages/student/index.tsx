@@ -82,7 +82,7 @@ export function StudentHomePage() {
                 </div>
                 <h2 className="font-serif text-base sm:text-lg font-semibold text-[#141413]">
                   <Link
-                    to={`/student/lessons/${item.lessonId}`}
+                    to={`/student/lessons/${item.lessonId}?classroomId=${item.classroomId}`}
                     className="hover:underline"
                   >
                     {item.title}
@@ -91,7 +91,7 @@ export function StudentHomePage() {
               </div>
 
               <Link
-                to={`/student/lessons/${item.lessonId}`}
+                to={`/student/lessons/${item.lessonId}?classroomId=${item.classroomId}`}
                 className="inline-flex items-center justify-center rounded-lg bg-[#141413] px-4 py-2 text-xs font-medium text-white hover:bg-[#282725]"
               >
                 Vào học ngay →

@@ -382,4 +382,154 @@ export interface UpdateExtractionDraftRequestDto {
   draft: ExtractionDraftDto;
 }
 
+// -------------------------------------------------------------
+// Sprint 3: Learning Activities, Sessions, Progress & Reports
+// -------------------------------------------------------------
+
+export type ActivityType =
+  | 'VocabLookListenRepeat'
+  | 'VocabListenPickPicture'
+  | 'VocabPictureWordMatch'
+  | 'VocabWordScramble'
+  | 'GrammarUsagePractice'
+  | 'GrammarGuidedPractice'
+  | 'GrammarMiniTest';
+
+export type SessionMode = 'Learn' | 'Practice' | 'Test';
+export type SessionStatus = 'InProgress' | 'Completed' | 'Abandoned';
+export type Skill = 'Meaning' | 'Spelling' | 'Usage' | 'Listening' | 'Grammar';
+
+export interface ClientQuestionOptionDto {
+  key: string;
+  text: string | null;
+  imageKey: string | null;
+}
+
+export interface ClientQuestionDto {
+  id: number;
+  position: number;
+  skill: Skill;
+  kind: string;
+  prompt: string;
+  imageKey: string | null;
+  speakText: string | null;
+  options: ClientQuestionOptionDto[];
+}
+
+export interface StartSessionRequestDto {
+  lessonId: number;
+  classroomId: number;
+  activityType: ActivityType;
+  mode?: SessionMode;
+  grammarTopicId?: number;
+}
+
+export interface StartSessionResponseDto {
+  sessionId: number;
+  activityType: ActivityType;
+  mode: SessionMode;
+  totalQuestions: number;
+  questions: ClientQuestionDto[];
+}
+
+export interface SubmitAnswerRequestDto {
+  sessionQuestionId: number;
+  answer: string;
+  timeSpentMs?: number;
+}
+
+export interface SubmitAnswerResponseDto {
+  isCorrect?: boolean | null;
+  correctAnswer?: string | null;
+  explanation?: string | null;
+  speakText?: string | null;
+  saved?: boolean | null;
+}
+
+export interface QuestionReviewDto {
+  sessionQuestionId: number;
+  position: number;
+  skill: Skill;
+  prompt: string;
+  imageKey: string | null;
+  speakText: string | null;
+  studentAnswer: string | null;
+  correctAnswer: string;
+  isCorrect: boolean;
+  explanation: string | null;
+}
+
+export interface CompleteSessionResponseDto {
+  sessionId: number;
+  activityType: ActivityType;
+  mode: SessionMode;
+  status: SessionStatus;
+  correct: number;
+  total: number;
+  stars?: number | null;
+  scorePercent?: number | null;
+  review: QuestionReviewDto[];
+}
+
+export interface StudentSessionSummaryDto {
+  sessionId: number;
+  lessonId: number;
+  lessonTitle: string;
+  classroomId: number;
+  classroomName: string;
+  activityType: ActivityType;
+  mode: SessionMode;
+  status: SessionStatus;
+  startedAt: string;
+  completedAt: string | null;
+  totalQuestions: number;
+  correctCount: number;
+  stars: number | null;
+  scorePercent: number | null;
+}
+
+export interface WeakWordReviewDto {
+  vocabularyItemId: number;
+  word: string;
+  meaningVi: string | null;
+  imageKey: string | null;
+  skill: Skill;
+  wrongCount: number;
+  correctCount: number;
+  lastWrongAt: string | null;
+}
+
+export interface WeakVocabularyReportDto {
+  vocabularyItemId: number;
+  word: string;
+  meaningVi: string | null;
+  imageKey: string | null;
+  skill: Skill;
+  totalAttempts: number;
+  wrongCount: number;
+  correctCount: number;
+  errorRate: number;
+}
+
+export interface StudentProgressReportDto {
+  vocabularyItemId: number;
+  word: string;
+  meaningVi: string | null;
+  skill: Skill;
+  correctCount: number;
+  wrongCount: number;
+  consecutiveCorrect: number;
+  lastAttemptAt: string;
+}
+
+export interface AssignmentCompletionReportDto {
+  studentId: number;
+  studentNickname: string;
+  hasCompletedLearn: boolean;
+  hasCompletedPractice: boolean;
+  bestStars: number | null;
+  bestScorePercent: number | null;
+  lastCompletedAt: string | null;
+}
+
 

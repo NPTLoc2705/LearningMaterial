@@ -54,6 +54,36 @@ const StudentLessonHubPage = lazy(() =>
     default: m.StudentLessonHubPage,
   }))
 );
+const SpeechTestPage = lazy(() =>
+  import('./pages/dev/speech-test').then((m) => ({
+    default: m.SpeechTestPage,
+  }))
+);
+const LookListenRepeatActivity = lazy(() =>
+  import('./pages/student/activities/LookListenRepeat').then((m) => ({
+    default: m.LookListenRepeatActivity,
+  }))
+);
+const ListenAndTapPictureActivity = lazy(() =>
+  import('./pages/student/activities/ListenAndTapPicture').then((m) => ({
+    default: m.ListenAndTapPictureActivity,
+  }))
+);
+const PictureAndWordMatchActivity = lazy(() =>
+  import('./pages/student/activities/PictureAndWordMatch').then((m) => ({
+    default: m.PictureAndWordMatchActivity,
+  }))
+);
+const WordScrambleActivity = lazy(() =>
+  import('./pages/student/activities/WordScramble').then((m) => ({
+    default: m.WordScrambleActivity,
+  }))
+);
+const StudentResultPage = lazy(() =>
+  import('./pages/student/results').then((m) => ({
+    default: m.StudentResultPage,
+  }))
+);
 
 function RouteLoadingFallback() {
   return (
@@ -75,6 +105,7 @@ export function App() {
           {/* Platform Auth & Young Class Link Routes */}
           <Route path="/login" element={<LoginPage />} />
           <Route path="/c/:token" element={<ClassAccessPage />} />
+          <Route path="/dev/speech-test" element={<SpeechTestPage />} />
 
           {/* Platform Teacher & Admin Routes */}
           <Route
@@ -104,6 +135,11 @@ export function App() {
           >
             <Route index element={<StudentHomePage />} />
             <Route path="lessons/:id" element={<StudentLessonHubPage />} />
+            <Route path="lessons/:id/look-listen-repeat" element={<LookListenRepeatActivity />} />
+            <Route path="lessons/:id/listen-pick-picture" element={<ListenAndTapPictureActivity />} />
+            <Route path="lessons/:id/picture-word-match" element={<PictureAndWordMatchActivity />} />
+            <Route path="lessons/:id/word-scramble" element={<WordScrambleActivity />} />
+            <Route path="sessions/:id/result" element={<StudentResultPage />} />
             <Route path="review" element={<StudentHomePage />} />
             <Route path="*" element={<Navigate to="/student" replace />} />
           </Route>

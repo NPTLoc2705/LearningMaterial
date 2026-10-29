@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { AddStudentFormCard } from '../../../components/teacher/AddStudentFormCard';
 import { ClassAccessLinkCard } from '../../../components/teacher/ClassAccessLinkCard';
 import { StudentRosterList } from '../../../components/teacher/StudentRosterList';
+import { ClassReportsTab } from '../../../components/teacher/ClassReportsTab';
 import { Badge } from '../../../components/ui/Badge';
 import { Button } from '../../../components/ui/Button';
 import { Card } from '../../../components/ui/Card';
@@ -10,6 +12,7 @@ import { useClassroomDetail } from '../../../hooks/use-classroom-detail';
 export function TeacherClassDetailPage() {
   const { id } = useParams<{ id: string }>();
   const classroomId = Number(id ?? 0);
+  const [activeTab, setActiveTab] = useState<'roster' | 'reports'>('roster');
 
   const {
     classroom,
@@ -111,31 +114,63 @@ export function TeacherClassDetailPage() {
         </div>
       )}
 
-      {classroom.accessMode === 'ClassLink' && (
-        <ClassAccessLinkCard
-          isArchived={classroom.isArchived}
-          isMutating={isMutatingLink}
-          latestAccessLink={latestAccessLink}
-          linkRevokedNotice={linkRevokedNotice}
-          onCreateOrRotate={createOrRotateLink}
-          onRevoke={revokeLink}
-        />
+      {/* Tabs */}
+      <div className="flex border-b border-[#E5E4DE] gap-4">
+        <button
+          type="button"
+          onClick={() => setActiveTab('roster')}
+          className={`pb-2.5 text-xs font-semibold border-b-2 transition ${
+            activeTab === 'roster'
+              ? 'border-[#141413] text-[#141413]'
+              : 'border-transparent text-[#6B6A66] hover:text-[#141413]'
+          }`}
+        >
+          Học sinh & Liên kết lớp
+        </button>
+        <button
+          type="button"
+          onClick={() => setActiveTab('reports')}
+          className={`pb-2.5 text-xs font-semibold border-b-2 transition ${
+            activeTab === 'reports'
+              ? 'border-[#141413] text-[#141413]'
+              : 'border-transparent text-[#6B6A66] hover:text-[#141413]'
+          }`}
+        >
+          Từ cần ôn & Báo cáo tiến độ
+        </button>
+      </div>
+
+      {activeTab === 'roster' ? (
+        <>
+          {classroom.accessMode === 'ClassLink' && (
+            <ClassAccessLinkCard
+              isArchived={classroom.isArchived}
+              isMutating={isMutatingLink}
+              latestAccessLink={latestAccessLink}
+              linkRevokedNotice={linkRevokedNotice}
+              onCreateOrRotate={createOrRotateLink}
+              onRevoke={revokeLink}
+            />
+          )}
+
+          <AddStudentFormCard
+            accessMode={classroom.accessMode}
+            isArchived={classroom.isArchived}
+            isSubmitting={isSubmittingStudent}
+            latestCreatedStudent={latestCreatedStudent}
+            onDismissLatestPassword={dismissLatestStudentPassword}
+            onAddStudent={addStudent}
+          />
+
+          <StudentRosterList
+            students={students}
+            isArchived={classroom.isArchived}
+            onRemoveStudent={removeStudent}
+          />
+        </>
+      ) : (
+        <ClassReportsTab classroomId={classroomId} />
       )}
-
-      <AddStudentFormCard
-        accessMode={classroom.accessMode}
-        isArchived={classroom.isArchived}
-        isSubmitting={isSubmittingStudent}
-        latestCreatedStudent={latestCreatedStudent}
-        onDismissLatestPassword={dismissLatestStudentPassword}
-        onAddStudent={addStudent}
-      />
-
-      <StudentRosterList
-        students={students}
-        isArchived={classroom.isArchived}
-        onRemoveStudent={removeStudent}
-      />
     </div>
   );
 }

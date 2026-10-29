@@ -12,7 +12,7 @@ export function KidLessonCard({ lesson }: KidLessonCardProps) {
 
   return (
     <Link
-      to={`/student/lessons/${lesson.lessonId}`}
+      to={`/student/lessons/${lesson.lessonId}?classroomId=${lesson.classroomId}`}
       className="group block rounded-3xl border-2 border-[#E8E7E4] bg-white p-5 sm:p-6 shadow-subtle hover:border-[#141413] transition-transform active:scale-[0.98] motion-reduce:transition-none motion-reduce:active:scale-100 select-none touch-manipulation"
     >
       <div className="flex items-center justify-between gap-4">
