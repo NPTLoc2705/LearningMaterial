@@ -10,6 +10,7 @@ export interface StudentLayoutProps {
 
 const STUDENT_LINKS = [
   { to: '/student', label: 'Bài học', icon: IconHome, end: true },
+  { to: '/student/grammar', label: 'Ngữ pháp', icon: IconBook, end: false },
   { to: '/student/review', label: 'Ôn tập', icon: IconBook, end: false },
 ];
 

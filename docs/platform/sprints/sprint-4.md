@@ -40,19 +40,19 @@ Two presentation modes driven by `LevelSettings.GrammarPresentation`. Reuse the 
 ### S4-T07 — Teacher UI: grammar editor  [P0][L]
 - Depends on: S4-T02, S2-T14
 - Do: tab "Ngữ pháp" adapts to level group: Young → example sentences + pictures + simple question builder; Senior → rules, formulas, examples, question forms. Preview as student.
-- [ ] Done
+- [x] Done
 
 ### S4-T08 — Young UI: usage practice  [P0][M]
 - Depends on: S4-T05, S3-T08
 - Do: picture/sentence choice screens; speak sentence button; stars.
-- [ ] Done
+- [x] Done
 
 ### S4-T09 — Senior UI: Learn → Practice → Mini Test → Review + Grammar page  [P0][L]
 - Depends on: S4-T05, S3-T08
 - Do: 4-step flow, aggregate "Ngữ pháp" page listing topics from all published/assigned lessons for the student's level; reuse presentational styling of the legacy rule cards where practical.
-- [ ] Done
+- [x] Done
 
 ### S4-T10 — Tests + M2 demo  [P0][M]
 - Depends on: S4-T08, S4-T09
 - Do: integration TC-04/06/07 on real session flow; E2E for a Young usage topic and a Senior topic; demo to a real class; feedback in `docs/platform/discovery/m2-feedback.md`.
-- [ ] Done
+- [x] Done

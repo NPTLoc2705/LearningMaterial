@@ -533,4 +533,135 @@ export interface AssignmentCompletionReportDto {
   lastCompletedAt: string | null;
 }
 
+// -------------------------------------------------------------
+// Sprint 4: Grammar Management & Flow
+// -------------------------------------------------------------
+
+export type QuestionType = 'MultipleChoice' | 'FillBlank' | 'SentenceOrder';
+export type QuestionPurpose = 'GuidedPractice' | 'MiniTest';
+
+export interface GrammarExampleDto {
+  id: number;
+  grammarRuleId: number;
+  textEn: string;
+  textVi: string | null;
+  imageKey: string | null;
+  sortOrder: number;
+}
+
+export interface CreateGrammarExampleRequest {
+  textEn: string;
+  textVi?: string | null;
+  imageKey?: string | null;
+  sortOrder?: number | null;
+}
+
+export interface UpdateGrammarExampleRequest {
+  textEn: string;
+  textVi?: string | null;
+  imageKey?: string | null;
+  sortOrder?: number | null;
+}
+
+export interface GrammarRuleDto {
+  id: number;
+  grammarTopicId: number;
+  title: string;
+  formula: string | null;
+  explanation: string | null;
+  pitfallNote: string | null;
+  sortOrder: number;
+  examples: GrammarExampleDto[];
+}
+
+export interface CreateGrammarRuleRequest {
+  title: string;
+  formula?: string | null;
+  explanation?: string | null;
+  pitfallNote?: string | null;
+  sortOrder?: number | null;
+}
+
+export interface UpdateGrammarRuleRequest {
+  title: string;
+  formula?: string | null;
+  explanation?: string | null;
+  pitfallNote?: string | null;
+  sortOrder?: number | null;
+}
+
+export interface GrammarTopicDto {
+  id: number;
+  lessonId: number;
+  title: string;
+  summary: string | null;
+  sortOrder: number;
+  rules: GrammarRuleDto[];
+}
+
+export interface CreateGrammarTopicRequest {
+  title: string;
+  summary?: string | null;
+  sortOrder?: number | null;
+}
+
+export interface UpdateGrammarTopicRequest {
+  title: string;
+  summary?: string | null;
+  sortOrder?: number | null;
+}
+
+export interface AnswerOptionDto {
+  id: number;
+  questionId: number;
+  text: string | null;
+  imageKey: string | null;
+  isCorrect: boolean;
+  position: number | null;
+  sortOrder: number;
+}
+
+export interface AnswerOptionRequest {
+  text?: string | null;
+  imageKey?: string | null;
+  isCorrect: boolean;
+  position?: number | null;
+  sortOrder?: number | null;
+}
+
+export interface QuestionDto {
+  id: number;
+  lessonId: number;
+  grammarTopicId: number | null;
+  type: QuestionType;
+  purpose: QuestionPurpose;
+  prompt: string;
+  promptImageKey: string | null;
+  explanation: string | null;
+  sortOrder: number;
+  isArchived: boolean;
+  options: AnswerOptionDto[];
+}
+
+export interface CreateQuestionRequest {
+  type: QuestionType;
+  purpose: QuestionPurpose;
+  prompt: string;
+  promptImageKey?: string | null;
+  explanation?: string | null;
+  sortOrder?: number | null;
+  options: AnswerOptionRequest[];
+}
+
+export interface UpdateQuestionRequest {
+  type: QuestionType;
+  purpose: QuestionPurpose;
+  prompt: string;
+  promptImageKey?: string | null;
+  explanation?: string | null;
+  sortOrder?: number | null;
+  options: AnswerOptionRequest[];
+}
+
+
 

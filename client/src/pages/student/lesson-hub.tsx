@@ -13,6 +13,8 @@ const SENIOR_ACTIVITY_LABELS: Record<string, { icon: string; label: string }> = 
   VocabListenPickPicture: { icon: '🖼️', label: 'Nghe & Chọn tranh đúng' },
   VocabPictureWordMatch: { icon: '🧩', label: 'Nối tranh với từ vựng' },
   VocabWordScramble: { icon: '🔤', label: 'Sắp xếp chữ cái' },
+  GrammarGuidedPractice: { icon: '📝', label: 'Luyện tập ngữ pháp' },
+  GrammarMiniTest: { icon: '📋', label: 'Bài kiểm tra ngữ pháp' },
 };
 
 export function StudentLessonHubPage() {
@@ -99,6 +101,34 @@ export function StudentLessonHubPage() {
           })}
         </div>
       </div>
+
+      {hub.grammarTopicCount > 0 && (
+        <Card innerClassName="p-5 bg-gradient-to-r from-indigo-50 to-purple-50 border-2 border-indigo-200 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="space-y-1">
+            <span className="text-[11px] font-mono uppercase tracking-wider text-indigo-700 font-bold">
+              Chuyên đề ngữ pháp
+            </span>
+            <h3 className="font-serif text-lg font-bold text-gray-900">
+              Ngữ pháp bài học ({hub.grammarTopicCount} chủ đề)
+            </h3>
+            <p className="text-xs text-gray-600">
+              Quy trình học chuẩn: Lý thuyết ➔ Luyện tập ➔ Bài kiểm tra ngắn (Đạt ≥ 70%) ➔ Xem lại.
+            </p>
+          </div>
+          <Button
+            variant="primary"
+            size="md"
+            onClick={() =>
+              navigate(
+                `/student/lessons/${hub.lessonId}/grammar?classroomId=${classroomId}`
+              )
+            }
+            className="shrink-0 font-bold"
+          >
+            Bắt đầu học ngữ pháp ➔
+          </Button>
+        </Card>
+      )}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {hub.vocabulary.map((item) => (

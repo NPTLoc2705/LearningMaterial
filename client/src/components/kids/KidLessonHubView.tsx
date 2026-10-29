@@ -9,6 +9,7 @@ const YOUNG_ACTIVITY_LABELS: Record<string, { icon: string; label: string; path:
   VocabListenPickPicture: { icon: '🖼️', label: 'Pick the Picture', path: 'listen-pick-picture' },
   VocabPictureWordMatch: { icon: '🧩', label: 'Match Words', path: 'picture-word-match' },
   VocabWordScramble: { icon: '🔤', label: 'Word Scramble', path: 'word-scramble' },
+  GrammarUsagePractice: { icon: '💬', label: 'Luyện mẫu câu', path: 'grammar-usage-practice' },
 };
 
 export interface KidLessonHubViewProps {

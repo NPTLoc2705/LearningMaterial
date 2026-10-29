@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { AssignLessonDialogCard } from '../../../components/teacher/AssignLessonDialogCard';
 import { LessonDetailHeader } from '../../../components/teacher/LessonDetailHeader';
 import { LessonExtractionTab } from '../../../components/teacher/LessonExtractionTab';
+import { LessonGrammarTab } from '../../../components/teacher/LessonGrammarTab';
 import { LessonMetadataEditorCard } from '../../../components/teacher/LessonMetadataEditorCard';
 import { LessonVocabularyTab } from '../../../components/teacher/LessonVocabularyTab';
 import { PublishValidationChecklist } from '../../../components/teacher/PublishValidationChecklist';
@@ -13,7 +14,7 @@ import { useLessonDetail } from '../../../hooks/use-lesson-detail';
 export function TeacherLessonDetailPage() {
   const { id } = useParams<{ id: string }>();
   const lessonId = Number(id);
-  const [activeTab, setActiveTab] = useState<'vocab' | 'extract' | 'info'>('vocab');
+  const [activeTab, setActiveTab] = useState<'vocab' | 'grammar' | 'extract' | 'info'>('vocab');
 
   const {
     lesson,
@@ -97,6 +98,13 @@ export function TeacherLessonDetailPage() {
         </Button>
         <Button
           size="sm"
+          variant={activeTab === 'grammar' ? 'primary' : 'outline'}
+          onClick={() => setActiveTab('grammar')}
+        >
+          Ngữ pháp
+        </Button>
+        <Button
+          size="sm"
           variant={activeTab === 'extract' ? 'primary' : 'outline'}
           onClick={() => setActiveTab('extract')}
         >
@@ -110,6 +118,13 @@ export function TeacherLessonDetailPage() {
           Thông tin bài giảng
         </Button>
       </div>
+
+      {activeTab === 'grammar' && (
+        <LessonGrammarTab
+          lesson={lesson}
+          isReadOnly={isReadOnly}
+        />
+      )}
 
       {activeTab === 'info' && (
         <LessonMetadataEditorCard

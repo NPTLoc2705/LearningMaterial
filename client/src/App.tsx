@@ -79,6 +79,21 @@ const WordScrambleActivity = lazy(() =>
     default: m.WordScrambleActivity,
   }))
 );
+const GrammarUsagePracticeActivity = lazy(() =>
+  import('./pages/student/activities/GrammarUsagePractice').then((m) => ({
+    default: m.GrammarUsagePracticeActivity,
+  }))
+);
+const SeniorGrammarFlowPage = lazy(() =>
+  import('./pages/student/SeniorGrammarFlow').then((m) => ({
+    default: m.SeniorGrammarFlowPage,
+  }))
+);
+const StudentGrammarHubPage = lazy(() =>
+  import('./pages/student/grammar-hub').then((m) => ({
+    default: m.StudentGrammarHubPage,
+  }))
+);
 const StudentResultPage = lazy(() =>
   import('./pages/student/results').then((m) => ({
     default: m.StudentResultPage,
@@ -134,11 +149,16 @@ export function App() {
             }
           >
             <Route index element={<StudentHomePage />} />
+            <Route path="grammar" element={<StudentGrammarHubPage />} />
+            <Route path="grammar/:topicId" element={<SeniorGrammarFlowPage />} />
             <Route path="lessons/:id" element={<StudentLessonHubPage />} />
+            <Route path="lessons/:id/grammar" element={<SeniorGrammarFlowPage />} />
             <Route path="lessons/:id/look-listen-repeat" element={<LookListenRepeatActivity />} />
             <Route path="lessons/:id/listen-pick-picture" element={<ListenAndTapPictureActivity />} />
             <Route path="lessons/:id/picture-word-match" element={<PictureAndWordMatchActivity />} />
             <Route path="lessons/:id/word-scramble" element={<WordScrambleActivity />} />
+            <Route path="lessons/:id/grammar-usage-practice" element={<GrammarUsagePracticeActivity />} />
+            <Route path="activities/grammar-usage-practice" element={<GrammarUsagePracticeActivity />} />
             <Route path="sessions/:id/result" element={<StudentResultPage />} />
             <Route path="review" element={<StudentHomePage />} />
             <Route path="*" element={<Navigate to="/student" replace />} />

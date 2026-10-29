@@ -4,6 +4,7 @@ import type {
   ActivityType,
   ClientQuestionDto,
   CompleteSessionResponseDto,
+  SessionMode,
   StartSessionResponseDto,
   SubmitAnswerResponseDto,
 } from '../types/api';
@@ -19,7 +20,13 @@ export interface UseGameSessionResult {
   isCompleted: boolean;
   result: CompleteSessionResponseDto | null;
   error: string | null;
-  start: (lessonId: number, classroomId: number, activityType: ActivityType) => Promise<void>;
+  start: (
+    lessonId: number,
+    classroomId: number,
+    activityType: ActivityType,
+    mode?: SessionMode,
+    grammarTopicId?: number
+  ) => Promise<void>;
   submitAnswer: (answer: string) => Promise<SubmitAnswerResponseDto | null>;
   nextQuestion: () => Promise<void>;
 }
@@ -35,28 +42,39 @@ export function useGameSession(): UseGameSessionResult {
   const [result, setResult] = useState<CompleteSessionResponseDto | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const start = useCallback(async (lessonId: number, classroomId: number, activityType: ActivityType) => {
-    setIsLoading(true);
-    setError(null);
-    setFeedback(null);
-    setResult(null);
-    setIsCompleted(false);
-    setCurrentIndex(0);
+  const start = useCallback(
+    async (
+      lessonId: number,
+      classroomId: number,
+      activityType: ActivityType,
+      mode?: SessionMode,
+      grammarTopicId?: number
+    ) => {
+      setIsLoading(true);
+      setError(null);
+      setFeedback(null);
+      setResult(null);
+      setIsCompleted(false);
+      setCurrentIndex(0);
 
-    try {
-      const resp = await SessionService.startSession({
-        lessonId,
-        classroomId,
-        activityType,
-      });
-      setSession(resp);
-      setQuestions(resp.questions);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Could not start game session.');
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
+      try {
+        const resp = await SessionService.startSession({
+          lessonId,
+          classroomId,
+          activityType,
+          mode,
+          grammarTopicId,
+        });
+        setSession(resp);
+        setQuestions(resp.questions);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Could not start game session.');
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    []
+  );
 
   const currentQuestion = questions[currentIndex] || null;
 
