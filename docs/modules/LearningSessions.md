@@ -38,3 +38,4 @@ Manages student game sessions (`Learn`, `Practice`, `Test`), receives and grades
 ### Prerequisites / Context
 - Identity is resolved exclusively from JWT claims; client-supplied student IDs are never trusted.
 - Correct answers are NEVER returned to the client before grading or in Test mode prior to completion.
+

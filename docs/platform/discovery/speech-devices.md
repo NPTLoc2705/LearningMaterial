@@ -27,3 +27,4 @@ Navigate to `/dev/speech-test` on each test device. Test words: `boy`, `girl`, `
 3. **Decision on Q-15:**
    - **Decision: Browser Web Speech API is OK for M1 pilot.**
    - Pre-generating MP3s via Gemini TTS or server TTS is not blocking for M1 and can be added in Sprint 5 as an optional enhancement.
+

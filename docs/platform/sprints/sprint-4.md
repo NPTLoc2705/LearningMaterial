@@ -5,14 +5,14 @@ Two presentation modes driven by `LevelSettings.GrammarPresentation`. Reuse the 
 ### S4-T01 — Grammar & question entities  [P0][M]
 - Depends on: S3-T01
 - Do: `GrammarTopic, GrammarRule (Formula optional), GrammarExample (image optional), Question, AnswerOption (text or image), GrammarProgress` + migration.
-- [ ] Done
+- [x] Done
 
 ### S4-T02 — Grammar content CRUD API  [P0][L]
 - Depends on: S4-T01, S1-T05
 - Do: topics/rules/examples/questions endpoints (04) with per-type validation; `Explanation` required only for Senior levels.
 - Acceptance: invalid MC (0 or 2 correct) rejected; sentence-order positions contiguous.
 - Docs: `docs/modules/Grammar.md`
-- [ ] Done
+- [x] Done
 
 ### S4-T03 — Extraction: sentence patterns → grammar draft  [P0][M]
 - Depends on: S2-T12, S4-T02

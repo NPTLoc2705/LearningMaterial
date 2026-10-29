@@ -47,3 +47,4 @@ export const StarBurst: React.FC<StarBurstProps> = ({ stars }) => {
     </div>
   );
 };
+

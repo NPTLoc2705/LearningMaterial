@@ -31,3 +31,4 @@ Generates interactive vocabulary questions dynamically from published lesson voc
 - Requires at least 3 distinct non-archived vocabulary items in the lesson; otherwise throws `InsufficientVocabularyItemsException`.
 - Activity must be listed in `settings.EnabledActivities`; otherwise throws `ActivityNotEnabledException`.
 - Options must never contain duplicates.
+

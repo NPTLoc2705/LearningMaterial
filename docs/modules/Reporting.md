@@ -24,3 +24,4 @@ Provides aggregated learning progress reports for teachers: weak vocabulary rank
 ### Prerequisites / Context
 - Access is strictly gated via `IClassroomAccessService.EnsureCanViewClassroomAsync`: teachers of other classrooms cannot access class reports (TC-12), returning 404 Not Found to prevent leaking classroom existence.
 - Aggregation is performed in a single set-based query without per-student iteration (no N+1).
+

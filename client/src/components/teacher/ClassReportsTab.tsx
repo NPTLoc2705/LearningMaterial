@@ -146,3 +146,4 @@ export function ClassReportsTab({ classroomId }: ClassReportsTabProps) {
     </div>
   );
 }
+

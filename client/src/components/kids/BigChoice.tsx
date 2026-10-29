@@ -57,3 +57,4 @@ export const BigChoice: React.FC<BigChoiceProps> = ({
     </button>
   );
 };
+

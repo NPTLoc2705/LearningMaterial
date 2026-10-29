@@ -39,3 +39,4 @@ export const SpeakerButton: React.FC<SpeakerButtonProps> = ({
     </button>
   );
 };
+
