@@ -18,24 +18,24 @@ Two presentation modes driven by `LevelSettings.GrammarPresentation`. Reuse the 
 - Depends on: S2-T12, S4-T02
 - Do: extend the extractor schema to return `sentence-pattern` items (e.g. "Who's this?", "Is this a teacher?") with example sentences; map to a `GrammarTopic` + examples (Young: no formula) in the draft; teacher edits in the review UI.
 - Acceptance: on the sample PDF the two patterns are proposed; nothing else is invented.
-- [ ] Done
+- [x] Done
 
 ### S4-T04 — `ContentValidator` for grammar  [P0][S]
 - Depends on: S4-T02, S2-T04
 - Do: Young: ≥ 1 example sentence per topic; usage practice question count ≥ 3 if the activity is enabled. Senior: ≥ 1 rule, ≥ 1 guided practice, ≥ 5 mini-test questions.
 - Acceptance: TC-04 (grammar side).
-- [ ] Done
+- [x] Done
 
 ### S4-T05 — Generators: GrammarUsagePractice (Young), GuidedPractice, MiniTest (Senior)  [P0][M]
 - Depends on: S3-T04, S4-T02
 - Do: register in the existing registry. *Usage practice:* "choose the right sentence/picture" from authored or teacher-provided examples, 1 attempt per question, gentle feedback, stars. *Guided practice / Mini test:* as in v1 (feedback vs. no feedback until complete).
 - Acceptance: TC-06, TC-16, TC-22; Young never shows %.
-- [ ] Done
+- [x] Done
 
 ### S4-T06 — Grammar progress + weak topics  [P0][M]
 - Depends on: S4-T05
 - Do: `GrammarProgress` on complete; `GET /classrooms/{id}/reports/weak-grammar`; extend `/me/review`.
-- [ ] Done
+- [x] Done
 
 ### S4-T07 — Teacher UI: grammar editor  [P0][L]
 - Depends on: S4-T02, S2-T14

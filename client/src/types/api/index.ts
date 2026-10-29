@@ -340,6 +340,7 @@ export interface ExtractedSentencePatternDraftDto {
   summary: string | null;
   sourcePage: number | null;
   examples: string[];
+  isApproved?: boolean;
 }
 
 export interface IgnoredSlideSummaryDto {

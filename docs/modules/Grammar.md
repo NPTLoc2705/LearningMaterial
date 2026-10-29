@@ -41,3 +41,46 @@ Provides comprehensive CRUD operations and curriculum authoring for grammar topi
     - `FillBlank`: Must have $\ge 1$ accepted option with `IsCorrect == true` and non-empty text.
   - **GrammarExample Rule:** `GrammarRuleId` is mandatory (non-nullable foreign key). `TextEn` is required.
   - **Archived Lessons:** Any mutation on topics, rules, examples, or questions under an archived lesson is rejected with `409 Conflict`.
+
+### Publish Validation (`ContentValidator`, `S4-T04`, `TC-04`)
+- **Young Group (`Level.Group == LevelGroup.Young`):**
+  - When grammar activities (`GrammarUsagePractice`) are enabled on the lesson's level and the lesson has grammar content:
+    - Each `GrammarTopic` must have $\ge 1$ example sentence (`GrammarExample`).
+    - Total question count + example sentences must be $\ge 3$.
+- **Senior Group (`Level.Group == LevelGroup.Senior`):**
+  - When the lesson has grammar topics:
+    - Each `GrammarTopic` must have $\ge 1$ rule (`GrammarRule`).
+    - Must have $\ge 1$ guided practice question (`Purpose == QuestionPurpose.GuidedPractice`).
+    - Must have $\ge 5$ mini-test questions (`Purpose == QuestionPurpose.MiniTest`).
+
+### Question Generators (`S4-T05`, TC-06, TC-16, TC-22)
+1. **`GrammarUsagePracticeGenerator` (`ActivityType.GrammarUsagePractice`):**
+   - For Young group learners.
+   - Sourced from authored questions for the topic or dynamically generated "choose the right sentence" multiple-choice questions from `GrammarExample`s in the topic.
+   - 1 attempt per question, gentle immediate feedback, star calculation (`StarCalculator`), suppresses percentage score in student DTOs (`ScorePercent = null` when `ShowPercentScore == false`).
+2. **`GrammarGuidedPracticeGenerator` (`ActivityType.GrammarGuidedPractice`):**
+   - For Senior group practice.
+   - Sourced from authored questions (`Purpose == QuestionPurpose.GuidedPractice` or topic questions).
+   - Step-by-step immediate feedback: answer returns `{ isCorrect, correctAnswer, explanation }`.
+3. **`GrammarMiniTestGenerator` (`ActivityType.GrammarMiniTest`):**
+   - For Senior group tests.
+   - Always forces `SessionMode.Test`.
+   - Sourced from authored questions (`Purpose == QuestionPurpose.MiniTest`).
+   - Test mode hides correctness and correct answers until session completion (`answer` returns `{ saved: true }`). Results and score percent are revealed upon session completion.
+
+### Learning Progress & Weak Topics Reporting (`S4-T06`)
+- **`GrammarProgress` Upsert:**
+  - Upon session completion of any grammar activity with a `GrammarTopicId`, an upsert is executed for `(StudentId, GrammarTopicId)`:
+    - `Attempts = Attempts + 1`
+    - `LastScore = session.ScorePercent ?? 0`
+    - `BestScore = max(BestScore, session.ScorePercent ?? 0)`
+    - `LastAttemptAt = session.CompletedAt ?? DateTime.UtcNow`
+- **Classroom Weak Grammar Report:**
+  - `GET /api/classrooms/{id}/reports/weak-grammar` (Teacher/Admin):
+    - Returns active classroom students' grammar topics ranked by average score (lowest score first).
+    - DTO: `WeakGrammarTopicReportItem` (`GrammarTopicId`, `Title`, `StudentCount`, `AverageScore`, `Attempts`).
+    - Teacher access is strictly validated via `IClassroomAccessService` (returns 404 for non-staff teachers per `TC-12` / `D-09`).
+- **Student Review Hub:**
+  - `GET /api/me/review` (Student):
+    - Returns student's weak grammar topics (`BestScore < 80` or `LastScore < 80`) alongside weak vocabulary items in `WeakWordReviewDto`.
+
